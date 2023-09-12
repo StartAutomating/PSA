@@ -17,6 +17,7 @@ begin {
 $NamespaceID = 'com.atproto.server.describeServer'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
