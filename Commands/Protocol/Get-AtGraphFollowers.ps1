@@ -26,6 +26,7 @@ begin {
 $NamespaceID = 'app.bsky.graph.getFollowers'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
