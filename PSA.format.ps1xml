@@ -25,7 +25,7 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>
-        $_.email -replace '(?&lt;u&gt;.{3}).+?@(?&lt;d&gt;.{3}).+?(?&lt;s&gt;\..+)$','${u}***@${d}***${s}'
+        $_.MaskedEmail
     </ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
