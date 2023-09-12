@@ -34,6 +34,7 @@ begin {
 $NamespaceID = 'com.atproto.server.createAccount'
 $httpMethod  = 'POST'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
