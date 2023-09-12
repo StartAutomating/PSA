@@ -4,6 +4,18 @@
   <Type>
     <Name>com.atproto.server.createSession</Name>
     <Members>
+      <ScriptProperty>
+        <Name>MaskedEmail</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Masks an email
+.DESCRIPTION
+    Masks an email, displaying only the first 3 letters of the address and domain.
+#&gt;
+$this.email -replace '(?&lt;u&gt;.{3}).+?@(?&lt;d&gt;.{3}).+?(?&lt;s&gt;\..+)$','${u}***@${d}***${s}'
+                    </GetScriptBlock>
+      </ScriptProperty>
       <NoteProperty>
         <Name>README</Name>
         <Value>
