@@ -19,6 +19,7 @@ begin {
 $NamespaceID = 'app.bsky.notification.getUnreadCount'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
