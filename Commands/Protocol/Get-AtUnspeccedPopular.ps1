@@ -25,6 +25,7 @@ begin {
 $NamespaceID = 'app.bsky.unspecced.getPopular'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
