@@ -21,6 +21,7 @@ begin {
 $NamespaceID = 'com.atproto.sync.getLatestCommit'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
