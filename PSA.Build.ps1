@@ -136,13 +136,32 @@ foreach ($lexiconFile in $lexiconJson) {
             $atFunctionNames += $atFunctionName
         }
 
+        if ((-not $AtParams.Count) -and $lexicon.defs.main.input.encoding) {
+            $AtParams["Data"] = [Ordered]@{
+                Binding = "."
+                Attribute = 'ValueFromPipelineByPropertyName'
+                Type = [byte[]]
+            }
+
+            $AtParams["ContentType"] = [Ordered]@{
+                Attribute = 'ValueFromPipelineByPropertyName'
+                Type = [string]
+            }
+        }
+
 
         $atBeginBlock = [ScriptBlock]::Create(@(
             "`$NamespaceID = '$($lexicon.id)'"
             "`$httpMethod  = '$httpMethod'"
             "`$InvokeAtSplat = [Ordered]@{Method=`$httpMethod}"
+            
             {$InvokeAtSplat["PSTypeName"] = $NamespaceID}
             {$parameterAliases = [Ordered]@{}}
+            if ($lexicon.defs.main.output.encoding -and ($lexicon.defs.main.output.encoding -ne 'application/json')) {
+                {$AsByte = $true}
+            } else {
+                {$AsByte = $false}
+            }
             ""
 if ($AtParams.Count) {
 {
@@ -174,7 +193,13 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
             $parameterQueue.ToArray() |
                 Invoke-AtProtocol -Method $httpMethod -NamespaceID $NamespaceID -Parameter {
                     $_
-                } -ParameterAlias $parameterAliases @InvokeAtSplat
+                } -ParameterAlias $parameterAliases @InvokeAtSplat -ContentType $(
+                    if ($ContentType) {
+                        $ContentType
+                    } else {
+                        "application/json"   
+                    }
+                ) -AsByte:$AsByte
         }
 
 
@@ -195,6 +220,7 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
             Link = $lexiconLink
             Attribute = "[CmdletBinding(SupportsShouldProcess)]"
         }
+
         
         $atFunctionDefinition =
             New-PipeScript @newPipeScriptSplat -NoTranspile
