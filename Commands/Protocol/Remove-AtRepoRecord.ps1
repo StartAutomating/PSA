@@ -36,6 +36,7 @@ begin {
 $NamespaceID = 'com.atproto.repo.deleteRecord'
 $httpMethod  = 'POST'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
