@@ -17,6 +17,6 @@ New-GitHubWorkflow -Name "Build PSA" -On Push,
     Demand -Job PowerShellStaticAnalysis, 
     TestPowerShellOnLinux, 
     TagReleaseAndPublish, 
-    BuildPSA -OutputPath .\.github\workflows\TestAndPublish.yml
+    BuildPSA -OutputPath $workflowPath
 
 Pop-Location
