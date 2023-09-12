@@ -26,6 +26,7 @@ begin {
 $NamespaceID = 'app.bsky.graph.getLists'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
