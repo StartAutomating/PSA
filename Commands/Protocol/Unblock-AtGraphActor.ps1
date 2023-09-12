@@ -19,6 +19,7 @@ begin {
 $NamespaceID = 'app.bsky.graph.unmuteActor'
 $httpMethod  = 'POST'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
