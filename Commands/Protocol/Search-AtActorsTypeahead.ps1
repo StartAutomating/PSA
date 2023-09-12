@@ -22,6 +22,7 @@ begin {
 $NamespaceID = 'app.bsky.actor.searchActorsTypeahead'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
