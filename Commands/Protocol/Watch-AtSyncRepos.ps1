@@ -20,6 +20,7 @@ begin {
 $NamespaceID = 'com.atproto.sync.subscribeRepos'
 $httpMethod  = ''
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
