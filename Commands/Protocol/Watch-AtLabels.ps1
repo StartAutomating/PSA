@@ -20,6 +20,7 @@ begin {
 $NamespaceID = 'com.atproto.label.subscribeLabels'
 $httpMethod  = ''
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
