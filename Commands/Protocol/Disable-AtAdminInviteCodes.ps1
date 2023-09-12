@@ -22,6 +22,7 @@ begin {
 $NamespaceID = 'com.atproto.admin.disableInviteCodes'
 $httpMethod  = 'POST'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
