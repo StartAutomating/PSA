@@ -23,6 +23,7 @@ begin {
 $NamespaceID = 'com.atproto.admin.updateAccountEmail'
 $httpMethod  = 'POST'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
