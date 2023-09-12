@@ -40,6 +40,7 @@ begin {
 $NamespaceID = 'com.atproto.repo.createRecord'
 $httpMethod  = 'POST'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
