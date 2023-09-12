@@ -25,6 +25,7 @@ begin {
 $NamespaceID = 'app.bsky.notification.listNotifications'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
