@@ -25,6 +25,7 @@ begin {
 $NamespaceID = 'com.atproto.admin.sendEmail'
 $httpMethod  = 'POST'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
