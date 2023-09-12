@@ -17,6 +17,7 @@ begin {
 $NamespaceID = 'com.atproto.server.deleteSession'
 $httpMethod  = 'POST'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
