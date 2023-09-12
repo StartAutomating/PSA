@@ -22,6 +22,7 @@ begin {
 $NamespaceID = 'com.atproto.server.getAccountInviteCodes'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
