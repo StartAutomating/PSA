@@ -31,6 +31,7 @@ begin {
 $NamespaceID = 'com.atproto.label.queryLabels'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
