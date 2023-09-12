@@ -41,6 +41,7 @@ begin {
 $NamespaceID = 'com.atproto.admin.takeModerationAction'
 $httpMethod  = 'POST'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
