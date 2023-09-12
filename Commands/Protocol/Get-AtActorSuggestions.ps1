@@ -22,6 +22,7 @@ begin {
 $NamespaceID = 'app.bsky.actor.getSuggestions'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
