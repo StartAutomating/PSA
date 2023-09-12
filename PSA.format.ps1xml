@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-16"?>
+<!-- Generated with EZOut 2.0.1: Install-Module EZOut or https://github.com/StartAutomating/EZOut -->
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>com.atproto.server.createSession</Name>
+      <ViewSelectedBy>
+        <TypeName>com.atproto.server.createSession</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>email</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>handle</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+        $_.email -replace '(?&lt;u&gt;.{3}).+?@(?&lt;d&gt;.{3}).+?(?&lt;s&gt;\..+)$','${u}***@${d}***${s}'
+    </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>did</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>
