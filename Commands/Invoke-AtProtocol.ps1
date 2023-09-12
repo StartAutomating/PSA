@@ -197,7 +197,11 @@ function Invoke-AtProtocol
         }
 
         if ($BodyParameters.Count -and $method -notin 'get','options') {
-            $InvokeSplat["Body"] = $BodyParameters | ConvertTo-Json -Depth 100 
+            if ($BodyParameters.Count -eq 1 -and $BodyParameters["."] -as [byte[]]) {
+                $InvokeSplat["Body"] = $BodyParameters["."] -as [byte[]]
+            } else {
+                $InvokeSplat["Body"] = $BodyParameters | ConvertTo-Json -Depth 100 
+            }            
         }
 
         if ($script:AtProtocolAccessJWT -and 
