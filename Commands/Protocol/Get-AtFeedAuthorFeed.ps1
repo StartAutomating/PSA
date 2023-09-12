@@ -29,6 +29,7 @@ begin {
 $NamespaceID = 'app.bsky.feed.getAuthorFeed'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
