@@ -23,6 +23,7 @@ begin {
 $NamespaceID = 'com.atproto.server.createSession'
 $httpMethod  = 'POST'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
