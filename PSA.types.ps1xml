@@ -16,6 +16,25 @@
 $this.email -replace '(?&lt;u&gt;.{3}).+?@(?&lt;d&gt;.{3}).+?(?&lt;s&gt;\..+)$','${u}***@${d}***${s}'
                     </GetScriptBlock>
       </ScriptProperty>
+      <ScriptProperty>
+        <Name>Profile</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets the profile attached to a session
+.DESCRIPTION
+    Gets the profile of the logged-in user.
+#&gt;
+
+if (-not $this.'.Profile') {
+    $this |
+        Add-Member NoteProperty '.Profile' (Get-AtActorProfile -Actor $this.handle) -Force
+} 
+
+$this.'.Profile'
+
+                    </GetScriptBlock>
+      </ScriptProperty>
       <NoteProperty>
         <Name>README</Name>
         <Value>
