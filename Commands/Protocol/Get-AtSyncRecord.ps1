@@ -33,6 +33,7 @@ begin {
 $NamespaceID = 'com.atproto.sync.getRecord'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
