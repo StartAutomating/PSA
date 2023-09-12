@@ -22,6 +22,7 @@ $httpMethod  = ''
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
+$AsByte = $false
 
 
     
@@ -51,7 +52,13 @@ end {
             $parameterQueue.ToArray() |
                 Invoke-AtProtocol -Method $httpMethod -NamespaceID $NamespaceID -Parameter {
                     $_
-                } -ParameterAlias $parameterAliases @InvokeAtSplat
+                } -ParameterAlias $parameterAliases @InvokeAtSplat -ContentType $(
+                    if ($ContentType) {
+                        $ContentType
+                    } else {
+                        "application/json"   
+                    }
+                ) -AsByte:$AsByte
         
 }
 } 
