@@ -19,6 +19,7 @@ begin {
 $NamespaceID = 'com.atproto.server.revokeAppPassword'
 $httpMethod  = 'POST'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
