@@ -46,6 +46,7 @@ begin {
 $NamespaceID = 'com.atproto.admin.getModerationReports'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 
 
