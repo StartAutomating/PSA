@@ -140,7 +140,8 @@ foreach ($lexiconFile in $lexiconJson) {
         $atBeginBlock = [ScriptBlock]::Create(@(
             "`$NamespaceID = '$($lexicon.id)'"
             "`$httpMethod  = '$httpMethod'"
-            "`$InvokeAtSplat = [Ordered]@{Method=`$httpMethod}"            
+            "`$InvokeAtSplat = [Ordered]@{Method=`$httpMethod}"
+            {$InvokeAtSplat["PSTypeName"] = $NamespaceID}
             {$parameterAliases = [Ordered]@{}}
             ""
 if ($AtParams.Count) {
