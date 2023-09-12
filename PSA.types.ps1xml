@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<!-- Generated with EZOut 2.0.1: Install-Module EZOut or https://github.com/StartAutomating/EZOut -->
+<Types>
+  <Type>
+    <Name>com.atproto.server.createSession</Name>
+    <Members>
+    </Members>
+  </Type>
+</Types>
