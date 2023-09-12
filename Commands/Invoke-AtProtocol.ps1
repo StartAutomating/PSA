@@ -98,7 +98,11 @@ function Invoke-AtProtocol
     # If set, will cache results from a request.  Only HTTP GET results will be cached.
     [Parameter(ValueFromPipelineByPropertyName)]
     [switch]
-    $Cache    
+    $Cache,
+
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [switch]
+    $AsByte
     )
 
     begin {
@@ -197,7 +201,7 @@ function Invoke-AtProtocol
         }
 
         if ($BodyParameters.Count -and $method -notin 'get','options') {
-            if ($BodyParameters.Count -eq 1 -and $BodyParameters["."] -as [byte[]]) {
+            if ($BodyParameters["."] -as [byte[]]) {
                 $InvokeSplat["Body"] = $BodyParameters["."] -as [byte[]]
             } else {
                 $InvokeSplat["Body"] = $BodyParameters | ConvertTo-Json -Depth 100 
@@ -238,7 +242,12 @@ function Invoke-AtProtocol
                 
                 if ($psCmdlet.ShouldProcess($methodAndUri)) {
                     Write-Verbose $methodAndUri
-                    Invoke-RestMethod @toSplat
+                    if ($AsByte) {
+                        Invoke-WebRequest @toSplat
+                    } else {
+                        Invoke-RestMethod @toSplat
+                    }
+                    
                 }
             }
         } | 
@@ -250,8 +259,12 @@ function Invoke-AtProtocol
                 # A lot of things in the Azure DevOps REST apis come back as a count/value pair
                 if ($in -eq 'null') {
                     return
-                }                
-                if ($ExpandProperty) {
+                }
+                
+                if ($AsByte -and $in.Content) {
+                    $in.Content
+                }
+                elseif ($ExpandProperty) {
                     if ($in.$ExpandProperty) {
                         return $in.$ExpandProperty
                     }
@@ -261,14 +274,6 @@ function Invoke-AtProtocol
                     $inProperties.Length -eq 1
                 )) {
                     $inProperties[0].Value
-                }
-                elseif ($in -isnot [string] -and $($in.'cursor' -and $inProperties.Length -eq 2)) {
-                    foreach ($inProp in $inProperties) {
-                        if ($inProp.Name -ne 'cursor') {
-                            $inProp.Value
-                            break
-                        }
-                    }
                 }
                 else {
                     $in
