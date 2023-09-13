@@ -11,17 +11,20 @@ function Search-AtProtoLabels  {
 [CmdletBinding(SupportsShouldProcess)]
 param(
 # List of AT URI patterns to match (boolean 'OR'). Each may be a prefix (ending with '*'; will match inclusive of the string leading to '*'), or a full URI
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('uriPatterns')]
 [Management.Automation.PSObject]
 $UriPatterns,
 # Optional list of label sources (DIDs) to filter on
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('sources')]
 [Management.Automation.PSObject]
 $Sources,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
 $Cursor
