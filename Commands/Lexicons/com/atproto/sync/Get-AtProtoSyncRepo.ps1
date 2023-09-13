@@ -11,11 +11,12 @@ function Get-AtProtoSyncRepo  {
 [CmdletBinding(SupportsShouldProcess)]
 param(
 # The DID of the repo.
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('did')]
 [String]
 $Did,
 # The revision of the repo to catch up from.
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('since')]
 [String]
 $Since
