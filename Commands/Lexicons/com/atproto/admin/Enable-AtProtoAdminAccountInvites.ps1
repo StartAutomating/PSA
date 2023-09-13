@@ -10,10 +10,12 @@ function Enable-AtProtoAdminAccountInvites  {
 [Alias('Enable-AtProtocolAdminAccountInvites','atproto.admin.enableAccountInvites','com.atproto.admin.enableAccountInvites')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('account')]
 [String]
 $Account,
 # Additionally add a note describing why the invites were enabled
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('note')]
 [String]
 $Note
