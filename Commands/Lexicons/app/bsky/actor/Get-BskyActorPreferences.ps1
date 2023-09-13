@@ -7,7 +7,7 @@ function Get-BskyActorPreferences  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/actor/getPreferences.json
 #>
-[Alias('PSA.app.bsky.actor.getPreferences')]
+[Alias('Get-BlueSkyActorPreferences','bsky.actor.getPreferences','app.bsky.actor.getPreferences')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 
