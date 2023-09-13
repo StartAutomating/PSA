@@ -7,7 +7,7 @@ function Update-BskyNotificationSeen  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/notification/updateSeen.json
 #>
-[Alias('PSA.app.bsky.notification.updateSeen')]
+[Alias('Update-BlueSkyNotificationSeen','bsky.notification.updateSeen','app.bsky.notification.updateSeen')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [ComponentModel.DefaultBindingProperty('seenAt')]
