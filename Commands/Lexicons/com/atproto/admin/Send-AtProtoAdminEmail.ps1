@@ -10,12 +10,15 @@ function Send-AtProtoAdminEmail  {
 [Alias('Send-AtProtocolAdminEmail','atproto.admin.sendEmail','com.atproto.admin.sendEmail')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('recipientDid')]
 [String]
 $RecipientDid,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('content')]
 [String]
 $Content,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('subject')]
 [String]
 $Subject
