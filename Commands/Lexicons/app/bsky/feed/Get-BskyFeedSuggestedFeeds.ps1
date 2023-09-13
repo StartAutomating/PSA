@@ -10,9 +10,11 @@ function Get-BskyFeedSuggestedFeeds  {
 [Alias('Get-BlueSkyFeedSuggestedFeeds','bsky.feed.getSuggestedFeeds','app.bsky.feed.getSuggestedFeeds')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
 $Cursor
