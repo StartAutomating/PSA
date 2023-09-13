@@ -10,6 +10,7 @@ function Revoke-AtProtoServerAppPassword  {
 [Alias('Revoke-AtProtocolServerAppPassword','atproto.server.revokeAppPassword','com.atproto.server.revokeAppPassword')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('name')]
 [String]
 $Name
