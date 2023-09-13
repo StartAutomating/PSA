@@ -10,12 +10,15 @@ function Get-BskyUnspeccedPopularFeedGenerators  {
 [Alias('Get-BlueSkyUnspeccedPopularFeedGenerators','bsky.unspecced.getPopularFeedGenerators','app.bsky.unspecced.getPopularFeedGenerators')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
 $Cursor,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('query')]
 [String]
 $Query
