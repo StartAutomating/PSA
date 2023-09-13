@@ -10,12 +10,15 @@ function Resolve-AtProtoAdminModerationReports  {
 [Alias('Resolve-AtProtocolAdminModerationReports','atproto.admin.resolveModerationReports','com.atproto.admin.resolveModerationReports')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('actionId')]
 [Management.Automation.PSObject]
 $ActionId,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('reportIds')]
 [Management.Automation.PSObject]
 $ReportIds,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('createdBy')]
 [String]
 $CreatedBy
