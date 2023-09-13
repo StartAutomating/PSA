@@ -10,6 +10,7 @@ function Block-BskyGraphActor  {
 [Alias('Block-BlueSkyGraphActor','bsky.graph.muteActor','app.bsky.graph.muteActor')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('actor')]
 [String]
 $Actor
