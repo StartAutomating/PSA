@@ -5,14 +5,16 @@ $lexiconJson = Get-ChildItem -Path $atLexicon -Recurse -file -Filter *.json
 $atFunctionNames = @()
 $Lexicons = @()
 
-$AtScriptRoot = Join-Path (Join-Path $PSScriptRoot Commands) "Protocol"
+$AtScriptRoot = Join-Path (Join-Path $PSScriptRoot Commands) "Lexicons"
+
 if (-not (Test-Path $AtScriptRoot)) {
     $null = New-Item -ItemType Directory -Path $AtScriptRoot
 }
 
 $unbound = @()
 foreach ($lexiconFile in $lexiconJson) {
-    $lexicon = Get-content -LiteralPath $lexiconFile -raw | ConvertFrom-Json
+    $lexiconText = Get-content -LiteralPath $lexiconFile -raw 
+    $lexicon = $lexiconText | ConvertFrom-Json
     $Lexicons+=$lexicon
     if ($lexiconFile.Name -eq 'defs.json') {
         # General definitions
@@ -64,10 +66,12 @@ foreach ($lexiconFile in $lexiconJson) {
         }
 
         $lexiconIdParts = @($lexicon.id -split '\.')
+        $secondWord = $lexiconIdParts[1]
         $lastWord = $lexiconIdParts[-1]
         $secondToLastWord = $lexiconIdParts[-2]
         $secondToLastWord = $secondToLastWord.Substring(0,1).ToUpper() + $secondToLastWord.Substring(1)
-        $prefix = "At$($secondToLastWord)"
+        $secondWord = $secondWord.Substring(0,1).ToUpper() + $secondWord.Substring(1)
+        $prefix = "$($secondWord)$($secondToLastWord)"
         $atFunctionName = switch -regex ($lastWord) {
             "^(?>Get|Resolve|Revoke|Reset|Request|Search|Send|Enable|Disable|Update|Block|Register|Unregister)" {
                 $newName = $lastWord -replace "^$($matches.0)", "`${0}-$prefix"
@@ -153,8 +157,7 @@ foreach ($lexiconFile in $lexiconJson) {
         $atBeginBlock = [ScriptBlock]::Create(@(
             "`$NamespaceID = '$($lexicon.id)'"
             "`$httpMethod  = '$httpMethod'"
-            "`$InvokeAtSplat = [Ordered]@{Method=`$httpMethod}"
-            
+            "`$InvokeAtSplat = [Ordered]@{Method=`$httpMethod}"        
             {$InvokeAtSplat["PSTypeName"] = $NamespaceID}
             {$parameterAliases = [Ordered]@{}}
             if ($lexicon.defs.main.output.encoding -and ($lexicon.defs.main.output.encoding -ne 'application/json')) {
@@ -208,11 +211,18 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
             $lexiconIDParts[0..$($lexiconIDParts.Count - 2)]
             $lexiconIdParts[-1] + ".json"
         ) -join '/'
+
+        $atFunctionDescription = if ($lexcion.description) {
+            $lexcion.description
+        } else {
+            "$($lexicon.id)"
+        }
+
         $newPipeScriptSplat = [Ordered]@{
             FunctionName=$atFunctionName
             Alias="PSA.$($lexicon.id)"
             Parameter=$AtParams
-            Description=$lexicon.description
+            Description=$atFunctionDescription
             Synopsis=$lexicon.id
             Begin = $atBeginBlock
             Process = $atProcessBlock
@@ -225,7 +235,11 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
         $atFunctionDefinition =
             New-PipeScript @newPipeScriptSplat -NoTranspile
 
-        $atFunctionPath = Join-Path $AtScriptRoot "$($atFunctionName).ps1"
+        
+        $atFunctionPath = Join-Path $AtScriptRoot "$($lexiconIDParts[0..2] -join [IO.Path]::DirectorySeparatorChar)$([IO.Path]::DirectorySeparatorChar)$($atFunctionName).ps1"
+        if (-not (Test-Path $atFunctionPath)) {
+            $null = New-Item -ItemType File -Path $atFunctionPath -Force
+        }
 
         $atFunctionDefinition | Set-Content -Path $atFunctionPath
         Get-Item -path $atFunctionPath
