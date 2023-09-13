@@ -7,7 +7,7 @@ function Set-BskyUnspeccedLabels  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/unspecced/applyLabels.json
 #>
-[Alias('PSA.app.bsky.unspecced.applyLabels')]
+[Alias('Set-BlueSkyUnspeccedLabels','bsky.unspecced.applyLabels','app.bsky.unspecced.applyLabels')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [ComponentModel.DefaultBindingProperty('labels')]
