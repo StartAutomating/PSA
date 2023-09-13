@@ -11,9 +11,11 @@ function Add-AtProtoServerSession  {
 [CmdletBinding(SupportsShouldProcess)]
 param(
 # Handle or other identifier supported by the server for the authenticating user.
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('identifier')]
 [String]
 $Identifier,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('password')]
 [String]
 $Password
