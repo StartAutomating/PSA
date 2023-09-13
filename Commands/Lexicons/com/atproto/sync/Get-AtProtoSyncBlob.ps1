@@ -11,12 +11,12 @@ function Get-AtProtoSyncBlob  {
 [CmdletBinding(SupportsShouldProcess)]
 param(
 # The DID of the repo.
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('did')]
 [String]
 $Did,
 # The CID of the blob to fetch
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cid')]
 [String]
 $Cid
