@@ -10,12 +10,15 @@ function Get-BskyUnspeccedPopular  {
 [Alias('Get-BlueSkyUnspeccedPopular','bsky.unspecced.getPopular','app.bsky.unspecced.getPopular')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('includeNsfw')]
 [Management.Automation.SwitchParameter]
 $IncludeNsfw,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
 $Cursor
