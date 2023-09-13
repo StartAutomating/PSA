@@ -10,7 +10,7 @@ function Get-AtProtoAdminModerationReport  {
 [Alias('Get-AtProtocolAdminModerationReport','atproto.admin.getModerationReport','com.atproto.admin.getModerationReport')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('id')]
 [Management.Automation.PSObject]
 $Id
