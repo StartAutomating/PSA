@@ -230,40 +230,52 @@ function Invoke-AtProto
     }
     
     end {
+        # Get Invoke-RestMethod
         $invokeRestMethod = $ExecutionContext.SessionState.InvokeCommand.GetCommand('Invoke-RestMethod', 'Cmdlet')
+        # and all of it's parameters
         $invokeRestMethodParameters = @($invokeRestMethod.Parameters.Keys | Sort-Object)
+        # and turn that list into one regex.
         $invokeRestMethodRegex = [Regex]::new("(?>$($invokeRestMethodParameters -join '|'))")
-        . {        
+
+        # Do everything from here on out in nested [ScriptBlock].
+        # Why?  So that the object pipeline sends objects as they are ready.        
+        . {
+            # Walk thru all we were to invoke
             foreach ($iq in $InvokeQueue.ToArray()) {
+                # create a splat for each
                 $toSplat = [Ordered]@{}
+                # and strip out anything not a parameter to Invoke-RestMethod              
                 foreach ($keyToSplat in $iq.Keys -match $invokeRestMethodRegex) {
                     $toSplat[$keyToSplat] = $iq[$keyToSplat]
                 }
                 
+                # If -WhatIf was passed
                 if ($WhatIfPreference) {
+                    # strip headers
                     $toSplat.Remove('Headers')
-                    $toSplat
+                    $toSplat # and return the splat.
                     continue
                 }
 
-                $methodAndUri = $toSplat.Method, $toSplat.uri -join ' '                 
-                elseif ($psCmdlet.ShouldProcess($methodAndUri)) {
+                # Create a human readable form of the request
+                $methodAndUri = $toSplat.Method, $toSplat.uri -join ' '
+                # and -Confirm the activity (if they passed -Confirm, that is)
+                if ($psCmdlet.ShouldProcess($methodAndUri)) {
                     Write-Verbose $methodAndUri
+                    # If we want bytes back
                     if ($AsByte) {
+                        # use Invoke-WebRequest
                         Invoke-WebRequest @toSplat
                     } else {
+                        # otherwise, use Invoke-RestMethod.
                         Invoke-RestMethod @toSplat
                     }
-                    
                 }
             }
         } | 
         & { 
             process {
-                $in = $_
-
-                # What it will not do is "unroll" them.
-                # A lot of things in the Azure DevOps REST apis come back as a count/value pair
+                $in = $_                                
                 if ($in -eq 'null') {
                     return
                 }
