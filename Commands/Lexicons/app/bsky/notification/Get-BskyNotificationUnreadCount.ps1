@@ -10,6 +10,7 @@ function Get-BskyNotificationUnreadCount  {
 [Alias('Get-BlueSkyNotificationUnreadCount','bsky.notification.getUnreadCount','app.bsky.notification.getUnreadCount')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('seenAt')]
 [String]
 $SeenAt
