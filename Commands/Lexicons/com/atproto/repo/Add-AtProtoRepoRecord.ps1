@@ -11,26 +11,32 @@ function Add-AtProtoRepoRecord  {
 [CmdletBinding(SupportsShouldProcess)]
 param(
 # The handle or DID of the repo.
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('repo')]
 [String]
 $Repo,
 # The NSID of the record collection.
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('collection')]
 [String]
 $Collection,
 # The key of the record.
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('rkey')]
 [String]
 $Rkey,
 # Validate the record?
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('validate')]
 [Management.Automation.SwitchParameter]
 $Validate,
 # The record to create.
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('record')]
 [Management.Automation.PSObject]
 $Record,
 # Compare and swap with the previous commit by cid.
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('swapCommit')]
 [String]
 $SwapCommit
