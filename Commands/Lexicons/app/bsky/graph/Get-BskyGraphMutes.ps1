@@ -7,7 +7,7 @@ function Get-BskyGraphMutes  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/graph/getMutes.json
 #>
-[Alias('PSA.app.bsky.graph.getMutes')]
+[Alias('Get-BlueSkyGraphMutes','bsky.graph.getMutes','app.bsky.graph.getMutes')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [ComponentModel.DefaultBindingProperty('limit')]
