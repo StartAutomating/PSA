@@ -11,21 +11,22 @@ function Get-AtProtoRepoRecord  {
 [CmdletBinding(SupportsShouldProcess)]
 param(
 # The handle or DID of the repo.
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('repo')]
 [String]
 $Repo,
 # The NSID of the record collection.
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('collection')]
 [String]
 $Collection,
 # The key of the record.
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('rkey')]
 [String]
 $Rkey,
 # The CID of the version of the record. If not specified, then return the most recent version.
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cid')]
 [String]
 $Cid
