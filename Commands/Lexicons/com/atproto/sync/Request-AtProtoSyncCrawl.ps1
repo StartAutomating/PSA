@@ -11,6 +11,7 @@ function Request-AtProtoSyncCrawl  {
 [CmdletBinding(SupportsShouldProcess)]
 param(
 # Hostname of the service that is requesting to be crawled.
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('hostname')]
 [String]
 $Hostname
