@@ -7,7 +7,7 @@ function Get-BskyFeed  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/feed/getFeed.json
 #>
-[Alias('PSA.app.bsky.feed.getFeed')]
+[Alias('Get-BlueSkyFeed','bsky.feed.getFeed','app.bsky.feed.getFeed')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [Parameter(Mandatory)]
