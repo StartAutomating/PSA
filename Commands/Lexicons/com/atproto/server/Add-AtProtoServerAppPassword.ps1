@@ -10,6 +10,7 @@ function Add-AtProtoServerAppPassword  {
 [Alias('Add-AtProtocolServerAppPassword','atproto.server.createAppPassword','com.atproto.server.createAppPassword')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('name')]
 [String]
 $Name
