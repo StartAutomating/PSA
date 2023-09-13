@@ -7,7 +7,7 @@ function Get-BskyUnspeccedTimelineSkeleton  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/unspecced/getTimelineSkeleton.json
 #>
-[Alias('PSA.app.bsky.unspecced.getTimelineSkeleton')]
+[Alias('Get-BlueSkyUnspeccedTimelineSkeleton','bsky.unspecced.getTimelineSkeleton','app.bsky.unspecced.getTimelineSkeleton')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [ComponentModel.DefaultBindingProperty('limit')]
