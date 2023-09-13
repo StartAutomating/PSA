@@ -11,11 +11,11 @@ function Get-AtProtoSyncBlocks  {
 [CmdletBinding(SupportsShouldProcess)]
 param(
 # The DID of the repo.
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('did')]
 [String]
 $Did,
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cids')]
 [Management.Automation.PSObject]
 $Cids
