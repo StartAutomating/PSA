@@ -10,9 +10,11 @@ function Search-BskyActorsTypeahead  {
 [Alias('Search-BlueSkyActorsTypeahead','bsky.actor.searchActorsTypeahead','app.bsky.actor.searchActorsTypeahead')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('term')]
 [String]
 $Term,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit
