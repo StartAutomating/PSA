@@ -7,7 +7,7 @@ function Get-BskyGraphFollowers  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/graph/getFollowers.json
 #>
-[Alias('PSA.app.bsky.graph.getFollowers')]
+[Alias('Get-BlueSkyGraphFollowers','bsky.graph.getFollowers','app.bsky.graph.getFollowers')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [Parameter(Mandatory)]
