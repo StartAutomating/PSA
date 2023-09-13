@@ -10,9 +10,11 @@ function Update-AtProtoAdminAccountHandle  {
 [Alias('Update-AtProtocolAdminAccountHandle','atproto.admin.updateAccountHandle','com.atproto.admin.updateAccountHandle')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('did')]
 [String]
 $Did,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('handle')]
 [String]
 $Handle
