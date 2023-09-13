@@ -3,6 +3,209 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>app.bsky.actor.getProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>app.bsky.actor.getProfile</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>if ($psStyle) {
+   @(foreach ($styleProp in 'Foreground.Blue') {
+
+        if ($styleProp -match '^\$') {
+            $ExecutionContext.SessionState.InvokeCommand.InvokeScript($styleProp)
+        }
+        elseif ($styleProp -match '\.') {
+            $targetObject = $psStyle
+            foreach ($dotProperty in $styleProp -split '(?&lt;!\.)\.') {
+                if ($targetObject.Item -is [Management.Automation.PSMethodInfo] -or 
+                    $targetObject -is [Collections.IDictionary]) {
+                    $targetObject = $targetObject[$dotProperty]
+                } else {
+                    $targetObject = $targetObject.$dotProperty
+                }
+            }
+            if ($targetObject) {
+                $targetObject
+            }
+        }
+        else {
+            $psStyle.$styleProp
+        }    
+
+   }) -ne '' -join ''
+}</ScriptBlock>
+              </ExpressionBinding>
+              <ExpressionBinding>
+                <ScriptBlock>
+        "$($_.DisplayName)"
+    </ScriptBlock>
+              </ExpressionBinding>
+              <ExpressionBinding>
+                <ScriptBlock>
+                    if ($PSStyle) {
+                        $PSStyle.Reset
+                    }
+                </ScriptBlock>
+              </ExpressionBinding>
+              <ExpressionBinding>
+                <ScriptBlock>if ($psStyle) {
+   @(foreach ($styleProp in 'Foreground.Cyan','Bold') {
+
+        if ($styleProp -match '^\$') {
+            $ExecutionContext.SessionState.InvokeCommand.InvokeScript($styleProp)
+        }
+        elseif ($styleProp -match '\.') {
+            $targetObject = $psStyle
+            foreach ($dotProperty in $styleProp -split '(?&lt;!\.)\.') {
+                if ($targetObject.Item -is [Management.Automation.PSMethodInfo] -or 
+                    $targetObject -is [Collections.IDictionary]) {
+                    $targetObject = $targetObject[$dotProperty]
+                } else {
+                    $targetObject = $targetObject.$dotProperty
+                }
+            }
+            if ($targetObject) {
+                $targetObject
+            }
+        }
+        else {
+            $psStyle.$styleProp
+        }    
+
+   }) -ne '' -join ''
+}</ScriptBlock>
+              </ExpressionBinding>
+              <ExpressionBinding>
+                <ScriptBlock>
+        if ($psStyle.FormatHyperlink -and -not $env:GITHUB_WORKFLOW) {
+            $psStyle.FormatHyperlink(" @$($_.Handle) ","https://bsky.app/profile/$($_.handle)")
+        } else {
+            " @$($_.Handle) "
+        }        
+    </ScriptBlock>
+              </ExpressionBinding>
+              <ExpressionBinding>
+                <ScriptBlock>
+                    if ($PSStyle) {
+                        $PSStyle.Reset
+                    }
+                </ScriptBlock>
+              </ExpressionBinding>
+              <NewLine />
+              <ExpressionBinding>
+                <ScriptBlock>
+        @(
+            if ($psStyle.FormatHyperlink -and -not $env:GITHUB_WORKFLOW) {
+                $psStyle.FormatHyperlink("$($_.FollowersCount) followers","https://bsky.app/profile/$($_.handle)/followers")
+            } else {
+                "$($_.FollowersCount) followers"
+            }
+            if ($psStyle.FormatHyperlink -and -not $env:GITHUB_WORKFLOW) {
+                $psStyle.FormatHyperlink("$($_.FollowsCount) follows","https://bsky.app/profile/$($_.handle)/follows")
+            } else {
+                "$($_.FollowersCount) follows"
+            }
+            if ($psStyle.FormatHyperlink -and -not $env:GITHUB_WORKFLOW) {
+                $psStyle.FormatHyperlink("$($_.PostsCount) posts","https://bsky.app/profile/$($_.handle)")
+            } else {
+                "$($_.PostsCount) posts"
+            }
+            
+        ) -join ' ⋇ '
+    </ScriptBlock>
+              </ExpressionBinding>
+              <NewLine />
+              <NewLine />
+              <ExpressionBinding>
+                <ScriptBlock>
+        if ($ExecutionContext.SessionState.InvokeCommand.GetCommand('Show-Markdown', 'Cmdlet')) {
+            # This lets links from your profile work in the terminal!
+            Show-Markdown -InputObject $_.MarkdownDescription 
+        } else {
+            $_.Description
+        }        
+    </ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>app.bsky.actor.getProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>app.bsky.actor.getProfile</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+          </TableColumnHeader>
+          <TableColumnHeader>
+          </TableColumnHeader>
+          <TableColumnHeader>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <Wrap />
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Handle</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>app.bsky.actor.getProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>app.bsky.actor.getProfile</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>Handle</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Did</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>DisplayName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Description</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Avatar</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>FollowsCount</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>FollowersCount</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>PostsCount</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
       <Name>com.atproto.server.createSession</Name>
       <ViewSelectedBy>
         <TypeName>com.atproto.server.createSession</TypeName>
