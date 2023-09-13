@@ -11,7 +11,7 @@ function Get-AtProtoRepo  {
 [CmdletBinding(SupportsShouldProcess)]
 param(
 # The handle or DID of the repo.
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('repo')]
 [String]
 $Repo
