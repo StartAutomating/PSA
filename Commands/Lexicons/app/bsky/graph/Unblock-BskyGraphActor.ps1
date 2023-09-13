@@ -7,7 +7,7 @@ function Unblock-BskyGraphActor  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/graph/unmuteActor.json
 #>
-[Alias('PSA.app.bsky.graph.unmuteActor')]
+[Alias('Unblock-BlueSkyGraphActor','bsky.graph.unmuteActor','app.bsky.graph.unmuteActor')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [ComponentModel.DefaultBindingProperty('actor')]
