@@ -10,6 +10,7 @@ function Request-AtProtoServerPasswordReset  {
 [Alias('Request-AtProtocolServerPasswordReset','atproto.server.requestPasswordReset','com.atproto.server.requestPasswordReset')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('email')]
 [String]
 $Email
