@@ -10,10 +10,12 @@ function Disable-AtProtoAdminAccountInvites  {
 [Alias('Disable-AtProtocolAdminAccountInvites','atproto.admin.disableAccountInvites','com.atproto.admin.disableAccountInvites')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('account')]
 [String]
 $Account,
 # Additionally add a note describing why the invites were disabled
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('note')]
 [String]
 $Note
