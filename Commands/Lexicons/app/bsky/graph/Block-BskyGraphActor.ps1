@@ -7,7 +7,7 @@ function Block-BskyGraphActor  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/graph/muteActor.json
 #>
-[Alias('PSA.app.bsky.graph.muteActor')]
+[Alias('Block-BlueSkyGraphActor','bsky.graph.muteActor','app.bsky.graph.muteActor')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [ComponentModel.DefaultBindingProperty('actor')]
