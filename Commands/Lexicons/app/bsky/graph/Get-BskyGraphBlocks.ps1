@@ -10,9 +10,11 @@ function Get-BskyGraphBlocks  {
 [Alias('Get-BlueSkyGraphBlocks','bsky.graph.getBlocks','app.bsky.graph.getBlocks')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
 $Cursor
