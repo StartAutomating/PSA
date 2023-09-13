@@ -10,13 +10,15 @@ function Get-BskyFeedPostThread  {
 [Alias('Get-BlueSkyFeedPostThread','bsky.feed.getPostThread','app.bsky.feed.getPostThread')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('uri')]
 [String]
 $Uri,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('depth')]
 [Management.Automation.PSObject]
 $Depth,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('parentHeight')]
 [Management.Automation.PSObject]
 $ParentHeight
