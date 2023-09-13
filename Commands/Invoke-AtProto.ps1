@@ -1,12 +1,17 @@
-function Invoke-AtProtocol
+function Invoke-AtProto
 {
     <#
     .SYNOPSIS
         Invokes the AT Protocol
     .DESCRIPTION
-        Invokes the RESTful methods of the At Protocol.                
+        Invokes the RESTful methods of the At Protocol.
+    .LINK
+        Connect-AtProto
     #>
-    [Alias('Invoke-AtMethod')]
+    [Alias(
+        'Invoke-AtMethod',    # Because Invoke-RestMethod is familiar
+        'Invoke-AtProtocol'   # Because some people prefer longnames
+    )]
     [CmdletBinding(SupportsShouldProcess)]
     param(
     # The URI being invoked.  If this is empty, a -NamespaceID is required.
@@ -57,6 +62,8 @@ function Invoke-AtProtocol
     [PSObject]
     $Authorization,
 
+    # The content type of the request.  
+    # If not provided, this will be assumed to be application/json.
     [Parameter(ValueFromPipelineByPropertyName)]
     [string]
     $ContentType = 'application/json',
@@ -95,11 +102,7 @@ function Invoke-AtProtocol
     [Alias('TypeNameOfProperty')]
     $DecorateProperty,
 
-    # If set, will cache results from a request.  Only HTTP GET results will be cached.
-    [Parameter(ValueFromPipelineByPropertyName)]
-    [switch]
-    $Cache,
-
+    # If set, will receive results as a byte array.
     [Parameter(ValueFromPipelineByPropertyName)]
     [switch]
     $AsByte
@@ -110,8 +113,13 @@ function Invoke-AtProtocol
             $script:AtServerSessions = [Ordered]@{}
         }
 
+        if (-not $script:AtResponseCache) {
+            $script:AtResponseCache = [Ordered]@{}
+        }
+
         $InvokeQueue = [Collections.Queue]::new()
         $defaultHost = "bsky.social"
+        
     }
     
     process {
@@ -204,7 +212,7 @@ function Invoke-AtProtocol
             if ($BodyParameters["."] -as [byte[]]) {
                 $InvokeSplat["Body"] = $BodyParameters["."] -as [byte[]]
             } else {
-                $InvokeSplat["Body"] = $BodyParameters | ConvertTo-Json -Depth 100 
+                $InvokeSplat["Body"] = $BodyParameters | ConvertTo-Json -Depth 100                 
             }            
         }
 
@@ -238,9 +246,8 @@ function Invoke-AtProtocol
                     continue
                 }
 
-                $methodAndUri = $toSplat.Method, $toSplat.uri -join ' ' 
-                
-                if ($psCmdlet.ShouldProcess($methodAndUri)) {
+                $methodAndUri = $toSplat.Method, $toSplat.uri -join ' '                 
+                elseif ($psCmdlet.ShouldProcess($methodAndUri)) {
                     Write-Verbose $methodAndUri
                     if ($AsByte) {
                         Invoke-WebRequest @toSplat
@@ -299,7 +306,12 @@ function Invoke-AtProtocol
 
             if ($Property -and $Property.Count) {
                 foreach ($prop in $psProperties) {
-                    $in.PSObject.Members.Add($prop, $true)
+                    try {
+                        $in.PSObject.Members.Add($prop, $true)
+                    } catch {
+                        $exception = $_                        
+                        $null = $exception
+                    }
                 }
             }
 
@@ -310,13 +322,18 @@ function Invoke-AtProtocol
             }
             if ($DecorateProperty) {
                 foreach ($kv in $DecorateProperty.GetEnumerator()) {
-                    if ($in.$($kv.Key)) {
-                        foreach ($v in $in.$($kv.Key)) {
-                            if ($null -eq $v -or -not $v.pstypenames) { continue }
-                            $v.pstypenames.clear()
-                            foreach ($tn in $kv.Value) {
-                                $v.pstypenames.add($tn)
-                            }
+                    $dotKeys = @($kv.Key -split '\.')
+                    $target = $in
+                    foreach ($dot in $dotKeys) {
+                        $target = $target.$dot
+                    }
+                    if (-not $target) { continue }
+                    
+                    foreach ($v in @($target)) {
+                        if ($null -eq $v -or -not $v.pstypenames) { continue }
+                        $v.pstypenames.clear()
+                        foreach ($tn in $kv.Value) {
+                            $v.pstypenames.add($tn)
                         }
                     }
                 }
