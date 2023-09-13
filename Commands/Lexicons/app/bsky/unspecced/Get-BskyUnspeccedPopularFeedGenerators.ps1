@@ -7,7 +7,7 @@ function Get-BskyUnspeccedPopularFeedGenerators  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/unspecced/getPopularFeedGenerators.json
 #>
-[Alias('PSA.app.bsky.unspecced.getPopularFeedGenerators')]
+[Alias('Get-BlueSkyUnspeccedPopularFeedGenerators','bsky.unspecced.getPopularFeedGenerators','app.bsky.unspecced.getPopularFeedGenerators')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [ComponentModel.DefaultBindingProperty('limit')]
