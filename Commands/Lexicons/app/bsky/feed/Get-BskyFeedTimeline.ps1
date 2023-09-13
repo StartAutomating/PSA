@@ -7,7 +7,7 @@ function Get-BskyFeedTimeline  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/feed/getTimeline.json
 #>
-[Alias('PSA.app.bsky.feed.getTimeline')]
+[Alias('Get-BlueSkyFeedTimeline','bsky.feed.getTimeline','app.bsky.feed.getTimeline')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [ComponentModel.DefaultBindingProperty('algorithm')]
