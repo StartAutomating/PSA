@@ -7,7 +7,7 @@ function Get-BskyUnspeccedPopular  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/unspecced/getPopular.json
 #>
-[Alias('PSA.app.bsky.unspecced.getPopular')]
+[Alias('Get-BlueSkyUnspeccedPopular','bsky.unspecced.getPopular','app.bsky.unspecced.getPopular')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [ComponentModel.DefaultBindingProperty('includeNsfw')]
