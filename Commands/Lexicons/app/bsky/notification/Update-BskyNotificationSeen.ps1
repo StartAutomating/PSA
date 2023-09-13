@@ -10,6 +10,7 @@ function Update-BskyNotificationSeen  {
 [Alias('Update-BlueSkyNotificationSeen','bsky.notification.updateSeen','app.bsky.notification.updateSeen')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('seenAt')]
 [String]
 $SeenAt
