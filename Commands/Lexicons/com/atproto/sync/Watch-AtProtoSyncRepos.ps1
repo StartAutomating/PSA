@@ -11,6 +11,7 @@ function Watch-AtProtoSyncRepos  {
 [CmdletBinding(SupportsShouldProcess)]
 param(
 # The last known event to backfill from.
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [Management.Automation.PSObject]
 $Cursor
