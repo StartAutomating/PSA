@@ -7,7 +7,7 @@ function Get-BskyFeedPostThread  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/feed/getPostThread.json
 #>
-[Alias('PSA.app.bsky.feed.getPostThread')]
+[Alias('Get-BlueSkyFeedPostThread','bsky.feed.getPostThread','app.bsky.feed.getPostThread')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [Parameter(Mandatory)]
