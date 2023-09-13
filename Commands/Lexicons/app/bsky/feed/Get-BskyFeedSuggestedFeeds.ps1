@@ -7,7 +7,7 @@ function Get-BskyFeedSuggestedFeeds  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/feed/getSuggestedFeeds.json
 #>
-[Alias('PSA.app.bsky.feed.getSuggestedFeeds')]
+[Alias('Get-BlueSkyFeedSuggestedFeeds','bsky.feed.getSuggestedFeeds','app.bsky.feed.getSuggestedFeeds')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [ComponentModel.DefaultBindingProperty('limit')]
