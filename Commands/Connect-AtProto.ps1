@@ -1,4 +1,4 @@
-function Connect-AtProtocol
+function Connect-AtProto
 {
     <#
     .SYNOPSIS
@@ -6,6 +6,7 @@ function Connect-AtProtocol
     .DESCRIPTION
         Connects using the AtProtocol.
     #>
+    [Alias('Connect-BlueSky','Connect-Bsky','Connect-AtProtocol')]
     param(
     # The authorization.  This can be a credential.    
     # The username is a handle or email.
@@ -46,7 +47,7 @@ function Connect-AtProtocol
             return
         }
 
-        $sessionConnected = Add-AtServerSession -Identifier $Authentication.UserName -Password $Authentication.GetNetworkCredential().password
+        $sessionConnected = Add-AtProtoServerSession -Identifier $Authentication.UserName -Password $Authentication.GetNetworkCredential().password
 
 
         $script:AtServerSessions[$sessionConnected.handle] = $sessionConnected
