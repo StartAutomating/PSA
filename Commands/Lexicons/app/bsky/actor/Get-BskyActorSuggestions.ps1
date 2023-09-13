@@ -7,7 +7,7 @@ function Get-BskyActorSuggestions  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/actor/getSuggestions.json
 #>
-[Alias('PSA.app.bsky.actor.getSuggestions')]
+[Alias('Get-BlueSkyActorSuggestions','bsky.actor.getSuggestions','app.bsky.actor.getSuggestions')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [ComponentModel.DefaultBindingProperty('limit')]
