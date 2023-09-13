@@ -10,9 +10,11 @@ function Get-AtProtoServerAccountInviteCodes  {
 [Alias('Get-AtProtocolServerAccountInviteCodes','atproto.server.getAccountInviteCodes','com.atproto.server.getAccountInviteCodes')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('includeUsed')]
 [Management.Automation.SwitchParameter]
 $IncludeUsed,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('createAvailable')]
 [Management.Automation.SwitchParameter]
 $CreateAvailable
