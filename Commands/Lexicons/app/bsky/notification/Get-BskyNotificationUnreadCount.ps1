@@ -7,7 +7,7 @@ function Get-BskyNotificationUnreadCount  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/notification/getUnreadCount.json
 #>
-[Alias('PSA.app.bsky.notification.getUnreadCount')]
+[Alias('Get-BlueSkyNotificationUnreadCount','bsky.notification.getUnreadCount','app.bsky.notification.getUnreadCount')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [ComponentModel.DefaultBindingProperty('seenAt')]
