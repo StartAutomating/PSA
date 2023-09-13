@@ -53,6 +53,10 @@ It contains:
   <Type>
     <Name>app.bsky.actor.getProfile</Name>
     <Members>
+      <AliasProperty>
+        <Name>Actor</Name>
+        <ReferencedMemberName>Handle</ReferencedMemberName>
+      </AliasProperty>
       <ScriptProperty>
         <Name>MarkdownDescription</Name>
         <GetScriptBlock>
