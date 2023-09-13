@@ -10,9 +10,11 @@ function Reset-AtProtoServerPassword  {
 [Alias('Reset-AtProtocolServerPassword','atproto.server.resetPassword','com.atproto.server.resetPassword')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('token')]
 [String]
 $Token,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('password')]
 [String]
 $Password
