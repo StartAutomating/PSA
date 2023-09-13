@@ -10,12 +10,15 @@ function Remove-AtProtoServerAccount  {
 [Alias('Remove-AtProtocolServerAccount','atproto.server.deleteAccount','com.atproto.server.deleteAccount')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('did')]
 [String]
 $Did,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('password')]
 [String]
 $Password,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('token')]
 [String]
 $Token
