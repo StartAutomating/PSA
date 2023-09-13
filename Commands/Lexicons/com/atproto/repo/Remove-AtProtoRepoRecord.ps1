@@ -11,22 +11,27 @@ function Remove-AtProtoRepoRecord  {
 [CmdletBinding(SupportsShouldProcess)]
 param(
 # The handle or DID of the repo.
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('repo')]
 [String]
 $Repo,
 # The NSID of the record collection.
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('collection')]
 [String]
 $Collection,
 # The key of the record.
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('rkey')]
 [String]
 $Rkey,
 # Compare and swap with the previous record by cid.
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('swapRecord')]
 [String]
 $SwapRecord,
 # Compare and swap with the previous commit by cid.
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('swapCommit')]
 [String]
 $SwapCommit
