@@ -7,7 +7,7 @@ function Get-BskyGraphBlocks  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/graph/getBlocks.json
 #>
-[Alias('PSA.app.bsky.graph.getBlocks')]
+[Alias('Get-BlueSkyGraphBlocks','bsky.graph.getBlocks','app.bsky.graph.getBlocks')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [ComponentModel.DefaultBindingProperty('limit')]
