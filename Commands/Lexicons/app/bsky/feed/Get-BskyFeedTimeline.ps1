@@ -10,12 +10,15 @@ function Get-BskyFeedTimeline  {
 [Alias('Get-BlueSkyFeedTimeline','bsky.feed.getTimeline','app.bsky.feed.getTimeline')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('algorithm')]
 [String]
 $Algorithm,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
 $Cursor
