@@ -7,7 +7,7 @@ function Get-BskyFeedAuthorFeed  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/feed/getAuthorFeed.json
 #>
-[Alias('PSA.app.bsky.feed.getAuthorFeed')]
+[Alias('Get-BlueSkyFeedAuthorFeed','bsky.feed.getAuthorFeed','app.bsky.feed.getAuthorFeed')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [Parameter(Mandatory)]
