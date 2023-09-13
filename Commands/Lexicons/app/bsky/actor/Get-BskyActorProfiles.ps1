@@ -10,7 +10,7 @@ function Get-BskyActorProfiles  {
 [Alias('Get-BlueSkyActorProfiles','bsky.actor.getProfiles','app.bsky.actor.getProfiles')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('actors')]
 [Management.Automation.PSObject]
 $Actors
