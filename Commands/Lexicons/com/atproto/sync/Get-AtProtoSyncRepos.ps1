@@ -10,9 +10,11 @@ function Get-AtProtoSyncRepos  {
 [Alias('Get-AtProtocolSyncRepos','atproto.sync.listRepos','com.atproto.sync.listRepos')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
 $Cursor
