@@ -7,7 +7,7 @@
 
 if (-not $this.'.Profile') {
     $this |
-        Add-Member NoteProperty '.Profile' (Get-AtActorProfile -Actor $this.handle) -Force
+        Add-Member NoteProperty '.Profile' (Get-BlueSkyActorProfile -Actor $this.handle) -Force
 } 
 
 $this.'.Profile'
