@@ -11,16 +11,20 @@ function Set-AtProtoRepoWrites  {
 [CmdletBinding(SupportsShouldProcess)]
 param(
 # The handle or DID of the repo.
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('repo')]
 [String]
 $Repo,
 # Validate the records?
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('validate')]
 [Management.Automation.SwitchParameter]
 $Validate,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('writes')]
 [Management.Automation.PSObject]
 $Writes,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('swapCommit')]
 [String]
 $SwapCommit
