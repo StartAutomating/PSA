@@ -7,7 +7,7 @@ function Search-BskyActorsTypeahead  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/actor/searchActorsTypeahead.json
 #>
-[Alias('PSA.app.bsky.actor.searchActorsTypeahead')]
+[Alias('Search-BlueSkyActorsTypeahead','bsky.actor.searchActorsTypeahead','app.bsky.actor.searchActorsTypeahead')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [ComponentModel.DefaultBindingProperty('term')]
