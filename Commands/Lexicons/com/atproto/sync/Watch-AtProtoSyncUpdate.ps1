@@ -11,6 +11,7 @@ function Watch-AtProtoSyncUpdate  {
 [CmdletBinding(SupportsShouldProcess)]
 param(
 # Hostname of the service that is notifying of update.
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('hostname')]
 [String]
 $Hostname
