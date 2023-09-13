@@ -10,6 +10,7 @@ function Set-BskyActorPreferences  {
 [Alias('Set-BlueSkyActorPreferences','bsky.actor.putPreferences','app.bsky.actor.putPreferences')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('preferences')]
 [Management.Automation.PSObject]
 $Preferences
