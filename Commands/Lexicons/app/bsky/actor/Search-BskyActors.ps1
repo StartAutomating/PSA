@@ -7,7 +7,7 @@ function Search-BskyActors  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/actor/searchActors.json
 #>
-[Alias('PSA.app.bsky.actor.searchActors')]
+[Alias('Search-BlueSkyActors','bsky.actor.searchActors','app.bsky.actor.searchActors')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [ComponentModel.DefaultBindingProperty('term')]
