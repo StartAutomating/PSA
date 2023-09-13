@@ -216,11 +216,31 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
             $lexcion.description
         } else {
             "$($lexicon.id)"
-        }
+        }        
+        
+        # Make AtProto camel case, for the preference of most PowerShell users.
+        $atFunctionName = $atFunctionName -replace "-Atproto", "-AtProto"
+        $atFunctionAliases = @(
+            # If the function was named -AtProto
+            if ($atFunctionName -like '*-AtProto*') {
+                # give it an alias with -AtProtocol
+                $atFunctionName -replace "-AtProto", "-AtProtocol"
+            }
+            # If the function was named -Bsky
+            if ($atFunctionName -like '*-Bsky*') {
+                # give it an alias with -BlueSky
+                $atFunctionName -replace "-Bsky", "-BlueSky"
+            }
+
+            # And give each an alias with the last 3 words in the lexicon
+            "$($lexiconIDParts[1..$($lexiconIDParts.Count - 1)] -join '.')"
+            # as well as the whole identifier
+            "$($lexiconIDParts[0..$($lexiconIDParts.Count - 1)] -join '.')"
+        )
 
         $newPipeScriptSplat = [Ordered]@{
             FunctionName=$atFunctionName
-            Alias="PSA.$($lexicon.id)"
+            Alias= $atFunctionAliases
             Parameter=$AtParams
             Description=$atFunctionDescription
             Synopsis=$lexicon.id
