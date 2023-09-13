@@ -10,10 +10,11 @@ function Get-AtProtoAdminRecord  {
 [Alias('Get-AtProtocolAdminRecord','atproto.admin.getRecord','com.atproto.admin.getRecord')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('uri')]
 [String]
 $Uri,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cid')]
 [String]
 $Cid
