@@ -10,13 +10,15 @@ function Get-BskyFeedSkeleton  {
 [Alias('Get-BlueSkyFeedSkeleton','bsky.feed.getFeedSkeleton','app.bsky.feed.getFeedSkeleton')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('feed')]
 [String]
 $Feed,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
 $Cursor
