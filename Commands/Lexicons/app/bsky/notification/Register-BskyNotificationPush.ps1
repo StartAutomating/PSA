@@ -7,7 +7,7 @@ function Register-BskyNotificationPush  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/notification/registerPush.json
 #>
-[Alias('PSA.app.bsky.notification.registerPush')]
+[Alias('Register-BlueSkyNotificationPush','bsky.notification.registerPush','app.bsky.notification.registerPush')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [ComponentModel.DefaultBindingProperty('serviceDid')]
