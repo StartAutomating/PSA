@@ -11,31 +11,36 @@ function Get-AtProtoRepoRecords  {
 [CmdletBinding(SupportsShouldProcess)]
 param(
 # The handle or DID of the repo.
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('repo')]
 [String]
 $Repo,
 # The NSID of the record type.
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('collection')]
 [String]
 $Collection,
 # The number of records to return.
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
 $Cursor,
 # DEPRECATED: The lowest sort-ordered rkey to start from (exclusive)
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('rkeyStart')]
 [String]
 $RkeyStart,
 # DEPRECATED: The highest sort-ordered rkey to stop at (exclusive)
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('rkeyEnd')]
 [String]
 $RkeyEnd,
 # Reverse the order of the returned records?
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('reverse')]
 [Management.Automation.SwitchParameter]
 $Reverse
