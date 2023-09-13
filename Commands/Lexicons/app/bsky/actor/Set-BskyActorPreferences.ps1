@@ -7,7 +7,7 @@ function Set-BskyActorPreferences  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/actor/putPreferences.json
 #>
-[Alias('PSA.app.bsky.actor.putPreferences')]
+[Alias('Set-BlueSkyActorPreferences','bsky.actor.putPreferences','app.bsky.actor.putPreferences')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [ComponentModel.DefaultBindingProperty('preferences')]
