@@ -10,12 +10,15 @@ function Add-AtProtoModerationReport  {
 [Alias('Add-AtProtocolModerationReport','atproto.moderation.createReport','com.atproto.moderation.createReport')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('reasonType')]
 [Management.Automation.PSObject]
 $ReasonType,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('reason')]
 [String]
 $Reason,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('subject')]
 [Management.Automation.PSObject]
 $Subject
