@@ -10,12 +10,15 @@ function Undo-AtProtoAdminModerationAction  {
 [Alias('Undo-AtProtocolAdminModerationAction','atproto.admin.reverseModerationAction','com.atproto.admin.reverseModerationAction')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('id')]
 [Management.Automation.PSObject]
 $Id,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('reason')]
 [String]
 $Reason,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('createdBy')]
 [String]
 $CreatedBy
