@@ -10,6 +10,7 @@ function Set-BskyUnspeccedLabels  {
 [Alias('Set-BlueSkyUnspeccedLabels','bsky.unspecced.applyLabels','app.bsky.unspecced.applyLabels')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('labels')]
 [Management.Automation.PSObject]
 $Labels
