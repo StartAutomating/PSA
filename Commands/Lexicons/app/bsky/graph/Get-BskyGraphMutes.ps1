@@ -10,9 +10,11 @@ function Get-BskyGraphMutes  {
 [Alias('Get-BlueSkyGraphMutes','bsky.graph.getMutes','app.bsky.graph.getMutes')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
 $Cursor
