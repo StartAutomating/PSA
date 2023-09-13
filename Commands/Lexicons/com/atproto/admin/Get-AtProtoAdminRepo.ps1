@@ -10,7 +10,7 @@ function Get-AtProtoAdminRepo  {
 [Alias('Get-AtProtocolAdminRepo','atproto.admin.getRepo','com.atproto.admin.getRepo')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('did')]
 [String]
 $Did
