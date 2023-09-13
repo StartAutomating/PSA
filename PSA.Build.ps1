@@ -56,6 +56,7 @@ foreach ($lexiconFile in $lexiconJson) {
             if ($atRequired -contains $AtProperty.Name) {
                 $AtParam.Attribute += "Mandatory"
             }
+            $AtParam.Attribute += "ValueFromPipelineByPropertyName"
             $AtParam.Binding = $AtProperty.Name
             $AtParam.Type = 
                 switch ($AtProperty.value.type) {
@@ -216,7 +217,7 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
             $lexcion.description
         } else {
             "$($lexicon.id)"
-        }        
+        }
         
         # Make AtProto camel case, for the preference of most PowerShell users.
         $atFunctionName = $atFunctionName -replace "-Atproto", "-AtProto"
