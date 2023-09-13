@@ -7,7 +7,7 @@ function Get-BskyFeedRepostedBy  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/feed/getRepostedBy.json
 #>
-[Alias('PSA.app.bsky.feed.getRepostedBy')]
+[Alias('Get-BlueSkyFeedRepostedBy','bsky.feed.getRepostedBy','app.bsky.feed.getRepostedBy')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [Parameter(Mandatory)]
