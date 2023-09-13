@@ -28,7 +28,7 @@ $this.email -replace '(?&lt;u&gt;.{3}).+?@(?&lt;d&gt;.{3}).+?(?&lt;s&gt;\..+)$',
 
 if (-not $this.'.Profile') {
     $this |
-        Add-Member NoteProperty '.Profile' (Get-AtActorProfile -Actor $this.handle) -Force
+        Add-Member NoteProperty '.Profile' (Get-BlueSkyActorProfile -Actor $this.handle) -Force
 } 
 
 $this.'.Profile'
