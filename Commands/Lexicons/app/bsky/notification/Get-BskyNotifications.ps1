@@ -7,7 +7,7 @@ function Get-BskyNotifications  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/notification/listNotifications.json
 #>
-[Alias('PSA.app.bsky.notification.listNotifications')]
+[Alias('Get-BlueSkyNotifications','bsky.notification.listNotifications','app.bsky.notification.listNotifications')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [ComponentModel.DefaultBindingProperty('limit')]
