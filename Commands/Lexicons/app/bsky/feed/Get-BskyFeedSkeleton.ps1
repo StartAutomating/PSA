@@ -7,7 +7,7 @@ function Get-BskyFeedSkeleton  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/feed/getFeedSkeleton.json
 #>
-[Alias('PSA.app.bsky.feed.getFeedSkeleton')]
+[Alias('Get-BlueSkyFeedSkeleton','bsky.feed.getFeedSkeleton','app.bsky.feed.getFeedSkeleton')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [Parameter(Mandatory)]
