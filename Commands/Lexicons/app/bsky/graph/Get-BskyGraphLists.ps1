@@ -7,7 +7,7 @@ function Get-BskyGraphLists  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/graph/getLists.json
 #>
-[Alias('PSA.app.bsky.graph.getLists')]
+[Alias('Get-BlueSkyGraphLists','bsky.graph.getLists','app.bsky.graph.getLists')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [Parameter(Mandatory)]
