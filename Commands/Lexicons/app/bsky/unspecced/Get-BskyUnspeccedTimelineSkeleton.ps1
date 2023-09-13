@@ -10,9 +10,11 @@ function Get-BskyUnspeccedTimelineSkeleton  {
 [Alias('Get-BlueSkyUnspeccedTimelineSkeleton','bsky.unspecced.getTimelineSkeleton','app.bsky.unspecced.getTimelineSkeleton')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
 $Cursor
