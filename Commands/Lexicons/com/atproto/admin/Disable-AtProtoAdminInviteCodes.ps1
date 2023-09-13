@@ -10,9 +10,11 @@ function Disable-AtProtoAdminInviteCodes  {
 [Alias('Disable-AtProtocolAdminInviteCodes','atproto.admin.disableInviteCodes','com.atproto.admin.disableInviteCodes')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('codes')]
 [Management.Automation.PSObject]
 $Codes,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('accounts')]
 [Management.Automation.PSObject]
 $Accounts
