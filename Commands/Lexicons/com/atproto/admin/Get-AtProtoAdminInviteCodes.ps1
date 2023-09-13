@@ -10,12 +10,15 @@ function Get-AtProtoAdminInviteCodes  {
 [Alias('Get-AtProtocolAdminInviteCodes','atproto.admin.getInviteCodes','com.atproto.admin.getInviteCodes')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('sort')]
 [String]
 $Sort,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
 $Cursor
