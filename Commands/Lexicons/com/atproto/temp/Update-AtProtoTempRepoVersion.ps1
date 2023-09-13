@@ -10,9 +10,11 @@ function Update-AtProtoTempRepoVersion  {
 [Alias('Update-AtProtocolTempRepoVersion','atproto.temp.upgradeRepoVersion','com.atproto.temp.upgradeRepoVersion')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('did')]
 [String]
 $Did,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('force')]
 [Management.Automation.SwitchParameter]
 $Force
