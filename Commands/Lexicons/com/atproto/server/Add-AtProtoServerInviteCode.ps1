@@ -10,9 +10,11 @@ function Add-AtProtoServerInviteCode  {
 [Alias('Add-AtProtocolServerInviteCode','atproto.server.createInviteCode','com.atproto.server.createInviteCode')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('useCount')]
 [Management.Automation.PSObject]
 $UseCount,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('forAccount')]
 [String]
 $ForAccount
