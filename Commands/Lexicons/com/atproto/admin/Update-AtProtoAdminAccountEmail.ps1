@@ -11,9 +11,11 @@ function Update-AtProtoAdminAccountEmail  {
 [CmdletBinding(SupportsShouldProcess)]
 param(
 # The handle or DID of the repo.
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('account')]
 [String]
 $Account,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('email')]
 [String]
 $Email
