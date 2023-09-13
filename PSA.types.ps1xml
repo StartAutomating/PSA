@@ -50,4 +50,15 @@ It contains:
       </NoteProperty>
     </Members>
   </Type>
+  <Type>
+    <Name>app.bsky.actor.getProfile</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>MarkdownDescription</Name>
+        <GetScriptBlock>
+                        $this.Description -replace "(?&lt;Link&gt;https?://.+?(?=\z|\s))",'[${Link}](${Link})'
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
 </Types>
