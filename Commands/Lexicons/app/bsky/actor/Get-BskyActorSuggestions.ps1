@@ -10,9 +10,11 @@ function Get-BskyActorSuggestions  {
 [Alias('Get-BlueSkyActorSuggestions','bsky.actor.getSuggestions','app.bsky.actor.getSuggestions')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
 $Cursor
