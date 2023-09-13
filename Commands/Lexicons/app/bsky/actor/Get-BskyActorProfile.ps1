@@ -7,7 +7,7 @@ function Get-BskyActorProfile  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/actor/getProfile.json
 #>
-[Alias('PSA.app.bsky.actor.getProfile')]
+[Alias('Get-BlueSkyActorProfile','bsky.actor.getProfile','app.bsky.actor.getProfile')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [Parameter(Mandatory)]
