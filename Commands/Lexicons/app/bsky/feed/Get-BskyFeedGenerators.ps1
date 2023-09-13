@@ -7,7 +7,7 @@ function Get-BskyFeedGenerators  {
 .Link
     https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/feed/getFeedGenerators.json
 #>
-[Alias('PSA.app.bsky.feed.getFeedGenerators')]
+[Alias('Get-BlueSkyFeedGenerators','bsky.feed.getFeedGenerators','app.bsky.feed.getFeedGenerators')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [Parameter(Mandatory)]
