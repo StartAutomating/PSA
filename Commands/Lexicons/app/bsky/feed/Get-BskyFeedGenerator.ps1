@@ -10,7 +10,7 @@ function Get-BskyFeedGenerator  {
 [Alias('Get-BlueSkyFeedGenerator','bsky.feed.getFeedGenerator','app.bsky.feed.getFeedGenerator')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('feed')]
 [String]
 $Feed
