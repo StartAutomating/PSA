@@ -10,12 +10,15 @@ function Get-AtProtoAdminModerationActions  {
 [Alias('Get-AtProtocolAdminModerationActions','atproto.admin.getModerationActions','com.atproto.admin.getModerationActions')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('subject')]
 [String]
 $Subject,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
 $Cursor
