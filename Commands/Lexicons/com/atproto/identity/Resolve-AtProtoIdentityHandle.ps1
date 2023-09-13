@@ -11,7 +11,7 @@ function Resolve-AtProtoIdentityHandle  {
 [CmdletBinding(SupportsShouldProcess)]
 param(
 # The handle to resolve.
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('handle')]
 [String]
 $Handle
