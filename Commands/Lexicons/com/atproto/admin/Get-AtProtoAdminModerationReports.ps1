@@ -10,33 +10,42 @@ function Get-AtProtoAdminModerationReports  {
 [Alias('Get-AtProtocolAdminModerationReports','atproto.admin.getModerationReports','com.atproto.admin.getModerationReports')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('subject')]
 [String]
 $Subject,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('ignoreSubjects')]
 [Management.Automation.PSObject]
 $IgnoreSubjects,
 # Get all reports that were actioned by a specific moderator
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('actionedBy')]
 [String]
 $ActionedBy,
 # Filter reports made by one or more DIDs
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('reporters')]
 [Management.Automation.PSObject]
 $Reporters,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('resolved')]
 [Management.Automation.SwitchParameter]
 $Resolved,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('actionType')]
 [String]
 $ActionType,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
 $Cursor,
 # Reverse the order of the returned records? when true, returns reports in chronological order
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('reverse')]
 [Management.Automation.SwitchParameter]
 $Reverse
