@@ -10,12 +10,15 @@ function Get-BskyNotifications  {
 [Alias('Get-BlueSkyNotifications','bsky.notification.listNotifications','app.bsky.notification.listNotifications')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
 $Cursor,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('seenAt')]
 [String]
 $SeenAt
