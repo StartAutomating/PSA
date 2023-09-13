@@ -10,13 +10,15 @@ function Get-BskyGraphFollowers  {
 [Alias('Get-BlueSkyGraphFollowers','bsky.graph.getFollowers','app.bsky.graph.getFollowers')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('actor')]
 [String]
 $Actor,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
 $Cursor
