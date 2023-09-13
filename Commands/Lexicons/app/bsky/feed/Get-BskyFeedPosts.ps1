@@ -10,7 +10,7 @@ function Get-BskyFeedPosts  {
 [Alias('Get-BlueSkyFeedPosts','bsky.feed.getPosts','app.bsky.feed.getPosts')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('uris')]
 [Management.Automation.PSObject]
 $Uris
