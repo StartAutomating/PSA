@@ -10,13 +10,15 @@ function Get-BskyGraphList  {
 [Alias('Get-BlueSkyGraphList','bsky.graph.getList','app.bsky.graph.getList')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-[Parameter(Mandatory)]
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('list')]
 [String]
 $List,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
 $Cursor
