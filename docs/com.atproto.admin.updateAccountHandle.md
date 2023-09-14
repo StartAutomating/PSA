@@ -1,4 +1,4 @@
-Update-AtprotoAdminAccountHandle
+Update-AtProtoAdminAccountHandle
 --------------------------------
 
 
@@ -34,16 +34,12 @@ com.atproto.admin.updateAccountHandle
 ### Parameters
 #### **Did**
 
-The Decentralized Identifier.  This is a uniqueID used throughout the At Protocol.
 
 
 
-
-
-
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|false   |1       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |1       |false        |
 
 
 
@@ -52,9 +48,9 @@ The Decentralized Identifier.  This is a uniqueID used throughout the At Protoco
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|false   |2       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |2       |false        |
 
 
 
@@ -77,5 +73,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Update-AtprotoAdminAccountHandle [[-Did] <String>] [[-Handle] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AtProtoAdminAccountHandle [[-Did] <String>] [[-Handle] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
