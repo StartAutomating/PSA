@@ -14,6 +14,7 @@ param(
 [ComponentModel.DefaultBindingProperty('term')]
 [String]
 $Term,
+# A limit to the number of results returned.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
