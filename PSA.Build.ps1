@@ -37,8 +37,57 @@ foreach ($lexiconFile in $lexiconJson) {
     $lexiconText = Get-content -LiteralPath $lexiconFile -raw 
     $lexicon = $lexiconText | ConvertFrom-Json
     $Lexicons+=$lexicon
+    $lexiconIdParts = @($lexicon.id -split '\.')
+    $secondWord = $lexiconIdParts[1]
+    $lastWord = $lexiconIdParts[-1]
+    $secondToLastWord = $lexiconIdParts[-2]
+    $secondToLastWord = $secondToLastWord.Substring(0,1).ToUpper() + $secondToLastWord.Substring(1)
+    $secondWord = $secondWord.Substring(0,1).ToUpper() + $secondWord.Substring(1)
+    $prefix = "$($secondWord)$($secondToLastWord)"
+
+
+    
+
     if ($lexiconFile.Name -eq 'defs.json') {
         # General definitions
+
+        # This is a whole other beast.
+
+        # The easiest and most flexible path here is to make this it's own category of command, one that returns itself.
+
+
+        $atFunctionName = "Get-${Prefix}Definition"
+        $atFunctionDefinition = New-PipeScript -End ([scriptblock]::Create("
+`$lexiconText = @'
+$($lexiconText)
+'@
+`$lexicon = `$lexiconText | ConvertFrom-JSON
+if (`$myInvocation.InvocationName -eq `$myInvocation.MyCommand.Name) {
+    `$lexicon
+} elseif (`$myInvocation.InvocationName -like '*#*') {
+    `$lexicon.defs.`$(@(`$myInvocation.InvocationName -split '\#',2)[1])
+} else {
+    `$lexicon
+}
+")) -FunctionName $atFunctionName -Alias @(
+    # And give each an alias with the last 3 words in the lexicon
+    "$($lexiconIDParts[1..$($lexiconIDParts.Count - 1)] -join '.')"
+    # as well as the whole identifier
+    "$($lexiconIDParts -join '.')"
+    foreach ($prop in $lexicon.defs.psobject.Properties) {
+        "$($lexiconIDParts -join '.')#$($prop.Name)"
+    }
+)
+
+        $atFunctionPath = Join-Path $AtScriptRoot "$($lexiconIDParts[0..2] -join [IO.Path]::DirectorySeparatorChar)$([IO.Path]::DirectorySeparatorChar)$($atFunctionName).ps1"
+        if (-not (Test-Path $atFunctionPath)) {
+            $null = New-Item -ItemType File -Path $atFunctionPath -Force
+        }
+
+        $atFunctionDefinition | Set-Content -Path $atFunctionPath
+        Get-Item -path $atFunctionPath
+
+
     } 
     else {
         $httpMethod = 
@@ -50,7 +99,7 @@ foreach ($lexiconFile in $lexiconJson) {
             elseif ($lexicon.defs.main.type -in 'record','object') {
                 continue
             }
-            elseif (-not $lexicon.defs.main) {
+            elseif (-not $lexicon.defs.main) {                                
                 continue
             }
 
@@ -86,16 +135,10 @@ foreach ($lexiconFile in $lexiconJson) {
                     string { [string] }
                     boolean { [switch] }
                     default { [PSObject]}
-                }            
+                }
         }
 
-        $lexiconIdParts = @($lexicon.id -split '\.')
-        $secondWord = $lexiconIdParts[1]
-        $lastWord = $lexiconIdParts[-1]
-        $secondToLastWord = $lexiconIdParts[-2]
-        $secondToLastWord = $secondToLastWord.Substring(0,1).ToUpper() + $secondToLastWord.Substring(1)
-        $secondWord = $secondWord.Substring(0,1).ToUpper() + $secondWord.Substring(1)
-        $prefix = "$($secondWord)$($secondToLastWord)"
+        
         $atFunctionName = switch -regex ($lastWord) {
             "^(?>Get|Resolve|Revoke|Reset|Request|Search|Send|Enable|Disable|Update|Block|Register|Unregister)" {
                 $newName = $lastWord -replace "^$($matches.0)", "`${0}-$prefix"
