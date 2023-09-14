@@ -436,7 +436,9 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
             if (-not (Test-Path $psTypeNamePath)) {
                 $null = New-Item -ItemType File -Path $psTypeNamePath -Force
             }
-            Set-Content -Path $psTypeNamePath -Value "$($lexcion.id)"
+            
+            "$($atFunctionAliases[-1])" | Set-Content -Path $psTypeNamePath
+            
             Get-Item -Path $psTypeNamePath
             
             $MorePath = Join-path $targetDirectory "get_More.ps1"
