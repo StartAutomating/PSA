@@ -14,7 +14,7 @@ Gets additional results.
 
 ### Description
 
-Gets the next page of results of app.bsky.feed.getActorFeeds.
+Gets the next page of results of app.bsky.feed.getActorFeeds -Cache.
 
 
 
