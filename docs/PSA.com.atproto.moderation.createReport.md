@@ -1,4 +1,4 @@
-Add-AtProtoModerationReport
+Add-AtprotoModerationReport
 ---------------------------
 
 
@@ -37,9 +37,9 @@ com.atproto.moderation.createReport
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[PSObject]`|false   |1       |false        |
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[PSObject]`|false   |1       |true (ByPropertyName)|
 
 
 
@@ -48,9 +48,9 @@ com.atproto.moderation.createReport
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |2       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |2       |true (ByPropertyName)|
 
 
 
@@ -59,9 +59,9 @@ com.atproto.moderation.createReport
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[PSObject]`|false   |3       |false        |
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[PSObject]`|false   |3       |true (ByPropertyName)|
 
 
 
@@ -84,5 +84,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Add-AtProtoModerationReport [[-ReasonType] <PSObject>] [[-Reason] <String>] [[-Subject] <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AtprotoModerationReport [[-ReasonType] <PSObject>] [[-Reason] <String>] [[-Subject] <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
