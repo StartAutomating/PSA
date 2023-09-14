@@ -1,4 +1,4 @@
-Get-AtprotoServer
+Get-AtProtoServer
 -----------------
 
 
@@ -51,5 +51,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtprotoServer [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtProtoServer [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
