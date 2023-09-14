@@ -1,4 +1,4 @@
-Get-AtProtoSyncHead
+Get-AtprotoSyncHead
 -------------------
 
 
@@ -41,9 +41,9 @@ The DID of the repo.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|true    |1       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|true    |1       |true (ByPropertyName)|
 
 
 
@@ -66,5 +66,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtProtoSyncHead [-Did] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtprotoSyncHead [-Did] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
