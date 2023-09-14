@@ -24,6 +24,9 @@ begin {
 $NamespaceID = 'com.atproto.server.getAccountInviteCodes'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat.DecorateProperty = [Ordered]@{
+    'codes'='com.atproto.server.defs#inviteCode'
+}
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 $AsByte = $false
