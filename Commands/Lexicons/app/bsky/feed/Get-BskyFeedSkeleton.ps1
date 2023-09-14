@@ -36,6 +36,9 @@ begin {
 $NamespaceID = 'app.bsky.feed.getFeedSkeleton'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat.DecorateProperty = [Ordered]@{
+    'feed'='app.bsky.feed.defs#skeletonFeedPost'
+}
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 $AsByte = $false
