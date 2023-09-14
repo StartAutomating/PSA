@@ -14,7 +14,7 @@ Gets additional results.
 
 ### Description
 
-Gets the next page of results of com.atproto.admin.getInviteCodes.
+Gets the next page of results of com.atproto.admin.getInviteCodes -Cache.
 
 
 
