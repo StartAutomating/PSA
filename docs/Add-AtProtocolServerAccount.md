@@ -1,4 +1,4 @@
-Add-AtprotoServerAccount
+Add-AtProtoServerAccount
 ------------------------
 
 
@@ -37,9 +37,9 @@ com.atproto.server.createAccount
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|false   |1       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |1       |false        |
 
 
 
@@ -48,24 +48,20 @@ com.atproto.server.createAccount
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|false   |2       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |2       |false        |
 
 
 
 #### **Did**
 
-The Decentralized Identifier.  This is a uniqueID used throughout the At Protocol.
 
 
 
-
-
-
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|false   |3       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |3       |false        |
 
 
 
@@ -74,9 +70,9 @@ The Decentralized Identifier.  This is a uniqueID used throughout the At Protoco
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|false   |4       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |4       |false        |
 
 
 
@@ -85,9 +81,9 @@ The Decentralized Identifier.  This is a uniqueID used throughout the At Protoco
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|false   |5       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |5       |false        |
 
 
 
@@ -96,9 +92,9 @@ The Decentralized Identifier.  This is a uniqueID used throughout the At Protoco
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|false   |6       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |6       |false        |
 
 
 
@@ -121,5 +117,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Add-AtprotoServerAccount [[-Email] <String>] [[-Handle] <String>] [[-Did] <String>] [[-InviteCode] <String>] [[-Password] <String>] [[-RecoveryKey] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AtProtoServerAccount [[-Email] <String>] [[-Handle] <String>] [[-Did] <String>] [[-InviteCode] <String>] [[-Password] <String>] [[-RecoveryKey] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
