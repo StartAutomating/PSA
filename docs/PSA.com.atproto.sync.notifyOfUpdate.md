@@ -1,4 +1,4 @@
-Watch-AtprotoSyncUpdate
+Watch-AtProtoSyncUpdate
 -----------------------
 
 
@@ -41,9 +41,9 @@ Hostname of the service that is notifying of update.
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|false   |1       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |1       |false        |
 
 
 
@@ -66,5 +66,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Watch-AtprotoSyncUpdate [[-Hostname] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Watch-AtProtoSyncUpdate [[-Hostname] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
