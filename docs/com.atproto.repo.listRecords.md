@@ -79,6 +79,14 @@ The number of records to return.
 
 #### **Cursor**
 
+A cursor that can be used to get more results.
+
+Any command that accepts a -Cursor parameter returns a .Cursor property.
+
+You can provide this -Cursor to the same command with the same input to get more results.
+
+
+
 
 
 
