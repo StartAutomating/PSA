@@ -10,7 +10,9 @@ function Get-AtProtoServerAppPasswords  {
 [Alias('Get-AtProtocolServerAppPasswords','atproto.server.listAppPasswords','com.atproto.server.listAppPasswords')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-
+# If set, will cache results for performance.
+[Management.Automation.SwitchParameter]
+$Cache
 )
 
 begin {
@@ -44,7 +46,11 @@ end {
                     } else {
                         "application/json"   
                     }
-                ) -AsByte:$AsByte
+                ) -AsByte:$AsByte -Property {
+                    $_
+                } -Cache:$(
+                    if ($cache) {$cache} else { $false }
+                )
         
 }
 } 
