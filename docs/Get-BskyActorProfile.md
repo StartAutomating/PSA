@@ -34,6 +34,12 @@ app.bsky.actor.getProfile
 ### Parameters
 #### **Actor**
 
+The Actor.
+
+This can be either a handle (e.g. @AtProto.com) or a Decentralized Identifier (.did)
+
+
+
 
 
 
