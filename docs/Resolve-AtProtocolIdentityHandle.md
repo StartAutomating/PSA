@@ -1,4 +1,4 @@
-Resolve-AtProtoIdentityHandle
+Resolve-AtprotoIdentityHandle
 -----------------------------
 
 
@@ -41,9 +41,9 @@ The handle to resolve.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|true    |1       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|true    |1       |true (ByPropertyName)|
 
 
 
@@ -66,5 +66,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Resolve-AtProtoIdentityHandle [-Handle] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Resolve-AtprotoIdentityHandle [-Handle] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
