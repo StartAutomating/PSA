@@ -63,6 +63,10 @@ begin {
 $NamespaceID = 'com.atproto.admin.getModerationReports'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat.DecorateProperty = [Ordered]@{
+    'reports'='com.atproto.admin.defs#reportView'
+    'reports.reasonType'='com.atproto.moderation.defs#reasonType'
+}
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 $AsByte = $false
