@@ -41,6 +41,10 @@ begin {
 $NamespaceID = 'app.bsky.graph.getFollows'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat.DecorateProperty = [Ordered]@{
+    'subject'='app.bsky.actor.defs#profileView'
+    'follows'='app.bsky.actor.defs#profileView'
+}
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 $AsByte = $false
