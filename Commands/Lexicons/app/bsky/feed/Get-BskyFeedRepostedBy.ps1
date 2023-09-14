@@ -40,6 +40,9 @@ begin {
 $NamespaceID = 'app.bsky.feed.getRepostedBy'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat.DecorateProperty = [Ordered]@{
+    'repostedBy'='app.bsky.actor.defs#profileView'
+}
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 $AsByte = $false
