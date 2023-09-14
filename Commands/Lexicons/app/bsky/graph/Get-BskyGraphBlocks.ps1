@@ -32,6 +32,9 @@ begin {
 $NamespaceID = 'app.bsky.graph.getBlocks'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat.DecorateProperty = [Ordered]@{
+    'blocks'='app.bsky.actor.defs#profileView'
+}
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 $AsByte = $false
