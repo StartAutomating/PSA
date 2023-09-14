@@ -1,4 +1,4 @@
-Update-AtProtoTempRepoVersion
+Update-AtprotoTempRepoVersion
 -----------------------------
 
 
@@ -34,12 +34,16 @@ com.atproto.temp.upgradeRepoVersion
 ### Parameters
 #### **Did**
 
+The Decentralized Identifier.  This is a uniqueID used throughout the At Protocol.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |1       |false        |
+
+
+
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |1       |true (ByPropertyName)|
 
 
 
@@ -48,9 +52,9 @@ com.atproto.temp.upgradeRepoVersion
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Switch]`|false   |named   |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[Switch]`|false   |named   |true (ByPropertyName)|
 
 
 
@@ -73,5 +77,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Update-AtProtoTempRepoVersion [[-Did] <String>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AtprotoTempRepoVersion [[-Did] <String>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
