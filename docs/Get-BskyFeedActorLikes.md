@@ -34,6 +34,12 @@ app.bsky.feed.getActorLikes
 ### Parameters
 #### **Actor**
 
+The Actor.
+
+This can be either a handle (e.g. @AtProto.com) or a Decentralized Identifier (.did)
+
+
+
 
 
 
@@ -45,6 +51,10 @@ app.bsky.feed.getActorLikes
 
 #### **Limit**
 
+A limit to the number of results returned.
+
+
+
 
 
 
@@ -55,6 +65,14 @@ app.bsky.feed.getActorLikes
 
 
 #### **Cursor**
+
+A cursor that can be used to get more results.
+
+Any command that accepts a -Cursor parameter returns a .Cursor property.
+
+You can provide this -Cursor to the same command with the same input to get more results.
+
+
 
 
 
