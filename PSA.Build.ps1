@@ -368,7 +368,11 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
                     } else {
                         "application/json"   
                     }
-                ) -AsByte:$AsByte
+                ) -AsByte:$AsByte -Property {
+                    $_
+                } -Cache:$(
+                    if ($cache) {$cache} else { $false }
+                )
         }
 
 
@@ -403,6 +407,14 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
             # as well as the whole identifier
             "$($lexiconIDParts[0..$($lexiconIDParts.Count - 1)] -join '.')"
         )
+
+        if (-not $AtParams["Cache"] -and $httpMethod -eq 'GET') {
+            $AtParams["Cache"] = [Ordered]@{
+                Name = "Cache"
+                Help = "If set, will cache results for performance."
+                ParameterType = [switch]
+            }
+        }
 
         $newPipeScriptSplat = [Ordered]@{
             FunctionName=$atFunctionName
