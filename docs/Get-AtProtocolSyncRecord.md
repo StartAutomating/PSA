@@ -1,4 +1,4 @@
-Get-AtProtoSyncRecord
+Get-AtprotoSyncRecord
 ---------------------
 
 
@@ -41,9 +41,9 @@ The DID of the repo.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|true    |1       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|true    |1       |true (ByPropertyName)|
 
 
 
@@ -52,9 +52,9 @@ The DID of the repo.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|true    |2       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|true    |2       |true (ByPropertyName)|
 
 
 
@@ -63,9 +63,9 @@ The DID of the repo.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|true    |3       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|true    |3       |true (ByPropertyName)|
 
 
 
@@ -78,9 +78,9 @@ An optional past commit CID.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |4       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |4       |true (ByPropertyName)|
 
 
 
@@ -103,5 +103,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtProtoSyncRecord [-Did] <String> [-Collection] <String> [-Rkey] <String> [[-Commit] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtprotoSyncRecord [-Did] <String> [-Collection] <String> [-Rkey] <String> [[-Commit] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
