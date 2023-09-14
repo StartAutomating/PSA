@@ -592,4 +592,4 @@ jobs:
       - name: UseHelpOut
         uses: StartAutomating/HelpOut@master
 env: 
-  Exclude: '*.png;*.mp4;*.jpg;''*.jpeg'';''*.gif'';''docs[/\]*'';atProto[/\]*'
+  Exclude: '*.png;*.mp4;*.jpg;*.jpeg;*.gif;docs[/\]*;atProto[/\]*'
