@@ -11,6 +11,27 @@ if (-not (Test-Path $AtScriptRoot)) {
     $null = New-Item -ItemType Directory -Path $AtScriptRoot
 }
 
+# The At Protocol could stand a bit better documentation of inputs and their purpose
+# However, we can predefine help for several parameters that will exist in a variety of commands.
+$atParameterHelp = 
+    [Ordered]@{
+        Actor  = "
+The Actor.
+
+This can be either a handle (e.g. @AtProto.com) or a Decentralized Identifier (.did)"
+
+        Cursor = "
+A cursor that can be used to get more results.
+
+Any command that accepts a -Cursor parameter returns a .Cursor property.
+
+You can provide this -Cursor to the same command with the same input to get more results.
+"
+        Limit = "A limit to the number of results returned."
+        Did   = "The Decentralized Identifier.  This is a uniqueID used throughout the At Protocol."
+    }
+
+
 $unbound = @()
 foreach ($lexiconFile in $lexiconJson) {
     $lexiconText = Get-content -LiteralPath $lexiconFile -raw 
@@ -249,6 +270,7 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
             Process = $atProcessBlock
             End = $atEndBlock
             Link = $lexiconLink
+            ParameterHelp = $atParameterHelp
             Attribute = "[CmdletBinding(SupportsShouldProcess)]"
         }
 
