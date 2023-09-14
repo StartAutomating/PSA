@@ -18,6 +18,7 @@ $Email,
 [ComponentModel.DefaultBindingProperty('handle')]
 [String]
 $Handle,
+# The Decentralized Identifier.  This is a uniqueID used throughout the At Protocol.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('did')]
 [String]
