@@ -56,6 +56,10 @@ com.atproto.server.createAccount
 
 #### **Did**
 
+The Decentralized Identifier.  This is a uniqueID used throughout the At Protocol.
+
+
+
 
 
 
