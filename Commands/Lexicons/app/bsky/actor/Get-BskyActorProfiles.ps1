@@ -20,6 +20,13 @@ begin {
 $NamespaceID = 'app.bsky.actor.getProfiles'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat.DecorateProperty = [Ordered]@{
+    'profiles'='app.bsky.actor.defs#profileViewDetailed'
+    'profiles.viewer'='app.bsky.graph.defs#viewerState'
+    'profiles.viewer.mutedByList'='app.bsky.graph.defs#listViewBasic'
+    'profiles.viewer.mutedByList.purpose'='app.bsky.graph.defs#listPurpose'
+    'profiles.viewer.mutedByList.viewer'='app.bsky.graph.defs#listViewerState'
+}
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 $AsByte = $false
