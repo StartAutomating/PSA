@@ -1,4 +1,4 @@
-Sync-AtprotoServerSession
+Sync-AtProtoServerSession
 -------------------------
 
 
@@ -51,5 +51,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Sync-AtprotoServerSession [-WhatIf] [-Confirm] [<CommonParameters>]
+Sync-AtProtoServerSession [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
