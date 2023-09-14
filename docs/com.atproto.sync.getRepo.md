@@ -1,4 +1,4 @@
-Get-AtProtoSyncRepo
+Get-AtprotoSyncRepo
 -------------------
 
 
@@ -41,9 +41,9 @@ The DID of the repo.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|true    |1       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|true    |1       |true (ByPropertyName)|
 
 
 
@@ -56,9 +56,9 @@ The revision of the repo to catch up from.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |2       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |2       |true (ByPropertyName)|
 
 
 
@@ -81,5 +81,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtProtoSyncRepo [-Did] <String> [[-Since] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtprotoSyncRepo [-Did] <String> [[-Since] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
