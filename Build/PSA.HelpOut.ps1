@@ -11,6 +11,6 @@ if ($PipeScriptLoaded) {
     "::error:: PSA not loaded" |Out-Host
 }
 
-Save-MarkdownHelp -Module PSA -PassThru
+Save-MarkdownHelp -Module PSA -PassThru -ExcludeFile '/[\\/]atProto/'
 
 Pop-Location
