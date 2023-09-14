@@ -436,8 +436,8 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
             if (-not (Test-Path $psTypeNamePath)) {
                 $null = New-Item -ItemType File -Path $psTypeNamePath -Force
             }
-            
-            "$($atFunctionAliases[-1])" | Set-Content -Path $psTypeNamePath
+
+            [IO.File]::WriteAllText($psTypeNamePath,"$($lexicon.id)") 
 
             Get-Item -Path $psTypeNamePath
             
