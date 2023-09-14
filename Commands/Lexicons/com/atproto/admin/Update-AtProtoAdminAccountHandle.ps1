@@ -10,6 +10,7 @@ function Update-AtProtoAdminAccountHandle  {
 [Alias('Update-AtProtocolAdminAccountHandle','atproto.admin.updateAccountHandle','com.atproto.admin.updateAccountHandle')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+# The Decentralized Identifier.  This is a uniqueID used throughout the At Protocol.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('did')]
 [String]
