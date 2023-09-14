@@ -69,7 +69,11 @@ end {
                     } else {
                         "application/json"   
                     }
-                ) -AsByte:$AsByte
+                ) -AsByte:$AsByte -Property {
+                    $_
+                } -Cache:$(
+                    if ($cache) {$cache} else { $false }
+                )
         
 }
 } 
