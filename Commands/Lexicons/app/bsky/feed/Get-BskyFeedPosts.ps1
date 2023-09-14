@@ -20,6 +20,11 @@ begin {
 $NamespaceID = 'app.bsky.feed.getPosts'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat.DecorateProperty = [Ordered]@{
+    'posts'='app.bsky.feed.defs#postView'
+    'posts.author'='app.bsky.actor.defs#profileViewBasic'
+    'posts.viewer'='app.bsky.feed.defs#viewerState'
+}
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 $AsByte = $false
