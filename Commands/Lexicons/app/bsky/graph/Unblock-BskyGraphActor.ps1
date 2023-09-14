@@ -10,6 +10,11 @@ function Unblock-BskyGraphActor  {
 [Alias('Unblock-BlueSkyGraphActor','bsky.graph.unmuteActor','app.bsky.graph.unmuteActor')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+<#
+The Actor.
+
+This can be either a handle (e.g. @AtProto.com) or a Decentralized Identifier (.did)
+#>
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('actor')]
 [String]
