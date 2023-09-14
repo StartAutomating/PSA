@@ -290,28 +290,8 @@ if (`$myInvocation.InvocationName -eq `$myInvocation.MyCommand.Name) {
                 $decorateProperty += $resolvedRefProps
             } else {
                 $null = $null
-            }
-            
-            
-        }
-        <#
-        foreach ($outputProperty in $lexicon.defs.main.output.schema.properties.PSObject.Properties) {            
-            # If the output property had decoration, we want to carry it down
-            $refToFind = 
-                if ($outputProperty.Value.ref) {
-                    $outputProperty.Value.ref
-                } elseif ($outputProperty.Value.items.ref) {
-                    $outputProperty.Value.items.ref
-                }
-            if (-not $refToFind) { continue }
-            $decorateProperty[$outputProperty.Name] = $refToFind
-
-            if ($executionContext.SessionState.InvokeCommand.GetCommand($refToFind,'Alias')) {
-                $reference = & $refToFind
-
-            }
-        }
-        #>
+            }                        
+        }        
 
         $atBeginBlock = [ScriptBlock]::Create(@(
             "`$NamespaceID = '$($lexicon.id)'"
@@ -443,6 +423,37 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
 
         $atFunctionDefinition | Set-Content -Path $atFunctionPath
         Get-Item -path $atFunctionPath
+
+        # If the parameter had a cursor, go ahead an make a .More method for that type
+        if ($AtParams.Cursor) {
+            $typesDirectory = Join-Path $pwd Types
+            $targetDirectory =  $typesDirectory
+            foreach ($part in $lexiconIdParts) {
+                $targetDirectory = Join-Path $typesDirectory $part
+            }
+            
+            $psTypeNamePath = (Join-Path $targetDirectory "PSTypeName.txt")
+            if (-not (Test-Path $psTypeNamePath)) {
+                $null = New-Item -ItemType File -Path $psTypeNamePath -Force
+            }
+            Set-Content -Path $psTypeNamePath -Value $lexcion.id
+            Get-Item -Path $psTypeNamePath
+            
+            $MorePath = Join-path $targetDirectory "get_More.ps1"
+            if (-not (Test-Path $MorePath)) {
+                $null = New-Item -ItemType File -Path $psTypeNamePath -Force
+            }
+            Set-Content "$({
+<#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of MORE.
+#>
+$this | MORE
+} -replace "MORE", $lexicon.id)" -Path $MorePath
+            Get-Item -Path $MorePath -Force -PassThru
+        }
     }
     
     
