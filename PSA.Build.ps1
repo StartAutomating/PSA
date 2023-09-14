@@ -452,7 +452,7 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
 #>
 $this | MORE
 } -replace "MORE", $lexicon.id)" -Path $MorePath
-            Get-Item -Path $MorePath -Force -PassThru
+            Get-Item -Path $MorePath -Force
         }
     }
     
