@@ -14,7 +14,7 @@ Gets additional results.
 
 ### Description
 
-Gets the next page of results of com.atproto.admin.getModerationActions.
+Gets the next page of results of com.atproto.admin.getModerationActions -Cache.
 
 
 

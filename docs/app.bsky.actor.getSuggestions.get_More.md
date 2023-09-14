@@ -14,7 +14,7 @@ Gets additional results.
 
 ### Description
 
-Gets the next page of results of app.bsky.actor.getSuggestions.
+Gets the next page of results of app.bsky.actor.getSuggestions -Cache.
 
 
 

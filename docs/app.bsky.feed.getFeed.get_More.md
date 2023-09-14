@@ -14,7 +14,7 @@ Gets additional results.
 
 ### Description
 
-Gets the next page of results of app.bsky.feed.getFeed.
+Gets the next page of results of app.bsky.feed.getFeed -Cache.
 
 
 

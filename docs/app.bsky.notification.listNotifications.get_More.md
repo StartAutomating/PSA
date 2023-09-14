@@ -14,7 +14,7 @@ Gets additional results.
 
 ### Description
 
-Gets the next page of results of app.bsky.notification.listNotifications.
+Gets the next page of results of app.bsky.notification.listNotifications -Cache.
 
 
 

@@ -14,7 +14,7 @@ Gets additional results.
 
 ### Description
 
-Gets the next page of results of app.bsky.actor.searchActors.
+Gets the next page of results of app.bsky.actor.searchActors -Cache.
 
 
 
