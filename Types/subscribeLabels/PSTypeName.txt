@@ -1,1 +1,1 @@
-
+com.atproto.label.subscribeLabels
