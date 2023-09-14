@@ -1,4 +1,4 @@
-Get-AtprotoAdminModerationActions
+Get-AtProtoAdminModerationActions
 ---------------------------------
 
 
@@ -37,43 +37,31 @@ com.atproto.admin.getModerationActions
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|false   |1       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |1       |false        |
 
 
 
 #### **Limit**
 
-A limit to the number of results returned.
 
 
 
-
-
-
-|Type        |Required|Position|PipelineInput        |
-|------------|--------|--------|---------------------|
-|`[PSObject]`|false   |2       |true (ByPropertyName)|
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[PSObject]`|false   |2       |false        |
 
 
 
 #### **Cursor**
 
-A cursor that can be used to get more results.
-
-Any command that accepts a -Cursor parameter returns a .Cursor property.
-
-You can provide this -Cursor to the same command with the same input to get more results.
 
 
 
-
-
-
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|false   |3       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |3       |false        |
 
 
 
@@ -96,5 +84,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtprotoAdminModerationActions [[-Subject] <String>] [[-Limit] <PSObject>] [[-Cursor] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtProtoAdminModerationActions [[-Subject] <String>] [[-Limit] <PSObject>] [[-Cursor] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
