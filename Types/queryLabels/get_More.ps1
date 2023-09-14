@@ -3,7 +3,7 @@
 .SYNOPSIS
     Gets additional results.
 .DESCRIPTION
-    Gets the next page of results of com.atproto.label.queryLabels.
+    Gets the next page of results of com.atproto.label.queryLabels -Cache.
 #>
-$this | com.atproto.label.queryLabels
+$this | com.atproto.label.queryLabels -Cache
 
