@@ -1,4 +1,4 @@
-Get-AtprotoAdminModerationAction
+Get-AtProtoAdminModerationAction
 --------------------------------
 
 
@@ -37,9 +37,9 @@ com.atproto.admin.getModerationAction
 
 
 
-|Type        |Required|Position|PipelineInput        |
-|------------|--------|--------|---------------------|
-|`[PSObject]`|true    |1       |true (ByPropertyName)|
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[PSObject]`|true    |1       |false        |
 
 
 
@@ -62,5 +62,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtprotoAdminModerationAction [-Id] <PSObject> [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtProtoAdminModerationAction [-Id] <PSObject> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
