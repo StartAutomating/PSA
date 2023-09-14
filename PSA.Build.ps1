@@ -438,7 +438,7 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
             }
             
             "$($atFunctionAliases[-1])" | Set-Content -Path $psTypeNamePath
-            
+
             Get-Item -Path $psTypeNamePath
             
             $MorePath = Join-path $targetDirectory "get_More.ps1"
@@ -453,7 +453,13 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
     Gets the next page of results of MORE.
 #>
 $this | MORE
-} -replace "MORE", $lexicon.id)" -Path $MorePath
+} -replace "MORE", $(
+    if ($AtParams.Cache) {
+        "$($lexicon.id) -Cache"
+    } else {
+        $lexicon.id
+    }    
+))" -Path $MorePath
             Get-Item -Path $MorePath -Force
         }
     }
