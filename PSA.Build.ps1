@@ -429,7 +429,7 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
             $typesDirectory = Join-Path $pwd Types
             $targetDirectory =  $typesDirectory
             foreach ($part in $lexiconIdParts) {
-                $targetDirectory = Join-Path $typesDirectory $part
+                $targetDirectory = Join-Path $targetDirectory $part
             }
             
             $psTypeNamePath = (Join-Path $targetDirectory "PSTypeName.txt")
