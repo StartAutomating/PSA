@@ -1,4 +1,4 @@
-Watch-AtProtoLabels
+Watch-AtprotoLabels
 -------------------
 
 
@@ -41,9 +41,9 @@ The last known event to backfill from.
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[PSObject]`|false   |1       |false        |
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[PSObject]`|false   |1       |true (ByPropertyName)|
 
 
 
@@ -66,5 +66,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Watch-AtProtoLabels [[-Cursor] <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Watch-AtprotoLabels [[-Cursor] <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
