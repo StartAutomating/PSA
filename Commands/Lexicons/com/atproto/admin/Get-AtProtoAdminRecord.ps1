@@ -17,7 +17,10 @@ $Uri,
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cid')]
 [String]
-$Cid
+$Cid,
+# If set, will cache results for performance.
+[Management.Automation.SwitchParameter]
+$Cache
 )
 
 begin {
@@ -62,7 +65,11 @@ end {
                     } else {
                         "application/json"   
                     }
-                ) -AsByte:$AsByte
+                ) -AsByte:$AsByte -Property {
+                    $_
+                } -Cache:$(
+                    if ($cache) {$cache} else { $false }
+                )
         
 }
 } 
