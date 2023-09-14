@@ -222,7 +222,7 @@ A set of additional properties to add to an object
 
 #### **RemoveProperty**
 
-A list of property names to remove from an object
+A list of property names to remove from an object.
 
 
 
@@ -281,6 +281,21 @@ If set, will receive results as a byte array.
 
 
 
+#### **Cache**
+
+If set, will cache results from a request.  Only HTTP GET results will be cached.
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[Switch]`|false   |named   |true (ByPropertyName)|
+
+
+
 #### **WhatIf**
 -WhatIf is an automatic variable that is created when a command has ```[CmdletBinding(SupportsShouldProcess)]```.
 -WhatIf is used to see what would happen, or return operations without executing them
@@ -300,5 +315,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Invoke-AtProto [[-Uri] <Uri>] [[-Method] <String>] [[-NamespaceID] <String>] [[-Parameter] <PSObject>] [[-QueryParameter] <PSObject>] [[-BodyParameter] <PSObject>] [[-Authorization] <PSObject>] [[-ContentType] <String>] [[-ParameterAlias] <PSObject>] [[-PSTypeName] <String[]>] [[-Property] <IDictionary>] [[-RemoveProperty] <String[]>] [[-ExpandProperty] <String>] [[-DecorateProperty] <IDictionary>] [-AsByte] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AtProto [[-Uri] <Uri>] [[-Method] <String>] [[-NamespaceID] <String>] [[-Parameter] <PSObject>] [[-QueryParameter] <PSObject>] [[-BodyParameter] <PSObject>] [[-Authorization] <PSObject>] [[-ContentType] <String>] [[-ParameterAlias] <PSObject>] [[-PSTypeName] <String[]>] [[-Property] <IDictionary>] [[-RemoveProperty] <String[]>] [[-ExpandProperty] <String>] [[-DecorateProperty] <IDictionary>] [-AsByte] [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
