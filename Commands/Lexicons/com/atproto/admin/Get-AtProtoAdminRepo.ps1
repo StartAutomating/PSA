@@ -10,6 +10,7 @@ function Get-AtProtoAdminRepo  {
 [Alias('Get-AtProtocolAdminRepo','atproto.admin.getRepo','com.atproto.admin.getRepo')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+# The Decentralized Identifier.  This is a uniqueID used throughout the At Protocol.
 [Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('did')]
 [String]
