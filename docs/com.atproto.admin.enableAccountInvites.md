@@ -1,4 +1,4 @@
-Enable-AtprotoAdminAccountInvites
+Enable-AtProtoAdminAccountInvites
 ---------------------------------
 
 
@@ -37,9 +37,9 @@ com.atproto.admin.enableAccountInvites
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|false   |1       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |1       |false        |
 
 
 
@@ -52,9 +52,9 @@ Additionally add a note describing why the invites were enabled
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|false   |2       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |2       |false        |
 
 
 
@@ -77,5 +77,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Enable-AtprotoAdminAccountInvites [[-Account] <String>] [[-Note] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Enable-AtProtoAdminAccountInvites [[-Account] <String>] [[-Note] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
