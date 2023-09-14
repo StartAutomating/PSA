@@ -72,7 +72,9 @@ foreach ($lexiconFile in $lexiconJson) {
             $AtParam = $AtParams["$($AtProperty.Name.Substring(0,1).ToUpper() + $AtProperty.Name.Substring(1))"] = [Ordered]@{}
             $AtParam.Attribute = @()
             if ($AtProperty.Value.Description) {
-                $AtParam.Description = $AtProperty.Value.Description   
+                $AtParam.Description = $AtProperty.Value.Description
+            } elseif ($atParameterHelp[$AtProperty.Name]) {
+                $AtParam.Description = $atParameterHelp[$AtProperty.Name]
             }
             if ($atRequired -contains $AtProperty.Name) {
                 $AtParam.Attribute += "Mandatory"
@@ -269,8 +271,7 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
             Begin = $atBeginBlock
             Process = $atProcessBlock
             End = $atEndBlock
-            Link = $lexiconLink
-            ParameterHelp = $atParameterHelp
+            Link = $lexiconLink            
             Attribute = "[CmdletBinding(SupportsShouldProcess)]"
         }
 
