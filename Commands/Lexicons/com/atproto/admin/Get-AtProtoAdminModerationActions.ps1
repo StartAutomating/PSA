@@ -36,6 +36,11 @@ begin {
 $NamespaceID = 'com.atproto.admin.getModerationActions'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat.DecorateProperty = [Ordered]@{
+    'actions'='com.atproto.admin.defs#actionView'
+    'actions.action'='com.atproto.admin.defs#actionType'
+    'actions.reversal'='com.atproto.admin.defs#actionReversal'
+}
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 $AsByte = $false
