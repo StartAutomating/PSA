@@ -45,6 +45,10 @@ app.bsky.actor.searchActorsTypeahead
 
 #### **Limit**
 
+A limit to the number of results returned.
+
+
+
 
 
 
