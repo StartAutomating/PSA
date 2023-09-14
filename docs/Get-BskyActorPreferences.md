@@ -32,6 +32,21 @@ app.bsky.actor.getPreferences
 
 
 ### Parameters
+#### **Cache**
+
+If set, will cache results for performance.
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
+
+
+
 #### **WhatIf**
 -WhatIf is an automatic variable that is created when a command has ```[CmdletBinding(SupportsShouldProcess)]```.
 -WhatIf is used to see what would happen, or return operations without executing them
@@ -51,5 +66,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-BskyActorPreferences [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-BskyActorPreferences [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
