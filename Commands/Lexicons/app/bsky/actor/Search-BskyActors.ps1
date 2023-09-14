@@ -36,6 +36,13 @@ begin {
 $NamespaceID = 'app.bsky.actor.searchActors'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat.DecorateProperty = [Ordered]@{
+    'actors'='app.bsky.actor.defs#profileView'
+    'actors.viewer'='app.bsky.graph.defs#viewerState'
+    'actors.viewer.mutedByList'='app.bsky.graph.defs#listViewBasic'
+    'actors.viewer.mutedByList.purpose'='app.bsky.graph.defs#listPurpose'
+    'actors.viewer.mutedByList.viewer'='app.bsky.graph.defs#listViewerState'
+}
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 $AsByte = $false
