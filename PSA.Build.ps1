@@ -31,6 +31,55 @@ You can provide this -Cursor to the same command with the same input to get more
         Did   = "The Decentralized Identifier.  This is a uniqueID used throughout the At Protocol."
     }
 
+$script:LastDefinitionFile = $null
+$Script:LastDefinitionLexiconId = $null
+function ResolveAtRefs {
+    param($PropertyName, $refToFind)
+    
+    
+    $decorateProperty = [Ordered]@{}
+    if (-not $refToFind) { return $decorateProperty }
+    $decorateProperty[$PropertyName] = $refToFind
+
+    $propertyCollection = $null 
+    if ($executionContext.SessionState.InvokeCommand.GetCommand($refToFind,'Alias')) {
+        $reference = & $refToFind
+        if (-not $reference) { return $decorateProperty }
+        if ($reference.defs) {
+            $script:LastDefinitionFile = $reference
+            $refWithinDef = @($refToFind -split '#',2)[-1]
+            if ($reference.defs.($refWithinDef)) {
+                $reference = $reference.defs.($refWithinDef)
+            }
+        }
+        $propertyCollection = $reference.properties.psobject.properties        
+    }
+    elseif ($lexicon.defs.($refToFind -replace '^#')){
+        $Script:LastDefinitionLexiconId = $lexicon.id
+        $propertyCollection = $lexcion.defs.($refToFind -replace '^#').properties.psobject.properties
+    }
+    elseif ($script:LastDefinitionFile.defs.($refToFind -replace '^#')) {
+        $Script:LastDefinitionLexiconId = $script:LastDefinitionFile.id
+        $propertyCollection = $script:LastDefinitionFile.defs.($refToFind -replace '^#').properties.psobject.properties
+    }
+
+    foreach ($referrencedProperty in $propertyCollection) {
+        if (-not $referrencedProperty.value.ref) { continue }
+        $recursiveRefs = ResolveAtRefs $referrencedProperty.Name $referrencedProperty.value.ref
+        if ($recursiveRefs.Count) {
+            foreach ($kv in $recursiveRefs.GetEnumerator()) {
+                $decorateProperty["$($PropertyName).$($kv.Key)"] = 
+                    if ($kv.Value -match '^#' -and $Script:LastDefinitionLexiconId) {
+                        $Script:LastDefinitionLexiconId + $kv.Value
+                    } else {
+                        $kv.Value
+                    }
+            }
+        }            
+    }
+
+    return $decorateProperty
+}
 
 $unbound = @()
 foreach ($lexiconFile in $lexiconJson) {
@@ -84,6 +133,8 @@ if (`$myInvocation.InvocationName -eq `$myInvocation.MyCommand.Name) {
             $null = New-Item -ItemType File -Path $atFunctionPath -Force
         }
 
+        
+
         $atFunctionDefinition | Set-Content -Path $atFunctionPath
         Get-Item -path $atFunctionPath
 
@@ -105,7 +156,7 @@ if (`$myInvocation.InvocationName -eq `$myInvocation.MyCommand.Name) {
 
         
 
-        $AtParams = [Ordered]@{}
+        $AtParams = [Ordered]@{}        
         
         $atSourceProperties = @(
             $lexicon.defs.main.parameters.properties.psobject.Properties
@@ -137,6 +188,8 @@ if (`$myInvocation.InvocationName -eq `$myInvocation.MyCommand.Name) {
                     default { [PSObject]}
                 }
         }
+
+
 
         
         $atFunctionName = switch -regex ($lastWord) {
@@ -221,10 +274,56 @@ if (`$myInvocation.InvocationName -eq `$myInvocation.MyCommand.Name) {
         }
 
 
+        $decorateProperty = [Ordered]@{}
+        foreach ($outputProperty in $lexicon.defs.main.output.schema.properties.PSObject.Properties) {
+        
+            # If the output property had decoration, we want to carry it down
+            $refToFind = 
+                if ($outputProperty.Value.ref) {
+                    $outputProperty.Value.ref
+                } elseif ($outputProperty.Value.items.ref) {
+                    $outputProperty.Value.items.ref
+                }
+            if (-not $refToFind) { continue }
+            $resolvedRefProps = ResolveAtRefs $outputProperty.Name $refToFind
+            if ($resolvedRefProps -is [Collections.IDictionary]) {
+                $decorateProperty += $resolvedRefProps
+            } else {
+                $null = $null
+            }
+            
+            
+        }
+        <#
+        foreach ($outputProperty in $lexicon.defs.main.output.schema.properties.PSObject.Properties) {            
+            # If the output property had decoration, we want to carry it down
+            $refToFind = 
+                if ($outputProperty.Value.ref) {
+                    $outputProperty.Value.ref
+                } elseif ($outputProperty.Value.items.ref) {
+                    $outputProperty.Value.items.ref
+                }
+            if (-not $refToFind) { continue }
+            $decorateProperty[$outputProperty.Name] = $refToFind
+
+            if ($executionContext.SessionState.InvokeCommand.GetCommand($refToFind,'Alias')) {
+                $reference = & $refToFind
+
+            }
+        }
+        #>
+
         $atBeginBlock = [ScriptBlock]::Create(@(
             "`$NamespaceID = '$($lexicon.id)'"
             "`$httpMethod  = '$httpMethod'"
-            "`$InvokeAtSplat = [Ordered]@{Method=`$httpMethod}"        
+            "`$InvokeAtSplat = [Ordered]@{Method=`$httpMethod}"
+            if ($decorateProperty.Count) {
+                "`$InvokeAtSplat.DecorateProperty = [Ordered]@{
+$(@(foreach ($kv in $decorateProperty.GetEnumerator()) {
+    "    '$($kv.Key)'='$($kv.Value)'"
+}) -join [Environment]::NewLine)
+}"
+            }
             {$InvokeAtSplat["PSTypeName"] = $NamespaceID}
             {$parameterAliases = [Ordered]@{}}
             if ($lexicon.defs.main.output.encoding -and ($lexicon.defs.main.output.encoding -ne 'application/json')) {
@@ -327,6 +426,8 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
         if (-not (Test-Path $atFunctionPath)) {
             $null = New-Item -ItemType File -Path $atFunctionPath -Force
         }
+
+        
 
         $atFunctionDefinition | Set-Content -Path $atFunctionPath
         Get-Item -path $atFunctionPath
