@@ -85,10 +85,10 @@ function Invoke-AtProto
     [Collections.IDictionary]
     $Property,
 
-    # A list of property names to remove from an object
+    # A list of property names to remove from an object.
     [Parameter(ValueFromPipelineByPropertyName)]
     [string[]]
-    $RemoveProperty,
+    $RemoveProperty = @("Password"),
 
     # If provided, will expand a given property returned from the REST api.
     [Parameter(ValueFromPipelineByPropertyName)]
@@ -105,7 +105,12 @@ function Invoke-AtProto
     # If set, will receive results as a byte array.
     [Parameter(ValueFromPipelineByPropertyName)]
     [switch]
-    $AsByte
+    $AsByte,
+
+    # If set, will cache results from a request.  Only HTTP GET results will be cached.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [switch]
+    $Cache
     )
 
     begin {
@@ -236,9 +241,30 @@ function Invoke-AtProto
         $invokeRestMethodParameters = @($invokeRestMethod.Parameters.Keys | Sort-Object)
         # and turn that list into one regex.
         $invokeRestMethodRegex = [Regex]::new("(?>$($invokeRestMethodParameters -join '|'))")
+        $psProperties = @()
+        if ($Property) {
+            $psProperties = @(
+                if ($property -is [Collections.IDictionary]) {
+                    foreach ($propKeyValue in $Property.GetEnumerator()) {
+                        if ($propKeyValue.Value -as [ScriptBlock[]]) {
+                            [PSScriptProperty]::new.Invoke(@($propKeyValue.Key) + $propKeyValue.Value)
+                        } else {
+                            [PSNoteProperty]::new($propKeyValue.Key, $propKeyValue.Value)
+                        }
+                    }
+                } else {
+                    $property.psobject.properties
+                }                
+            )
+        }
+        $OutputToCache = $null
+        if ($cache -and -not $script:InvokeAtProtoCache) {
+            $script:InvokeAtProtoCache = [Ordered]@{}
+        }
 
         # Do everything from here on out in nested [ScriptBlock].
-        # Why?  So that the object pipeline sends objects as they are ready.        
+        # Why?  So that the object pipeline sends objects as they are ready.
+
         . {
             # Walk thru all we were to invoke
             foreach ($iq in $InvokeQueue.ToArray()) {
@@ -249,6 +275,7 @@ function Invoke-AtProto
                     $toSplat[$keyToSplat] = $iq[$keyToSplat]
                 }
                 
+                
                 # If -WhatIf was passed
                 if ($WhatIfPreference) {
                     # strip headers
@@ -257,25 +284,33 @@ function Invoke-AtProto
                     continue
                 }
 
-                # Create a human readable form of the request
-                $methodAndUri = $toSplat.Method, $toSplat.uri -join ' '
-                # and -Confirm the activity (if they passed -Confirm, that is)
-                if ($psCmdlet.ShouldProcess($methodAndUri)) {
-                    Write-Verbose $methodAndUri
-                    # If we want bytes back
-                    if ($AsByte) {
-                        # use Invoke-WebRequest
-                        Invoke-WebRequest @toSplat
-                    } else {
-                        # otherwise, use Invoke-RestMethod.
-                        Invoke-RestMethod @toSplat
+                if ($cache -and $script:InvokeAtProtoCache[$toSplat.uri]) {
+                    $script:InvokeAtProtoCache[$toSplat.uri]
+                } else {
+
+                    # Create a human readable form of the request
+                    $methodAndUri = $toSplat.Method, $toSplat.uri -join ' '
+                    # and -Confirm the activity (if they passed -Confirm, that is)
+                    if ($psCmdlet.ShouldProcess($methodAndUri)) {
+                        Write-Verbose $methodAndUri
+                        # If we want bytes back
+                        if ($AsByte) {
+                            # use Invoke-WebRequest
+                            Invoke-WebRequest @toSplat
+                        } else {
+                            # otherwise, use Invoke-RestMethod.
+                            Invoke-RestMethod @toSplat
+                        }
                     }
                 }
             }
         } | 
         & { 
             process {
-                $in = $_                                
+                $in = $_
+                if ($cache -and $script:InvokeAtProtoCache[$toSplat.uri]) {
+                    return $script:InvokeAtProtoCache[$toSplat.uri]
+                }
                 if ($in -eq 'null') {
                     return
                 }
@@ -299,8 +334,19 @@ function Invoke-AtProto
                 }                
             }
         } 2>&1  |        
-            & { process { # One more step of the pipeline will unroll each of the values.
+            & { 
+                [CmdletBinding()]
+                param(
+                [Parameter(ValueFromPipeline)]
+                [PSObject]
+                $InputObject
+                )
+                process { 
+                    # One more step of the pipeline will unroll each of the values.
 
+                if ($cache -and $script:InvokeAtProtoCache[$toSplat.uri]) {
+                    return $script:InvokeAtProtoCache[$toSplat.uri]
+                }
             $in = $_
             if ($in -is [string]) { return $in }
 
@@ -316,9 +362,10 @@ function Invoke-AtProto
                 }
             }
 
-            if ($Property -and $Property.Count) {
+            if ($psProperties) {
                 foreach ($prop in $psProperties) {
-                    try {
+                    if ($in.psobject.members[$prop.Name]) { continue }
+                    try {                        
                         $in.PSObject.Members.Add($prop, $true)
                     } catch {
                         $exception = $_                        
@@ -350,7 +397,15 @@ function Invoke-AtProto
                     }
                 }
             }
-            return $in # output the object and we're done.
-        } }
-    }
+            return $in # output the object and we're almost done.
+        } } -OutVariable OutputToCache
+
+        if ($Cache -and 
+            $Method -eq 'Get' -and 
+            $OutputToCache -and 
+            (-not $script:InvokeAtProtoCache[$toSplat.Uri])
+        ) {            
+            $script:InvokeAtProtoCache[$toSplat.Uri] = $OutputToCache
+        }
+    } 
 }
