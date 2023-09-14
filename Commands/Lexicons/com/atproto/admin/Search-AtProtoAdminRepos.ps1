@@ -40,6 +40,13 @@ begin {
 $NamespaceID = 'com.atproto.admin.searchRepos'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat.DecorateProperty = [Ordered]@{
+    'repos'='com.atproto.admin.defs#repoView'
+    'repos.moderation'='com.atproto.admin.defs#moderation'
+    'repos.moderation.currentAction'='com.atproto.admin.defs#actionViewCurrent'
+    'repos.moderation.currentAction.action'='com.atproto.admin.defs#actionType'
+    'repos.invitedBy'='com.atproto.server.defs#inviteCode'
+}
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 $AsByte = $false
