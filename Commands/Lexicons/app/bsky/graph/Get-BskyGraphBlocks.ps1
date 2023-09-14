@@ -25,7 +25,10 @@ You can provide this -Cursor to the same command with the same input to get more
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
-$Cursor
+$Cursor,
+# If set, will cache results for performance.
+[Management.Automation.SwitchParameter]
+$Cache
 )
 
 begin {
@@ -73,7 +76,11 @@ end {
                     } else {
                         "application/json"   
                     }
-                ) -AsByte:$AsByte
+                ) -AsByte:$AsByte -Property {
+                    $_
+                } -Cache:$(
+                    if ($cache) {$cache} else { $false }
+                )
         
 }
 } 
