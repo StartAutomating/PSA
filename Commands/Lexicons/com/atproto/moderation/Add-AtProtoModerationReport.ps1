@@ -28,6 +28,9 @@ begin {
 $NamespaceID = 'com.atproto.moderation.createReport'
 $httpMethod  = 'POST'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat.DecorateProperty = [Ordered]@{
+    'reasonType'='com.atproto.moderation.defs#reasonType'
+}
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 $AsByte = $false
