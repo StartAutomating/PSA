@@ -10,6 +10,7 @@ function Remove-AtProtoServerAccount  {
 [Alias('Remove-AtProtocolServerAccount','atproto.server.deleteAccount','com.atproto.server.deleteAccount')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+# The Decentralized Identifier.  This is a uniqueID used throughout the At Protocol.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('did')]
 [String]
