@@ -1,4 +1,4 @@
-Get-AtprotoAdminModerationReports
+Get-AtProtoAdminModerationReports
 ---------------------------------
 
 
@@ -37,9 +37,9 @@ com.atproto.admin.getModerationReports
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|false   |1       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |1       |false        |
 
 
 
@@ -48,9 +48,9 @@ com.atproto.admin.getModerationReports
 
 
 
-|Type        |Required|Position|PipelineInput        |
-|------------|--------|--------|---------------------|
-|`[PSObject]`|false   |2       |true (ByPropertyName)|
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[PSObject]`|false   |2       |false        |
 
 
 
@@ -63,9 +63,9 @@ Get all reports that were actioned by a specific moderator
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|false   |3       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |3       |false        |
 
 
 
@@ -78,9 +78,9 @@ Filter reports made by one or more DIDs
 
 
 
-|Type        |Required|Position|PipelineInput        |
-|------------|--------|--------|---------------------|
-|`[PSObject]`|false   |4       |true (ByPropertyName)|
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[PSObject]`|false   |4       |false        |
 
 
 
@@ -89,9 +89,9 @@ Filter reports made by one or more DIDs
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[Switch]`|false   |named   |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -100,43 +100,31 @@ Filter reports made by one or more DIDs
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|false   |5       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |5       |false        |
 
 
 
 #### **Limit**
 
-A limit to the number of results returned.
 
 
 
-
-
-
-|Type        |Required|Position|PipelineInput        |
-|------------|--------|--------|---------------------|
-|`[PSObject]`|false   |6       |true (ByPropertyName)|
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[PSObject]`|false   |6       |false        |
 
 
 
 #### **Cursor**
 
-A cursor that can be used to get more results.
-
-Any command that accepts a -Cursor parameter returns a .Cursor property.
-
-You can provide this -Cursor to the same command with the same input to get more results.
 
 
 
-
-
-
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|false   |7       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |7       |false        |
 
 
 
@@ -149,9 +137,9 @@ Reverse the order of the returned records? when true, returns reports in chronol
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[Switch]`|false   |named   |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -174,5 +162,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtprotoAdminModerationReports [[-Subject] <String>] [[-IgnoreSubjects] <PSObject>] [[-ActionedBy] <String>] [[-Reporters] <PSObject>] [-Resolved] [[-ActionType] <String>] [[-Limit] <PSObject>] [[-Cursor] <String>] [-Reverse] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtProtoAdminModerationReports [[-Subject] <String>] [[-IgnoreSubjects] <PSObject>] [[-ActionedBy] <String>] [[-Reporters] <PSObject>] [-Resolved] [[-ActionType] <String>] [[-Limit] <PSObject>] [[-Cursor] <String>] [-Reverse] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
