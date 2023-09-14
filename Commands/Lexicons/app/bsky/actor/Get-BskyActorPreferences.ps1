@@ -17,6 +17,9 @@ begin {
 $NamespaceID = 'app.bsky.actor.getPreferences'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat.DecorateProperty = [Ordered]@{
+    'preferences'='app.bsky.actor.defs#preferences'
+}
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 $AsByte = $false
