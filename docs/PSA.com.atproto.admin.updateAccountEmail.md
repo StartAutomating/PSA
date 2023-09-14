@@ -1,4 +1,4 @@
-Update-AtProtoAdminAccountEmail
+Update-AtprotoAdminAccountEmail
 -------------------------------
 
 
@@ -41,9 +41,9 @@ The handle or DID of the repo.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |1       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |1       |true (ByPropertyName)|
 
 
 
@@ -52,9 +52,9 @@ The handle or DID of the repo.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |2       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |2       |true (ByPropertyName)|
 
 
 
@@ -77,5 +77,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Update-AtProtoAdminAccountEmail [[-Account] <String>] [[-Email] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AtprotoAdminAccountEmail [[-Account] <String>] [[-Email] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
