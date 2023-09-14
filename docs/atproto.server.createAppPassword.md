@@ -1,4 +1,4 @@
-Add-AtProtoServerAppPassword
+Add-AtprotoServerAppPassword
 ----------------------------
 
 
@@ -37,9 +37,9 @@ com.atproto.server.createAppPassword
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |1       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |1       |true (ByPropertyName)|
 
 
 
@@ -62,5 +62,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Add-AtProtoServerAppPassword [[-Name] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AtprotoServerAppPassword [[-Name] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
