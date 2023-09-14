@@ -17,6 +17,8 @@ New-GitHubWorkflow -Name "Build PSA" -On Push,
     Demand -Job PowerShellStaticAnalysis, 
     TestPowerShellOnLinux, 
     TagReleaseAndPublish, 
-    BuildPSA -OutputPath $workflowPath
+    BuildPSA -OutputPath $workflowPath -Env @{
+        "Exclude" = "*.png;*.mp4;*.jpg;'*.jpeg';'*.gif';'docs[/\]*';atProto[/\]*"
+    }
 
 Pop-Location
