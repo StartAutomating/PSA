@@ -10,10 +10,18 @@ function Get-BskyActorSuggestions  {
 [Alias('Get-BlueSkyActorSuggestions','bsky.actor.getSuggestions','app.bsky.actor.getSuggestions')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+# A limit to the number of results returned.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
+<#
+A cursor that can be used to get more results.
+
+Any command that accepts a -Cursor parameter returns a .Cursor property.
+
+You can provide this -Cursor to the same command with the same input to get more results.
+#>
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
