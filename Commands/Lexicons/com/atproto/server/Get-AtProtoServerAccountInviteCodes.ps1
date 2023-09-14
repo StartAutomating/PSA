@@ -17,7 +17,10 @@ $IncludeUsed,
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('createAvailable')]
 [Management.Automation.SwitchParameter]
-$CreateAvailable
+$CreateAvailable,
+# If set, will cache results for performance.
+[Management.Automation.SwitchParameter]
+$Cache
 )
 
 begin {
@@ -65,7 +68,11 @@ end {
                     } else {
                         "application/json"   
                     }
-                ) -AsByte:$AsByte
+                ) -AsByte:$AsByte -Property {
+                    $_
+                } -Cache:$(
+                    if ($cache) {$cache} else { $false }
+                )
         
 }
 } 
