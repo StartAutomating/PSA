@@ -1,5 +1,5 @@
 @{
-    ModuleVersion = '0.1.3'
+    ModuleVersion = '0.1.4'
     RootModule = 'PSA.psm1'
     Guid = '09a0f1e1-23e2-4ccb-9d8d-bde5e1d6a2b2'
     FormatsToProcess = 'PSA.format.ps1xml'    
@@ -14,7 +14,7 @@
             LicenseURI = 'https://github.com/StartAutomating/PSA/blob/main/LICENSE'
             IconURI    = 'https://raw.githubusercontent.com/StartAutomating/PSA/main/Assets/PSA@1080p.png'
             ReleaseNotes = @'
-# PowerShell Announcements (with AtProtocol) [0.1.3]
+# PowerShell Announcements (with AtProtocol) [0.1.4]
 
 PSA is:
 
@@ -23,7 +23,6 @@ PSA is:
 * An (Almost) Perfect PowerShell Wrapper for the At Protocol
 * A GitHub Action to Automate Announcements
 
----
 '@
         }
 
