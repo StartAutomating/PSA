@@ -447,6 +447,41 @@
       </CustomControl>
     </View>
     <View>
+      <Name>app.bsky.feed.getAuthorFeed</Name>
+      <ViewSelectedBy>
+        <TypeName>app.bsky.feed.getAuthorFeed</TypeName>
+        <TypeName>app.bsky.feed.getActorLikes</TypeName>
+        <TypeName>app.bsky.feed.getTimeline</TypeName>
+        <TypeName>app.bsky.unspecced.getPopular</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.Actor </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+        $_ | Get-BlueSkyActorProfile -Cache
+    </ScriptBlock>
+                <CustomControlName>app.bsky.actor.link</CustomControlName>
+              </ExpressionBinding>
+              <NewLine />
+              <NewLine />
+              <ExpressionBinding>
+                <ScriptBlock>
+        $_.Feed.Post
+    </ScriptBlock>
+                <EnumerateCollection />
+                <CustomControlName>app.bsky.feed.postView</CustomControlName>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
       <Name>app.bsky.graph.defs#postView</Name>
       <ViewSelectedBy>
         <TypeName>app.bsky.graph.defs#postView</TypeName>
