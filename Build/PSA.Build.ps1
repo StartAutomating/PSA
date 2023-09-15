@@ -107,6 +107,7 @@ foreach ($lexiconFile in $lexiconJson) {
 
 
         $atFunctionName = "Get-${Prefix}Definition"
+        $atFunctionName = $atFunctionName -creplace "-Atproto", "-AtProto"
         $atFunctionDefinition = New-PipeScript -End ([scriptblock]::Create("
 `$lexiconText = @'
 $($lexiconText)
