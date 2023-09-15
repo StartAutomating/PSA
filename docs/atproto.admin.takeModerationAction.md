@@ -1,4 +1,4 @@
-Invoke-AtprotoAdminModerationAction
+Invoke-AtProtoAdminModerationAction
 -----------------------------------
 
 
@@ -143,5 +143,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Invoke-AtprotoAdminModerationAction [[-Action] <String>] [[-Subject] <PSObject>] [[-SubjectBlobCids] <PSObject>] [[-CreateLabelVals] <PSObject>] [[-NegateLabelVals] <PSObject>] [[-Reason] <String>] [[-DurationInHours] <PSObject>] [[-CreatedBy] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AtProtoAdminModerationAction [[-Action] <String>] [[-Subject] <PSObject>] [[-SubjectBlobCids] <PSObject>] [[-CreateLabelVals] <PSObject>] [[-NegateLabelVals] <PSObject>] [[-Reason] <String>] [[-DurationInHours] <PSObject>] [[-CreatedBy] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
