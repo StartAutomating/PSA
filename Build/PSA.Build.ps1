@@ -1,11 +1,12 @@
-$atRoot = Join-Path $PSScriptRoot atproto
+Push-Location ($PSScriptRoot | Split-Path)
+$atRoot = Join-Path $pwd atproto
 $atLexicon = Join-Path $atRoot lexicons
 $lexiconJson = Get-ChildItem -Path $atLexicon -Recurse -file -Filter *.json
 
 $atFunctionNames = @()
 $Lexicons = @()
 
-$AtScriptRoot = Join-Path (Join-Path $PSScriptRoot Commands) "Lexicons"
+$AtScriptRoot = Join-Path (Join-Path $pwd Commands) "Lexicons"
 
 if (-not (Test-Path $AtScriptRoot)) {
     $null = New-Item -ItemType Directory -Path $AtScriptRoot
@@ -467,3 +468,4 @@ $this | MORE
     
 }
 
+Pop-Location
