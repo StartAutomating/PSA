@@ -434,6 +434,31 @@ $this | app.bsky.unspecced.getPopularFeedGenerators -Cache
         <Name>Posts</Name>
         <ReferencedMemberName>Post</ReferencedMemberName>
       </AliasProperty>
+      <ScriptMethod>
+        <Name>Follow</Name>
+        <Script>
+                        &lt;#
+.SYNOPSIS
+    Follow
+.DESCRIPTION
+    Follows this profile.
+#&gt;
+param()
+
+
+$myBlueSkySession = Get-AtprotoServerSession
+
+if (-not $myBlueSkySession) { return }
+if (-not $this.did) { return }
+
+Add-AtprotoRepoRecord -Repo $myBlueSkySession.did -Collection 'app.bsky.graph.follow' -Record ([PSCustomObject][Ordered]@{
+    '$type' = 'app.bsky.graph.follow'
+    createdAt = [DateTime]::Now.ToString('o')
+    subject=$this.did
+})
+
+                    </Script>
+      </ScriptMethod>
       <ScriptProperty>
         <Name>Follower</Name>
         <GetScriptBlock>
@@ -658,8 +683,18 @@ $this | com.atproto.sync.listRepos -Cache
     </Members>
   </Type>
   <Type>
-    <Name>profileView</Name>
+    <Name>app.bsky.actor.defs#profileView</Name>
     <Members>
+      <ScriptMethod>
+        <Name>Follow</Name>
+        <Script>
+                        param()
+
+(Get-BskyActorProfile -Cache -Actor $this.did).Follow()
+
+
+                    </Script>
+      </ScriptMethod>
     </Members>
   </Type>
   <Type>
