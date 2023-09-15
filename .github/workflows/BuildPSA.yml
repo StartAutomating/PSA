@@ -597,4 +597,4 @@ jobs:
 env: 
   AT_PROTOCOL_APP_PASSWORD: ${{ secrets.AT_PROTOCOL_APP_PASSWORD }}
   AT_PROTOCOL_HANDLE: mrpowershell.bsky.social
-  Exclude: '*.png;*.mp4;*.jpg;*.jpeg;*.gif;docs[/\]*;atProto[/\]*'
+  Exclude: '*.png;*.mp4;*.jpg;*.jpeg;*.gif;*docs[/\]*;*atProto[/\]*'
