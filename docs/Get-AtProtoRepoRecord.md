@@ -41,9 +41,9 @@ The handle or DID of the repo.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|true    |1       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|true    |1       |true (ByPropertyName)|
 
 
 
@@ -56,9 +56,9 @@ The NSID of the record collection.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|true    |2       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|true    |2       |true (ByPropertyName)|
 
 
 
@@ -71,9 +71,9 @@ The key of the record.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|true    |3       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|true    |3       |true (ByPropertyName)|
 
 
 
@@ -86,9 +86,24 @@ The CID of the version of the record. If not specified, then return the most rec
 
 
 
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |4       |true (ByPropertyName)|
+
+
+
+#### **Cache**
+
+If set, will cache results for performance.
+
+
+
+
+
+
 |Type      |Required|Position|PipelineInput|
 |----------|--------|--------|-------------|
-|`[String]`|false   |4       |false        |
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -111,5 +126,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtProtoRepoRecord [-Repo] <String> [-Collection] <String> [-Rkey] <String> [[-Cid] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtProtoRepoRecord [-Repo] <String> [-Collection] <String> [-Rkey] <String> [[-Cid] <String>] [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```

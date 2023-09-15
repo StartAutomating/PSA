@@ -1,4 +1,4 @@
-Get-AtprotoAdminModerationReport
+Get-AtProtoAdminModerationReport
 --------------------------------
 
 
@@ -77,5 +77,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtprotoAdminModerationReport [-Id] <PSObject> [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtProtoAdminModerationReport [-Id] <PSObject> [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```

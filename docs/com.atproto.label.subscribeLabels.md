@@ -1,4 +1,4 @@
-Watch-AtprotoLabels
+Watch-AtProtoLabels
 -------------------
 
 
@@ -66,5 +66,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Watch-AtprotoLabels [[-Cursor] <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Watch-AtProtoLabels [[-Cursor] <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```

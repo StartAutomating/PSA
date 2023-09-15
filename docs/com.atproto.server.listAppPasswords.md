@@ -1,4 +1,4 @@
-Get-AtprotoServerAppPasswords
+Get-AtProtoServerAppPasswords
 -----------------------------
 
 
@@ -66,5 +66,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtprotoServerAppPasswords [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtProtoServerAppPasswords [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```

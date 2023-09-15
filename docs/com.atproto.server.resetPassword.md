@@ -1,4 +1,4 @@
-Reset-AtprotoServerPassword
+Reset-AtProtoServerPassword
 ---------------------------
 
 
@@ -73,5 +73,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Reset-AtprotoServerPassword [[-Token] <String>] [[-Password] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Reset-AtProtoServerPassword [[-Token] <String>] [[-Password] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```

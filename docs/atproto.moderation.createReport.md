@@ -1,4 +1,4 @@
-Add-AtprotoModerationReport
+Add-AtProtoModerationReport
 ---------------------------
 
 
@@ -84,5 +84,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Add-AtprotoModerationReport [[-ReasonType] <PSObject>] [[-Reason] <String>] [[-Subject] <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AtProtoModerationReport [[-ReasonType] <PSObject>] [[-Reason] <String>] [[-Subject] <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```

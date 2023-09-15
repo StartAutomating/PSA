@@ -108,8 +108,8 @@ Check out PSA's [PSA Script](https://github.com/StartAutomating/PSA/blob/main/PS
 
 ## PSA Commands
 
-PSA exports 548 commands
-(108 functions and 440 aliases)
+PSA exports 489 commands
+(108 functions and 381 aliases)
 
 Functions
 =========
@@ -117,45 +117,45 @@ Functions
 
 |Name                                                                                    |Synopsis                                   |
 |----------------------------------------------------------------------------------------|-------------------------------------------|
-|[Add-AtprotoModerationReport](docs/Add-AtprotoModerationReport.md)                      |com.atproto.moderation.createReport        |
-|[Add-AtprotoRepoRecord](docs/Add-AtprotoRepoRecord.md)                                  |com.atproto.repo.createRecord              |
+|[Add-AtProtoModerationReport](docs/Add-AtProtoModerationReport.md)                      |com.atproto.moderation.createReport        |
+|[Add-AtProtoRepoRecord](docs/Add-AtProtoRepoRecord.md)                                  |com.atproto.repo.createRecord              |
 |[Add-AtProtoServerAccount](docs/Add-AtProtoServerAccount.md)                            |com.atproto.server.createAccount           |
-|[Add-AtprotoServerAppPassword](docs/Add-AtprotoServerAppPassword.md)                    |com.atproto.server.createAppPassword       |
+|[Add-AtProtoServerAppPassword](docs/Add-AtProtoServerAppPassword.md)                    |com.atproto.server.createAppPassword       |
 |[Add-AtProtoServerInviteCode](docs/Add-AtProtoServerInviteCode.md)                      |com.atproto.server.createInviteCode        |
 |[Add-AtProtoServerInviteCodes](docs/Add-AtProtoServerInviteCodes.md)                    |com.atproto.server.createInviteCodes       |
 |[Add-AtProtoServerSession](docs/Add-AtProtoServerSession.md)                            |com.atproto.server.createSession           |
 |[Block-BskyGraphActor](docs/Block-BskyGraphActor.md)                                    |app.bsky.graph.muteActor                   |
 |[Block-BskyGraphActorList](docs/Block-BskyGraphActorList.md)                            |app.bsky.graph.muteActorList               |
 |[Connect-AtProto](docs/Connect-AtProto.md)                                              |Connects to the AtProtocol                 |
-|[Disable-AtprotoAdminAccountInvites](docs/Disable-AtprotoAdminAccountInvites.md)        |com.atproto.admin.disableAccountInvites    |
-|[Disable-AtprotoAdminInviteCodes](docs/Disable-AtprotoAdminInviteCodes.md)              |com.atproto.admin.disableInviteCodes       |
+|[Disable-AtProtoAdminAccountInvites](docs/Disable-AtProtoAdminAccountInvites.md)        |com.atproto.admin.disableAccountInvites    |
+|[Disable-AtProtoAdminInviteCodes](docs/Disable-AtProtoAdminInviteCodes.md)              |com.atproto.admin.disableInviteCodes       |
 |[Enable-AtProtoAdminAccountInvites](docs/Enable-AtProtoAdminAccountInvites.md)          |com.atproto.admin.enableAccountInvites     |
-|[Get-AtprotoAdminDefinition](docs/Get-AtprotoAdminDefinition.md)                        |
-|[Get-AtprotoAdminInviteCodes](docs/Get-AtprotoAdminInviteCodes.md)                      |com.atproto.admin.getInviteCodes           |
+|[Get-AtProtoAdminDefinition](docs/Get-AtProtoAdminDefinition.md)                        |
+|[Get-AtProtoAdminInviteCodes](docs/Get-AtProtoAdminInviteCodes.md)                      |com.atproto.admin.getInviteCodes           |
 |[Get-AtProtoAdminModerationAction](docs/Get-AtProtoAdminModerationAction.md)            |com.atproto.admin.getModerationAction      |
 |[Get-AtProtoAdminModerationActions](docs/Get-AtProtoAdminModerationActions.md)          |com.atproto.admin.getModerationActions     |
-|[Get-AtprotoAdminModerationReport](docs/Get-AtprotoAdminModerationReport.md)            |com.atproto.admin.getModerationReport      |
+|[Get-AtProtoAdminModerationReport](docs/Get-AtProtoAdminModerationReport.md)            |com.atproto.admin.getModerationReport      |
 |[Get-AtProtoAdminModerationReports](docs/Get-AtProtoAdminModerationReports.md)          |com.atproto.admin.getModerationReports     |
-|[Get-AtprotoAdminRecord](docs/Get-AtprotoAdminRecord.md)                                |com.atproto.admin.getRecord                |
-|[Get-AtprotoAdminRepo](docs/Get-AtprotoAdminRepo.md)                                    |com.atproto.admin.getRepo                  |
-|[Get-AtprotoLabelDefinition](docs/Get-AtprotoLabelDefinition.md)                        |
-|[Get-AtprotoModerationDefinition](docs/Get-AtprotoModerationDefinition.md)              |
+|[Get-AtProtoAdminRecord](docs/Get-AtProtoAdminRecord.md)                                |com.atproto.admin.getRecord                |
+|[Get-AtProtoAdminRepo](docs/Get-AtProtoAdminRepo.md)                                    |com.atproto.admin.getRepo                  |
+|[Get-AtProtoLabelDefinition](docs/Get-AtProtoLabelDefinition.md)                        |
+|[Get-AtProtoModerationDefinition](docs/Get-AtProtoModerationDefinition.md)              |
 |[Get-AtProtoRepo](docs/Get-AtProtoRepo.md)                                              |com.atproto.repo.describeRepo              |
 |[Get-AtProtoRepoRecord](docs/Get-AtProtoRepoRecord.md)                                  |com.atproto.repo.getRecord                 |
 |[Get-AtProtoRepoRecords](docs/Get-AtProtoRepoRecords.md)                                |com.atproto.repo.listRecords               |
 |[Get-AtProtoServer](docs/Get-AtProtoServer.md)                                          |com.atproto.server.describeServer          |
-|[Get-AtprotoServerAccountInviteCodes](docs/Get-AtprotoServerAccountInviteCodes.md)      |com.atproto.server.getAccountInviteCodes   |
-|[Get-AtprotoServerAppPasswords](docs/Get-AtprotoServerAppPasswords.md)                  |com.atproto.server.listAppPasswords        |
-|[Get-AtprotoServerDefinition](docs/Get-AtprotoServerDefinition.md)                      |
+|[Get-AtProtoServerAccountInviteCodes](docs/Get-AtProtoServerAccountInviteCodes.md)      |com.atproto.server.getAccountInviteCodes   |
+|[Get-AtProtoServerAppPasswords](docs/Get-AtProtoServerAppPasswords.md)                  |com.atproto.server.listAppPasswords        |
+|[Get-AtProtoServerDefinition](docs/Get-AtProtoServerDefinition.md)                      |
 |[Get-AtProtoServerSession](docs/Get-AtProtoServerSession.md)                            |com.atproto.server.getSession              |
-|[Get-AtprotoSyncBlob](docs/Get-AtprotoSyncBlob.md)                                      |com.atproto.sync.getBlob                   |
-|[Get-AtprotoSyncBlobs](docs/Get-AtprotoSyncBlobs.md)                                    |com.atproto.sync.listBlobs                 |
+|[Get-AtProtoSyncBlob](docs/Get-AtProtoSyncBlob.md)                                      |com.atproto.sync.getBlob                   |
+|[Get-AtProtoSyncBlobs](docs/Get-AtProtoSyncBlobs.md)                                    |com.atproto.sync.listBlobs                 |
 |[Get-AtProtoSyncBlocks](docs/Get-AtProtoSyncBlocks.md)                                  |com.atproto.sync.getBlocks                 |
 |[Get-AtProtoSyncCheckout](docs/Get-AtProtoSyncCheckout.md)                              |com.atproto.sync.getCheckout               |
-|[Get-AtprotoSyncHead](docs/Get-AtprotoSyncHead.md)                                      |com.atproto.sync.getHead                   |
-|[Get-AtprotoSyncLatestCommit](docs/Get-AtprotoSyncLatestCommit.md)                      |com.atproto.sync.getLatestCommit           |
-|[Get-AtprotoSyncRecord](docs/Get-AtprotoSyncRecord.md)                                  |com.atproto.sync.getRecord                 |
-|[Get-AtprotoSyncRepo](docs/Get-AtprotoSyncRepo.md)                                      |com.atproto.sync.getRepo                   |
+|[Get-AtProtoSyncHead](docs/Get-AtProtoSyncHead.md)                                      |com.atproto.sync.getHead                   |
+|[Get-AtProtoSyncLatestCommit](docs/Get-AtProtoSyncLatestCommit.md)                      |com.atproto.sync.getLatestCommit           |
+|[Get-AtProtoSyncRecord](docs/Get-AtProtoSyncRecord.md)                                  |com.atproto.sync.getRecord                 |
+|[Get-AtProtoSyncRepo](docs/Get-AtProtoSyncRepo.md)                                      |com.atproto.sync.getRepo                   |
 |[Get-AtProtoSyncRepos](docs/Get-AtProtoSyncRepos.md)                                    |com.atproto.sync.listRepos                 |
 |[Get-BskyActorDefinition](docs/Get-BskyActorDefinition.md)                              |
 |[Get-BskyActorPreferences](docs/Get-BskyActorPreferences.md)                            |app.bsky.actor.getPreferences              |
@@ -190,17 +190,17 @@ Functions
 |[Get-BskyUnspeccedPopularFeedGenerators](docs/Get-BskyUnspeccedPopularFeedGenerators.md)|app.bsky.unspecced.getPopularFeedGenerators|
 |[Get-BskyUnspeccedTimelineSkeleton](docs/Get-BskyUnspeccedTimelineSkeleton.md)          |app.bsky.unspecced.getTimelineSkeleton     |
 |[Invoke-AtProto](docs/Invoke-AtProto.md)                                                |Invokes the AT Protocol                    |
-|[Invoke-AtprotoAdminModerationAction](docs/Invoke-AtprotoAdminModerationAction.md)      |com.atproto.admin.takeModerationAction     |
+|[Invoke-AtProtoAdminModerationAction](docs/Invoke-AtProtoAdminModerationAction.md)      |com.atproto.admin.takeModerationAction     |
 |[Register-BskyNotificationPush](docs/Register-BskyNotificationPush.md)                  |app.bsky.notification.registerPush         |
-|[Remove-AtprotoRepoRecord](docs/Remove-AtprotoRepoRecord.md)                            |com.atproto.repo.deleteRecord              |
-|[Remove-AtprotoServerAccount](docs/Remove-AtprotoServerAccount.md)                      |com.atproto.server.deleteAccount           |
+|[Remove-AtProtoRepoRecord](docs/Remove-AtProtoRepoRecord.md)                            |com.atproto.repo.deleteRecord              |
+|[Remove-AtProtoServerAccount](docs/Remove-AtProtoServerAccount.md)                      |com.atproto.server.deleteAccount           |
 |[Remove-AtProtoServerSession](docs/Remove-AtProtoServerSession.md)                      |com.atproto.server.deleteSession           |
-|[Request-AtprotoServerAccountDelete](docs/Request-AtprotoServerAccountDelete.md)        |com.atproto.server.requestAccountDelete    |
+|[Request-AtProtoServerAccountDelete](docs/Request-AtProtoServerAccountDelete.md)        |com.atproto.server.requestAccountDelete    |
 |[Request-AtProtoServerPasswordReset](docs/Request-AtProtoServerPasswordReset.md)        |com.atproto.server.requestPasswordReset    |
-|[Request-AtprotoSyncCrawl](docs/Request-AtprotoSyncCrawl.md)                            |com.atproto.sync.requestCrawl              |
-|[Reset-AtprotoServerPassword](docs/Reset-AtprotoServerPassword.md)                      |com.atproto.server.resetPassword           |
+|[Request-AtProtoSyncCrawl](docs/Request-AtProtoSyncCrawl.md)                            |com.atproto.sync.requestCrawl              |
+|[Reset-AtProtoServerPassword](docs/Reset-AtProtoServerPassword.md)                      |com.atproto.server.resetPassword           |
 |[Resolve-AtProtoAdminModerationReports](docs/Resolve-AtProtoAdminModerationReports.md)  |com.atproto.admin.resolveModerationReports |
-|[Resolve-AtprotoIdentityHandle](docs/Resolve-AtprotoIdentityHandle.md)                  |com.atproto.identity.resolveHandle         |
+|[Resolve-AtProtoIdentityHandle](docs/Resolve-AtProtoIdentityHandle.md)                  |com.atproto.identity.resolveHandle         |
 |[Revoke-AtProtoServerAppPassword](docs/Revoke-AtProtoServerAppPassword.md)              |com.atproto.server.revokeAppPassword       |
 |[Search-AtProtoAdminRepos](docs/Search-AtProtoAdminRepos.md)                            |com.atproto.admin.searchRepos              |
 |[Search-AtProtoLabels](docs/Search-AtProtoLabels.md)                                    |com.atproto.label.queryLabels              |
@@ -217,13 +217,13 @@ Functions
 |[Unblock-BskyGraphActor](docs/Unblock-BskyGraphActor.md)                                |app.bsky.graph.unmuteActor                 |
 |[Unblock-BskyGraphActorList](docs/Unblock-BskyGraphActorList.md)                        |app.bsky.graph.unmuteActorList             |
 |[Undo-AtProtoAdminModerationAction](docs/Undo-AtProtoAdminModerationAction.md)          |com.atproto.admin.reverseModerationAction  |
-|[Update-AtprotoAdminAccountEmail](docs/Update-AtprotoAdminAccountEmail.md)              |com.atproto.admin.updateAccountEmail       |
+|[Update-AtProtoAdminAccountEmail](docs/Update-AtProtoAdminAccountEmail.md)              |com.atproto.admin.updateAccountEmail       |
 |[Update-AtProtoAdminAccountHandle](docs/Update-AtProtoAdminAccountHandle.md)            |com.atproto.admin.updateAccountHandle      |
 |[Update-AtProtoIdentityHandle](docs/Update-AtProtoIdentityHandle.md)                    |com.atproto.identity.updateHandle          |
-|[Update-AtprotoTempRepoVersion](docs/Update-AtprotoTempRepoVersion.md)                  |com.atproto.temp.upgradeRepoVersion        |
+|[Update-AtProtoTempRepoVersion](docs/Update-AtProtoTempRepoVersion.md)                  |com.atproto.temp.upgradeRepoVersion        |
 |[Update-BskyNotificationSeen](docs/Update-BskyNotificationSeen.md)                      |app.bsky.notification.updateSeen           |
-|[Watch-AtprotoLabels](docs/Watch-AtprotoLabels.md)                                      |com.atproto.label.subscribeLabels          |
-|[Watch-AtprotoSyncRepos](docs/Watch-AtprotoSyncRepos.md)                                |com.atproto.sync.subscribeRepos            |
+|[Watch-AtProtoLabels](docs/Watch-AtProtoLabels.md)                                      |com.atproto.label.subscribeLabels          |
+|[Watch-AtProtoSyncRepos](docs/Watch-AtProtoSyncRepos.md)                                |com.atproto.sync.subscribeRepos            |
 |[Watch-AtProtoSyncUpdate](docs/Watch-AtProtoSyncUpdate.md)                              |com.atproto.sync.notifyOfUpdate            |
 
 
@@ -234,45 +234,45 @@ Aliases
 
 |Name                                                                                    |ResolvedCommand|
 |----------------------------------------------------------------------------------------|---------------|
-|[Add-AtprotoModerationReport](docs/Add-AtprotoModerationReport.md)                      |
-|[Add-AtprotoRepoRecord](docs/Add-AtprotoRepoRecord.md)                                  |
+|[Add-AtProtoModerationReport](docs/Add-AtProtoModerationReport.md)                      |
+|[Add-AtProtoRepoRecord](docs/Add-AtProtoRepoRecord.md)                                  |
 |[Add-AtProtoServerAccount](docs/Add-AtProtoServerAccount.md)                            |
-|[Add-AtprotoServerAppPassword](docs/Add-AtprotoServerAppPassword.md)                    |
+|[Add-AtProtoServerAppPassword](docs/Add-AtProtoServerAppPassword.md)                    |
 |[Add-AtProtoServerInviteCode](docs/Add-AtProtoServerInviteCode.md)                      |
 |[Add-AtProtoServerInviteCodes](docs/Add-AtProtoServerInviteCodes.md)                    |
 |[Add-AtProtoServerSession](docs/Add-AtProtoServerSession.md)                            |
 |[Block-BskyGraphActor](docs/Block-BskyGraphActor.md)                                    |
 |[Block-BskyGraphActorList](docs/Block-BskyGraphActorList.md)                            |
 |[Connect-AtProto](docs/Connect-AtProto.md)                                              |
-|[Disable-AtprotoAdminAccountInvites](docs/Disable-AtprotoAdminAccountInvites.md)        |
-|[Disable-AtprotoAdminInviteCodes](docs/Disable-AtprotoAdminInviteCodes.md)              |
+|[Disable-AtProtoAdminAccountInvites](docs/Disable-AtProtoAdminAccountInvites.md)        |
+|[Disable-AtProtoAdminInviteCodes](docs/Disable-AtProtoAdminInviteCodes.md)              |
 |[Enable-AtProtoAdminAccountInvites](docs/Enable-AtProtoAdminAccountInvites.md)          |
-|[Get-AtprotoAdminDefinition](docs/Get-AtprotoAdminDefinition.md)                        |
-|[Get-AtprotoAdminInviteCodes](docs/Get-AtprotoAdminInviteCodes.md)                      |
+|[Get-AtProtoAdminDefinition](docs/Get-AtProtoAdminDefinition.md)                        |
+|[Get-AtProtoAdminInviteCodes](docs/Get-AtProtoAdminInviteCodes.md)                      |
 |[Get-AtProtoAdminModerationAction](docs/Get-AtProtoAdminModerationAction.md)            |
 |[Get-AtProtoAdminModerationActions](docs/Get-AtProtoAdminModerationActions.md)          |
-|[Get-AtprotoAdminModerationReport](docs/Get-AtprotoAdminModerationReport.md)            |
+|[Get-AtProtoAdminModerationReport](docs/Get-AtProtoAdminModerationReport.md)            |
 |[Get-AtProtoAdminModerationReports](docs/Get-AtProtoAdminModerationReports.md)          |
-|[Get-AtprotoAdminRecord](docs/Get-AtprotoAdminRecord.md)                                |
-|[Get-AtprotoAdminRepo](docs/Get-AtprotoAdminRepo.md)                                    |
-|[Get-AtprotoLabelDefinition](docs/Get-AtprotoLabelDefinition.md)                        |
-|[Get-AtprotoModerationDefinition](docs/Get-AtprotoModerationDefinition.md)              |
+|[Get-AtProtoAdminRecord](docs/Get-AtProtoAdminRecord.md)                                |
+|[Get-AtProtoAdminRepo](docs/Get-AtProtoAdminRepo.md)                                    |
+|[Get-AtProtoLabelDefinition](docs/Get-AtProtoLabelDefinition.md)                        |
+|[Get-AtProtoModerationDefinition](docs/Get-AtProtoModerationDefinition.md)              |
 |[Get-AtProtoRepo](docs/Get-AtProtoRepo.md)                                              |
 |[Get-AtProtoRepoRecord](docs/Get-AtProtoRepoRecord.md)                                  |
 |[Get-AtProtoRepoRecords](docs/Get-AtProtoRepoRecords.md)                                |
 |[Get-AtProtoServer](docs/Get-AtProtoServer.md)                                          |
-|[Get-AtprotoServerAccountInviteCodes](docs/Get-AtprotoServerAccountInviteCodes.md)      |
-|[Get-AtprotoServerAppPasswords](docs/Get-AtprotoServerAppPasswords.md)                  |
-|[Get-AtprotoServerDefinition](docs/Get-AtprotoServerDefinition.md)                      |
+|[Get-AtProtoServerAccountInviteCodes](docs/Get-AtProtoServerAccountInviteCodes.md)      |
+|[Get-AtProtoServerAppPasswords](docs/Get-AtProtoServerAppPasswords.md)                  |
+|[Get-AtProtoServerDefinition](docs/Get-AtProtoServerDefinition.md)                      |
 |[Get-AtProtoServerSession](docs/Get-AtProtoServerSession.md)                            |
-|[Get-AtprotoSyncBlob](docs/Get-AtprotoSyncBlob.md)                                      |
-|[Get-AtprotoSyncBlobs](docs/Get-AtprotoSyncBlobs.md)                                    |
+|[Get-AtProtoSyncBlob](docs/Get-AtProtoSyncBlob.md)                                      |
+|[Get-AtProtoSyncBlobs](docs/Get-AtProtoSyncBlobs.md)                                    |
 |[Get-AtProtoSyncBlocks](docs/Get-AtProtoSyncBlocks.md)                                  |
 |[Get-AtProtoSyncCheckout](docs/Get-AtProtoSyncCheckout.md)                              |
-|[Get-AtprotoSyncHead](docs/Get-AtprotoSyncHead.md)                                      |
-|[Get-AtprotoSyncLatestCommit](docs/Get-AtprotoSyncLatestCommit.md)                      |
-|[Get-AtprotoSyncRecord](docs/Get-AtprotoSyncRecord.md)                                  |
-|[Get-AtprotoSyncRepo](docs/Get-AtprotoSyncRepo.md)                                      |
+|[Get-AtProtoSyncHead](docs/Get-AtProtoSyncHead.md)                                      |
+|[Get-AtProtoSyncLatestCommit](docs/Get-AtProtoSyncLatestCommit.md)                      |
+|[Get-AtProtoSyncRecord](docs/Get-AtProtoSyncRecord.md)                                  |
+|[Get-AtProtoSyncRepo](docs/Get-AtProtoSyncRepo.md)                                      |
 |[Get-AtProtoSyncRepos](docs/Get-AtProtoSyncRepos.md)                                    |
 |[Get-BskyActorDefinition](docs/Get-BskyActorDefinition.md)                              |
 |[Get-BskyActorPreferences](docs/Get-BskyActorPreferences.md)                            |
@@ -307,17 +307,17 @@ Aliases
 |[Get-BskyUnspeccedPopularFeedGenerators](docs/Get-BskyUnspeccedPopularFeedGenerators.md)|
 |[Get-BskyUnspeccedTimelineSkeleton](docs/Get-BskyUnspeccedTimelineSkeleton.md)          |
 |[Invoke-AtProto](docs/Invoke-AtProto.md)                                                |
-|[Invoke-AtprotoAdminModerationAction](docs/Invoke-AtprotoAdminModerationAction.md)      |
+|[Invoke-AtProtoAdminModerationAction](docs/Invoke-AtProtoAdminModerationAction.md)      |
 |[Register-BskyNotificationPush](docs/Register-BskyNotificationPush.md)                  |
-|[Remove-AtprotoRepoRecord](docs/Remove-AtprotoRepoRecord.md)                            |
-|[Remove-AtprotoServerAccount](docs/Remove-AtprotoServerAccount.md)                      |
+|[Remove-AtProtoRepoRecord](docs/Remove-AtProtoRepoRecord.md)                            |
+|[Remove-AtProtoServerAccount](docs/Remove-AtProtoServerAccount.md)                      |
 |[Remove-AtProtoServerSession](docs/Remove-AtProtoServerSession.md)                      |
-|[Request-AtprotoServerAccountDelete](docs/Request-AtprotoServerAccountDelete.md)        |
+|[Request-AtProtoServerAccountDelete](docs/Request-AtProtoServerAccountDelete.md)        |
 |[Request-AtProtoServerPasswordReset](docs/Request-AtProtoServerPasswordReset.md)        |
-|[Request-AtprotoSyncCrawl](docs/Request-AtprotoSyncCrawl.md)                            |
-|[Reset-AtprotoServerPassword](docs/Reset-AtprotoServerPassword.md)                      |
+|[Request-AtProtoSyncCrawl](docs/Request-AtProtoSyncCrawl.md)                            |
+|[Reset-AtProtoServerPassword](docs/Reset-AtProtoServerPassword.md)                      |
 |[Resolve-AtProtoAdminModerationReports](docs/Resolve-AtProtoAdminModerationReports.md)  |
-|[Resolve-AtprotoIdentityHandle](docs/Resolve-AtprotoIdentityHandle.md)                  |
+|[Resolve-AtProtoIdentityHandle](docs/Resolve-AtProtoIdentityHandle.md)                  |
 |[Revoke-AtProtoServerAppPassword](docs/Revoke-AtProtoServerAppPassword.md)              |
 |[Search-AtProtoAdminRepos](docs/Search-AtProtoAdminRepos.md)                            |
 |[Search-AtProtoLabels](docs/Search-AtProtoLabels.md)                                    |
@@ -334,13 +334,13 @@ Aliases
 |[Unblock-BskyGraphActor](docs/Unblock-BskyGraphActor.md)                                |
 |[Unblock-BskyGraphActorList](docs/Unblock-BskyGraphActorList.md)                        |
 |[Undo-AtProtoAdminModerationAction](docs/Undo-AtProtoAdminModerationAction.md)          |
-|[Update-AtprotoAdminAccountEmail](docs/Update-AtprotoAdminAccountEmail.md)              |
+|[Update-AtProtoAdminAccountEmail](docs/Update-AtProtoAdminAccountEmail.md)              |
 |[Update-AtProtoAdminAccountHandle](docs/Update-AtProtoAdminAccountHandle.md)            |
 |[Update-AtProtoIdentityHandle](docs/Update-AtProtoIdentityHandle.md)                    |
-|[Update-AtprotoTempRepoVersion](docs/Update-AtprotoTempRepoVersion.md)                  |
+|[Update-AtProtoTempRepoVersion](docs/Update-AtProtoTempRepoVersion.md)                  |
 |[Update-BskyNotificationSeen](docs/Update-BskyNotificationSeen.md)                      |
-|[Watch-AtprotoLabels](docs/Watch-AtprotoLabels.md)                                      |
-|[Watch-AtprotoSyncRepos](docs/Watch-AtprotoSyncRepos.md)                                |
+|[Watch-AtProtoLabels](docs/Watch-AtProtoLabels.md)                                      |
+|[Watch-AtProtoSyncRepos](docs/Watch-AtProtoSyncRepos.md)                                |
 |[Watch-AtProtoSyncUpdate](docs/Watch-AtProtoSyncUpdate.md)                              |
 
 

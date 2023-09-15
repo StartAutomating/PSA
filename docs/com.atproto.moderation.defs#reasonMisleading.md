@@ -1,4 +1,4 @@
-Get-AtprotoModerationDefinition
+Get-AtProtoModerationDefinition
 -------------------------------
 
 
@@ -6,7 +6,7 @@ Get-AtprotoModerationDefinition
 
 ### Synopsis
 
-Get-AtprotoModerationDefinition 
+Get-AtProtoModerationDefinition 
 
 
 
@@ -54,5 +54,5 @@ syntaxItem
 ----------
 ```
 ```PowerShell
-{@{name=Get-AtprotoModerationDefinition; CommonParameters=False; parameter=System.Object[]}}
+{@{name=Get-AtProtoModerationDefinition; CommonParameters=False; parameter=System.Object[]}}
 ```

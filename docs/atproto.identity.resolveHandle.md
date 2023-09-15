@@ -1,4 +1,4 @@
-Resolve-AtprotoIdentityHandle
+Resolve-AtProtoIdentityHandle
 -----------------------------
 
 
@@ -81,5 +81,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Resolve-AtprotoIdentityHandle [-Handle] <String> [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
+Resolve-AtProtoIdentityHandle [-Handle] <String> [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```

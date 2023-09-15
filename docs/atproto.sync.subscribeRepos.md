@@ -1,4 +1,4 @@
-Watch-AtprotoSyncRepos
+Watch-AtProtoSyncRepos
 ----------------------
 
 
@@ -66,5 +66,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Watch-AtprotoSyncRepos [[-Cursor] <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Watch-AtProtoSyncRepos [[-Cursor] <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```

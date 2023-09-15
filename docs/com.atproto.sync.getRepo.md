@@ -1,4 +1,4 @@
-Get-AtprotoSyncRepo
+Get-AtProtoSyncRepo
 -------------------
 
 
@@ -96,5 +96,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtprotoSyncRepo [-Did] <String> [[-Since] <String>] [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtProtoSyncRepo [-Did] <String> [[-Since] <String>] [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```

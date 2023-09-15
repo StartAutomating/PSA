@@ -41,9 +41,9 @@ The DID of the repo.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|true    |1       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|true    |1       |true (ByPropertyName)|
 
 
 
@@ -52,9 +52,24 @@ The DID of the repo.
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[PSObject]`|true    |2       |false        |
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[PSObject]`|true    |2       |true (ByPropertyName)|
+
+
+
+#### **Cache**
+
+If set, will cache results for performance.
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -77,5 +92,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtProtoSyncBlocks [-Did] <String> [-Cids] <PSObject> [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtProtoSyncBlocks [-Did] <String> [-Cids] <PSObject> [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```

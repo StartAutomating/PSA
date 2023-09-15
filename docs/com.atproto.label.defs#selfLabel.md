@@ -1,4 +1,4 @@
-Get-AtprotoLabelDefinition
+Get-AtProtoLabelDefinition
 --------------------------
 
 
@@ -6,7 +6,7 @@ Get-AtprotoLabelDefinition
 
 ### Synopsis
 
-Get-AtprotoLabelDefinition 
+Get-AtProtoLabelDefinition 
 
 
 
@@ -54,5 +54,5 @@ syntaxItem
 ----------
 ```
 ```PowerShell
-{@{name=Get-AtprotoLabelDefinition; CommonParameters=False; parameter=System.Object[]}}
+{@{name=Get-AtProtoLabelDefinition; CommonParameters=False; parameter=System.Object[]}}
 ```

@@ -1,4 +1,4 @@
-Get-AtprotoAdminInviteCodes
+Get-AtProtoAdminInviteCodes
 ---------------------------
 
 
@@ -111,5 +111,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtprotoAdminInviteCodes [[-Sort] <String>] [[-Limit] <PSObject>] [[-Cursor] <String>] [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtProtoAdminInviteCodes [[-Sort] <String>] [[-Limit] <PSObject>] [[-Cursor] <String>] [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```

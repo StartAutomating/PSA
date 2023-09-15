@@ -1,4 +1,4 @@
-Get-AtprotoServerDefinition
+Get-AtProtoServerDefinition
 ---------------------------
 
 
@@ -6,7 +6,7 @@ Get-AtprotoServerDefinition
 
 ### Synopsis
 
-Get-AtprotoServerDefinition 
+Get-AtProtoServerDefinition 
 
 
 
@@ -54,5 +54,5 @@ syntaxItem
 ----------
 ```
 ```PowerShell
-{@{name=Get-AtprotoServerDefinition; CommonParameters=False; parameter=System.Object[]}}
+{@{name=Get-AtProtoServerDefinition; CommonParameters=False; parameter=System.Object[]}}
 ```

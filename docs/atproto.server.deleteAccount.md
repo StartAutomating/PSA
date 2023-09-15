@@ -1,4 +1,4 @@
-Remove-AtprotoServerAccount
+Remove-AtProtoServerAccount
 ---------------------------
 
 
@@ -88,5 +88,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Remove-AtprotoServerAccount [[-Did] <String>] [[-Password] <String>] [[-Token] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AtProtoServerAccount [[-Did] <String>] [[-Password] <String>] [[-Token] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```

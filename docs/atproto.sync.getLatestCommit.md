@@ -1,4 +1,4 @@
-Get-AtprotoSyncLatestCommit
+Get-AtProtoSyncLatestCommit
 ---------------------------
 
 
@@ -81,5 +81,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtprotoSyncLatestCommit [-Did] <String> [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtProtoSyncLatestCommit [-Did] <String> [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```

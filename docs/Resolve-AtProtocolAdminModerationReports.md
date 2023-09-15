@@ -37,9 +37,9 @@ com.atproto.admin.resolveModerationReports
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[PSObject]`|false   |1       |false        |
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[PSObject]`|false   |1       |true (ByPropertyName)|
 
 
 
@@ -48,9 +48,9 @@ com.atproto.admin.resolveModerationReports
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[PSObject]`|false   |2       |false        |
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[PSObject]`|false   |2       |true (ByPropertyName)|
 
 
 
@@ -59,9 +59,9 @@ com.atproto.admin.resolveModerationReports
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |3       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |3       |true (ByPropertyName)|
 
 
 

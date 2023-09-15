@@ -1,4 +1,4 @@
-Get-AtprotoSyncBlobs
+Get-AtProtoSyncBlobs
 --------------------
 
 
@@ -130,5 +130,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtprotoSyncBlobs [-Did] <String> [[-Since] <String>] [[-Limit] <PSObject>] [[-Cursor] <String>] [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtProtoSyncBlobs [-Did] <String> [[-Since] <String>] [[-Limit] <PSObject>] [[-Cursor] <String>] [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```

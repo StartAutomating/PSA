@@ -1,4 +1,4 @@
-Add-AtprotoRepoRecord
+Add-AtProtoRepoRecord
 ---------------------
 
 
@@ -141,5 +141,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Add-AtprotoRepoRecord [[-Repo] <String>] [[-Collection] <String>] [[-Rkey] <String>] [-Validate] [[-Record] <PSObject>] [[-SwapCommit] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AtProtoRepoRecord [[-Repo] <String>] [[-Collection] <String>] [[-Rkey] <String>] [-Validate] [[-Record] <PSObject>] [[-SwapCommit] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```

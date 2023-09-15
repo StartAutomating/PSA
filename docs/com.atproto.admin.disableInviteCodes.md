@@ -1,4 +1,4 @@
-Disable-AtprotoAdminInviteCodes
+Disable-AtProtoAdminInviteCodes
 -------------------------------
 
 
@@ -73,5 +73,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Disable-AtprotoAdminInviteCodes [[-Codes] <PSObject>] [[-Accounts] <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Disable-AtProtoAdminInviteCodes [[-Codes] <PSObject>] [[-Accounts] <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```

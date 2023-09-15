@@ -41,9 +41,24 @@ The DID of the repo.
 
 
 
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|true    |1       |true (ByPropertyName)|
+
+
+
+#### **Cache**
+
+If set, will cache results for performance.
+
+
+
+
+
+
 |Type      |Required|Position|PipelineInput|
 |----------|--------|--------|-------------|
-|`[String]`|true    |1       |false        |
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -66,5 +81,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtProtoSyncCheckout [-Did] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtProtoSyncCheckout [-Did] <String> [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```

@@ -107,6 +107,7 @@ foreach ($lexiconFile in $lexiconJson) {
 
 
         $atFunctionName = "Get-${Prefix}Definition"
+        $atFunctionName = $atFunctionName -creplace "-Atproto", "-AtProto"
         $atFunctionDefinition = New-PipeScript -End ([scriptblock]::Create("
 `$lexiconText = @'
 $($lexiconText)
@@ -370,7 +371,7 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
         }
         
         # Make AtProto camel case, for the preference of most PowerShell users.
-        $atFunctionName = $atFunctionName -replace "-Atproto", "-AtProto"
+        $atFunctionName = $atFunctionName -creplace "-Atproto", "-AtProto"
         $atFunctionAliases = @(
             # If the function was named -AtProto
             if ($atFunctionName -like '*-AtProto*') {

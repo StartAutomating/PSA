@@ -1,4 +1,4 @@
-Add-AtprotoServerAppPassword
+Add-AtProtoServerAppPassword
 ----------------------------
 
 
@@ -62,5 +62,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Add-AtprotoServerAppPassword [[-Name] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AtProtoServerAppPassword [[-Name] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
