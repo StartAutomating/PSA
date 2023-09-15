@@ -1,4 +1,4 @@
-Get-AtprotoAdminRecord
+Get-AtProtoAdminRecord
 ----------------------
 
 
@@ -88,5 +88,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtprotoAdminRecord [-Uri] <String> [[-Cid] <String>] [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtProtoAdminRecord [-Uri] <String> [[-Cid] <String>] [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
