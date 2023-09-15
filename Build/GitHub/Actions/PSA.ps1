@@ -157,6 +157,40 @@ filter ProcessActionOutput {
     $out
 }
 
+function AutoRequires {
+    param(
+    [Management.Automation.CommandInfo]
+    $CommandInfo
+    )
+
+    process {
+        if (-not $CommandInfo.ScriptBlock) { return }
+        $simpleRequirements = 
+            foreach ($requiredModule in $CommandInfo.ScriptBlock.Ast.ScriptRequirements.RequiredModules) {
+                if ($requiredModule.Name) {
+                    $requiredModule
+                }
+            }
+
+        if ($simpleRequirements) {
+            foreach ($required in $requiredModule) {
+                $installSplat = [Ordered]@{Name=$required.Name;Force=$true}
+                if ($requiredModule.RequiredVersion) {
+                    $installSplat.Version = $requiredModule.RequiredVersion
+                }
+                if ($requiredModule.Version) {
+                    $installSplat.MinimumVersion = $requiredModule.Version
+                }
+                if ($requiredModule.MaximumVersion) {
+                    $installSplat.MaximumVersion = $requiredModule.MaximumVersion
+                }
+                Install-Module @installSplat
+            }
+            
+        }                
+    }
+}
+
 
 if (-not $UserName)  {
     $UserName =  $env:GITHUB_ACTOR
@@ -198,6 +232,9 @@ if (-not $SkipPSAPS1) {
         ForEach-Object {
             $PSAPS1List += $_.FullName.Replace($env:GITHUB_WORKSPACE, '').TrimStart('/')
             $PSAPS1Count++
+            "::notice title=Checking Requirements for::$($_.Fullname)" | Out-Host
+            $scriptCmd = $ExecutionContext.SessionState.InvokeCommand.GetCommand($_.FullName,'ExternalScript')
+            AutoRequires $scriptCmd
             "::notice title=Running::$($_.Fullname)" | Out-Host
             . $_.FullName |            
                 . ProcessActionOutput  | 
