@@ -25,6 +25,11 @@
             id = 'PipeScript'
         },        
         'RunEZOut',
-        'RunHelpOut'
+        'RunHelpOut',
+        @{
+            name = 'Run PSA'            
+            uses = './'
+            id = 'PSA'
+        }
     )
 }

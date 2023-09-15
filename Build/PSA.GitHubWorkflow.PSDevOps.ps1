@@ -1,11 +1,14 @@
 #requires -Module PSDevOps
 
-Import-BuildStep -ModuleName PSA
+Import-BuildStep -SourcePath (
+    Join-Path $PSScriptRoot 'GitHub'
+) -BuildSystem GitHubWorkflow
+
 Push-Location ($PSScriptRoot | Split-Path)
 
 $workflowPath = 
     Join-Path $pwd ".github" | 
-    Join-Path -ChildPath workflows | 
+    Join-Path -ChildPath workflows |
     Join-Path -ChildPath "BuildPSA.yml"
 
 if (-not (Test-Path $workflowPath)) {
