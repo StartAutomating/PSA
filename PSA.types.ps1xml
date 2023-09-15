@@ -430,6 +430,10 @@ $this | app.bsky.unspecced.getPopularFeedGenerators -Cache
         <Name>Likes</Name>
         <ReferencedMemberName>Like</ReferencedMemberName>
       </AliasProperty>
+      <AliasProperty>
+        <Name>Posts</Name>
+        <ReferencedMemberName>Post</ReferencedMemberName>
+      </AliasProperty>
       <ScriptProperty>
         <Name>Follower</Name>
         <GetScriptBlock>
@@ -452,6 +456,13 @@ $this | app.bsky.unspecced.getPopularFeedGenerators -Cache
         <Name>MarkdownDescription</Name>
         <GetScriptBlock>
                         $this.Description -replace "(?&lt;Link&gt;https?://.+?(?=\z|\s))",'[${Link}](${Link})'
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Post</Name>
+        <GetScriptBlock>
+                        $this | Get-BskyFeedAuthorFeed -Cache 
+
                     </GetScriptBlock>
       </ScriptProperty>
     </Members>
