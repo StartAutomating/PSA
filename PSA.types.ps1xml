@@ -422,6 +422,16 @@ $this | app.bsky.unspecced.getPopularFeedGenerators -Cache
         <Name>Actor</Name>
         <ReferencedMemberName>Handle</ReferencedMemberName>
       </AliasProperty>
+      <AliasProperty>
+        <Name>Likes</Name>
+        <ReferencedMemberName>Like</ReferencedMemberName>
+      </AliasProperty>
+      <ScriptProperty>
+        <Name>Like</Name>
+        <GetScriptBlock>
+                        $this | app.bsky.feed.getActorLikes -Cache 
+                    </GetScriptBlock>
+      </ScriptProperty>
       <ScriptProperty>
         <Name>MarkdownDescription</Name>
         <GetScriptBlock>
