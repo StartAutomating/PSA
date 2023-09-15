@@ -90,7 +90,7 @@ if ($foundModule -and (([Version]$foundModule.Version) -ge ([Version]$imported.V
                     }
                 }
             } | 
-            Remove-Item
+            Remove-Item -Recurse -Force
     }
 
     Write-Host "Module Files:"
