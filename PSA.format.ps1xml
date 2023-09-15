@@ -429,6 +429,27 @@
       </ListControl>
     </View>
     <View>
+      <Name>app.bsky.actor.searchActors</Name>
+      <ViewSelectedBy>
+        <TypeName>app.bsky.actor.searchActors</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>
+        $_.Actors
+    </ScriptBlock>
+                <EnumerateCollection />
+                <CustomControlName>app.bsky.actor.defs#profileView</CustomControlName>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
       <Name>app.bsky.actor.defs#profileView</Name>
       <ViewSelectedBy>
         <TypeName>app.bsky.actor.defs#profileView</TypeName>
