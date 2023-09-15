@@ -606,6 +606,16 @@ $this | com.atproto.sync.listRepos -Cache
     </Members>
   </Type>
   <Type>
+    <Name>app.bsky.graph.defs#postView</Name>
+    <Members>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.feed.defs#postView</Name>
+    <Members>
+    </Members>
+  </Type>
+  <Type>
     <Name>com.atproto.label.queryLabels</Name>
     <Members>
       <ScriptProperty>
