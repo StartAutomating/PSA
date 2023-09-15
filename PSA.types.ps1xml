@@ -427,6 +427,12 @@ $this | app.bsky.unspecced.getPopularFeedGenerators -Cache
         <ReferencedMemberName>Like</ReferencedMemberName>
       </AliasProperty>
       <ScriptProperty>
+        <Name>Follows</Name>
+        <GetScriptBlock>
+                        $this | app.bsky.graph.getFollows
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
         <Name>Like</Name>
         <GetScriptBlock>
                         $this | app.bsky.feed.getActorLikes -Cache 
