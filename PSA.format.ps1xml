@@ -482,6 +482,70 @@
       </CustomControl>
     </View>
     <View>
+      <Name>app.bsky.actor.getFollowers</Name>
+      <ViewSelectedBy>
+        <TypeName>app.bsky.actor.getFollowers</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.Actor </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+        $_ | Get-BlueSkyActorProfile -Cache
+    </ScriptBlock>
+                <CustomControlName>app.bsky.actor.link</CustomControlName>
+              </ExpressionBinding>
+              <NewLine />
+              <NewLine />
+              <ExpressionBinding>
+                <ScriptBlock>
+        $_.Actors
+    </ScriptBlock>
+                <EnumerateCollection />
+                <CustomControlName>app.bsky.actor.defs#profileView</CustomControlName>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>app.bsky.graph.getFollows</Name>
+      <ViewSelectedBy>
+        <TypeName>app.bsky.graph.getFollows</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.Actor </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+        $_ | Get-BlueSkyActorProfile -Cache
+    </ScriptBlock>
+                <CustomControlName>app.bsky.actor.link</CustomControlName>
+              </ExpressionBinding>
+              <NewLine />
+              <NewLine />
+              <ExpressionBinding>
+                <ScriptBlock>
+        $_.Follows
+    </ScriptBlock>
+                <EnumerateCollection />
+                <CustomControlName>app.bsky.actor.defs#profileView</CustomControlName>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
       <Name>app.bsky.graph.defs#postView</Name>
       <ViewSelectedBy>
         <TypeName>app.bsky.graph.defs#postView</TypeName>
