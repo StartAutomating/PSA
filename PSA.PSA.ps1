@@ -18,6 +18,19 @@ Get-BskyActorProfile -Actor $env:AT_PROTOCOL_HANDLE -Cache | Out-Host
 
 # There will be a variable, $GitHubEvent, that contains information about the event.
 
+# A fairly common scenario is to perform an annoucement whenever a PR is merged.
 
+$isMergeToMain = 
+    ($gitHubEvent.head_commit.message -match "Merge Pull Request #(?<PRNumber>\d+)") -and 
+    $gitHubEvent.ref -eq 'refs/heads/main'
 
-
+if ($isMergeToMain) {
+    $psaModule = Get-Module PSA
+    $FixedIntro  = "PSA : PSA version $($psaModule.Version) is out."
+    $RandomComponent = "Automate the At Protocol", "Automate your Announcements"
+    $fullMessage = "$FixedIntro $($RandomComponent | Get-Random) with PowerShell"
+    Send-AtProto -Text $fullMessage -WebCard @{
+        Url = "https://github.com/StartAutomating/PSA"
+    }
+    return
+}
