@@ -12,7 +12,7 @@ PSA is:
 * A PowerShell Module For Making Announcements
 * A Beautiful BlueSky Client for the CLI
 * An (Almost) Perfect PowerShell Wrapper for the At Protocol
-* A GitHub Action to Automate Annoucements
+* A GitHub Action to Automate Announcements
 
 ## Getting Started
 
