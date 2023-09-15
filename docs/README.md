@@ -130,7 +130,7 @@ Functions
 |[Disable-AtProtoAdminAccountInvites](Disable-AtProtoAdminAccountInvites.md)        |com.atproto.admin.disableAccountInvites    |
 |[Disable-AtProtoAdminInviteCodes](Disable-AtProtoAdminInviteCodes.md)              |com.atproto.admin.disableInviteCodes       |
 |[Enable-AtProtoAdminAccountInvites](Enable-AtProtoAdminAccountInvites.md)          |com.atproto.admin.enableAccountInvites     |
-|[Get-AtprotoAdminDefinition](Get-AtprotoAdminDefinition.md)                        |
+|[Get-AtProtoAdminDefinition](Get-AtProtoAdminDefinition.md)                        |
 |[Get-AtProtoAdminInviteCodes](Get-AtProtoAdminInviteCodes.md)                      |com.atproto.admin.getInviteCodes           |
 |[Get-AtProtoAdminModerationAction](Get-AtProtoAdminModerationAction.md)            |com.atproto.admin.getModerationAction      |
 |[Get-AtProtoAdminModerationActions](Get-AtProtoAdminModerationActions.md)          |com.atproto.admin.getModerationActions     |
@@ -138,15 +138,15 @@ Functions
 |[Get-AtProtoAdminModerationReports](Get-AtProtoAdminModerationReports.md)          |com.atproto.admin.getModerationReports     |
 |[Get-AtProtoAdminRecord](Get-AtProtoAdminRecord.md)                                |com.atproto.admin.getRecord                |
 |[Get-AtProtoAdminRepo](Get-AtProtoAdminRepo.md)                                    |com.atproto.admin.getRepo                  |
-|[Get-AtprotoLabelDefinition](Get-AtprotoLabelDefinition.md)                        |
-|[Get-AtprotoModerationDefinition](Get-AtprotoModerationDefinition.md)              |
+|[Get-AtProtoLabelDefinition](Get-AtProtoLabelDefinition.md)                        |
+|[Get-AtProtoModerationDefinition](Get-AtProtoModerationDefinition.md)              |
 |[Get-AtProtoRepo](Get-AtProtoRepo.md)                                              |com.atproto.repo.describeRepo              |
 |[Get-AtProtoRepoRecord](Get-AtProtoRepoRecord.md)                                  |com.atproto.repo.getRecord                 |
 |[Get-AtProtoRepoRecords](Get-AtProtoRepoRecords.md)                                |com.atproto.repo.listRecords               |
 |[Get-AtProtoServer](Get-AtProtoServer.md)                                          |com.atproto.server.describeServer          |
 |[Get-AtProtoServerAccountInviteCodes](Get-AtProtoServerAccountInviteCodes.md)      |com.atproto.server.getAccountInviteCodes   |
 |[Get-AtProtoServerAppPasswords](Get-AtProtoServerAppPasswords.md)                  |com.atproto.server.listAppPasswords        |
-|[Get-AtprotoServerDefinition](Get-AtprotoServerDefinition.md)                      |
+|[Get-AtProtoServerDefinition](Get-AtProtoServerDefinition.md)                      |
 |[Get-AtProtoServerSession](Get-AtProtoServerSession.md)                            |com.atproto.server.getSession              |
 |[Get-AtProtoSyncBlob](Get-AtProtoSyncBlob.md)                                      |com.atproto.sync.getBlob                   |
 |[Get-AtProtoSyncBlobs](Get-AtProtoSyncBlobs.md)                                    |com.atproto.sync.listBlobs                 |
@@ -247,7 +247,7 @@ Aliases
 |[Disable-AtProtoAdminAccountInvites](Disable-AtProtoAdminAccountInvites.md)        |
 |[Disable-AtProtoAdminInviteCodes](Disable-AtProtoAdminInviteCodes.md)              |
 |[Enable-AtProtoAdminAccountInvites](Enable-AtProtoAdminAccountInvites.md)          |
-|[Get-AtprotoAdminDefinition](Get-AtprotoAdminDefinition.md)                        |
+|[Get-AtProtoAdminDefinition](Get-AtProtoAdminDefinition.md)                        |
 |[Get-AtProtoAdminInviteCodes](Get-AtProtoAdminInviteCodes.md)                      |
 |[Get-AtProtoAdminModerationAction](Get-AtProtoAdminModerationAction.md)            |
 |[Get-AtProtoAdminModerationActions](Get-AtProtoAdminModerationActions.md)          |
@@ -255,15 +255,15 @@ Aliases
 |[Get-AtProtoAdminModerationReports](Get-AtProtoAdminModerationReports.md)          |
 |[Get-AtProtoAdminRecord](Get-AtProtoAdminRecord.md)                                |
 |[Get-AtProtoAdminRepo](Get-AtProtoAdminRepo.md)                                    |
-|[Get-AtprotoLabelDefinition](Get-AtprotoLabelDefinition.md)                        |
-|[Get-AtprotoModerationDefinition](Get-AtprotoModerationDefinition.md)              |
+|[Get-AtProtoLabelDefinition](Get-AtProtoLabelDefinition.md)                        |
+|[Get-AtProtoModerationDefinition](Get-AtProtoModerationDefinition.md)              |
 |[Get-AtProtoRepo](Get-AtProtoRepo.md)                                              |
 |[Get-AtProtoRepoRecord](Get-AtProtoRepoRecord.md)                                  |
 |[Get-AtProtoRepoRecords](Get-AtProtoRepoRecords.md)                                |
 |[Get-AtProtoServer](Get-AtProtoServer.md)                                          |
 |[Get-AtProtoServerAccountInviteCodes](Get-AtProtoServerAccountInviteCodes.md)      |
 |[Get-AtProtoServerAppPasswords](Get-AtProtoServerAppPasswords.md)                  |
-|[Get-AtprotoServerDefinition](Get-AtprotoServerDefinition.md)                      |
+|[Get-AtProtoServerDefinition](Get-AtProtoServerDefinition.md)                      |
 |[Get-AtProtoServerSession](Get-AtProtoServerSession.md)                            |
 |[Get-AtProtoSyncBlob](Get-AtProtoSyncBlob.md)                                      |
 |[Get-AtProtoSyncBlobs](Get-AtProtoSyncBlobs.md)                                    |
