@@ -51,6 +51,11 @@ It contains:
     </Members>
   </Type>
   <Type>
+    <Name>feed</Name>
+    <Members>
+    </Members>
+  </Type>
+  <Type>
     <Name>app.bsky.feed.getActorFeeds</Name>
     <Members>
       <ScriptProperty>
