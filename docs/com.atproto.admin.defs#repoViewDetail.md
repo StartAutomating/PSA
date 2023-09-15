@@ -1,4 +1,4 @@
-Get-AtprotoAdminDefinition
+Get-AtProtoAdminDefinition
 --------------------------
 
 
@@ -6,7 +6,7 @@ Get-AtprotoAdminDefinition
 
 ### Synopsis
 
-Get-AtprotoAdminDefinition 
+Get-AtProtoAdminDefinition 
 
 
 
@@ -54,5 +54,5 @@ syntaxItem
 ----------
 ```
 ```PowerShell
-{@{name=Get-AtprotoAdminDefinition; CommonParameters=False; parameter=System.Object[]}}
+{@{name=Get-AtProtoAdminDefinition; CommonParameters=False; parameter=System.Object[]}}
 ```
