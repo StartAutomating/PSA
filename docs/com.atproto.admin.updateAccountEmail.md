@@ -1,4 +1,4 @@
-Update-AtprotoAdminAccountEmail
+Update-AtProtoAdminAccountEmail
 -------------------------------
 
 
@@ -77,5 +77,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Update-AtprotoAdminAccountEmail [[-Account] <String>] [[-Email] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AtProtoAdminAccountEmail [[-Account] <String>] [[-Email] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
