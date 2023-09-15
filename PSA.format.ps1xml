@@ -1,6 +1,110 @@
 <?xml version="1.0" encoding="utf-16"?>
 <!-- Generated with EZOut 2.0.1: Install-Module EZOut or https://github.com/StartAutomating/EZOut -->
 <Configuration>
+  <Controls>
+    <Control>
+      <Name>app.bsky.feed.postView</Name>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <NewLine />
+              <ExpressionBinding>
+                <ItemSelectionCondition>
+                  <ScriptBlock> $_.Viewer.Repost </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+        $did, $collection, $key = $_.Viewer.Repost -replace "^at://" -split '/'
+        Get-BlueSkyActorProfile -Actor $did -Cache
+    </ScriptBlock>
+                <CustomControlName>app.bsky.actor.link</CustomControlName>
+              </ExpressionBinding>
+              <ExpressionBinding>
+                <ItemSelectionCondition>
+                  <ScriptBlock> $_.Viewer.Repost </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>        
+        "🗘"
+    </ScriptBlock>
+              </ExpressionBinding>
+              <ExpressionBinding>
+                <ItemSelectionCondition>
+                  <ScriptBlock> $_.Record.Reply.Parent.Uri </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+        $did, $collection, $key = $_.Record.Reply.Parent.Uri -replace "^at://" -split '/'
+                
+        Get-BskyActorProfile -Actor $did -Cache
+            
+    </ScriptBlock>
+                <CustomControlName>app.bsky.actor.link</CustomControlName>
+              </ExpressionBinding>
+              <ExpressionBinding>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.Record.Reply.Parent.Uri </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+        " 🗪 "
+    </ScriptBlock>
+              </ExpressionBinding>
+              <ExpressionBinding>
+                <ScriptBlock> $_.Author </ScriptBlock>
+                <CustomControlName>app.bsky.actor.link</CustomControlName>
+              </ExpressionBinding>
+              <NewLine />
+              <NewLine />
+              <ExpressionBinding>
+                <ItemSelectionCondition>
+                  <ScriptBlock> $_.embed.images </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+        @(foreach ($image in $_.embed.images) {
+            if ($psStyle.FormatHyperlink -and -not $env:GITHUB_WORKFLOW) {
+                $psStyle.FormatHyperlink("▭ $($image.alt)", $image.fullsize)
+            } else {
+                "$($image.alt)"
+            }
+        }) -join [Environment]::NewLine
+    </ScriptBlock>
+              </ExpressionBinding>
+              <ExpressionBinding>
+                <ScriptBlock>
+        $did, $feed, $rkey  =$_.uri -replace 'at://' -split '/'        
+        if ($PSStyle.FormatHyperlink -and -not $env:GITHUB_WORKFLOW) {
+            if ($_.Facets) {
+                $_.Record.Text
+            } else {                                
+                $postedBy = Get-BskyActorProfile -Actor $did -Cache
+                $PSStyle.FormatHyperlink($_.Record.Text,"https://bsky.app/profile/$($postedBy.handle)/$(@($feed -split '\.')[-1])/$rkey")
+            }
+        } else {
+            $_.Record.Text
+        }        
+    </ScriptBlock>
+              </ExpressionBinding>
+              <NewLine />
+              <ExpressionBinding>
+                <ItemSelectionCondition>
+                  <ScriptBlock> $_.embed.external.title -and $_.embed.external.uri </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+        @(
+            ''
+            if ((-not $env:GITHUB_WORKFLOW) -and $PSStyle.FormatHyperlink) {
+                $PSStyle.FormatHyperlink($_.embed.external.title, $_.embed.external.uri)
+            } else {
+                $_.embed.external.title
+            }
+            ''
+        ) -join [Environment]::NewLine
+    </ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </Control>
+  </Controls>
   <ViewDefinitions>
     <View>
       <Name>app.bsky.actor.getProfile</Name>
@@ -204,6 +308,25 @@
           </ListEntry>
         </ListEntries>
       </ListControl>
+    </View>
+    <View>
+      <Name>app.bsky.graph.defs#postView</Name>
+      <ViewSelectedBy>
+        <TypeName>app.bsky.graph.defs#postView</TypeName>
+        <TypeName>app.bsky.feed.defs#postView</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock> $_ </ScriptBlock>
+                <CustomControlName>app.bsky.feed.postView</CustomControlName>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
     </View>
     <View>
       <Name>com.atproto.server.createSession</Name>
