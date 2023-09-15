@@ -1,4 +1,4 @@
-Request-AtprotoServerAccountDelete
+Request-AtProtoServerAccountDelete
 ----------------------------------
 
 
@@ -51,5 +51,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Request-AtprotoServerAccountDelete [-WhatIf] [-Confirm] [<CommonParameters>]
+Request-AtProtoServerAccountDelete [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
