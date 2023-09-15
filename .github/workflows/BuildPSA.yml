@@ -595,4 +595,6 @@ jobs:
         uses: ./
         id: PSA
 env: 
+  AT_PROTOCOL_HANDLE: mrpowershell.bsky.social
+  AT_PROTOCOL_AT_PASSWORD: ${{ secrets.AT_PROTOCOL_APP_PASSWORD }}
   Exclude: '*.png;*.mp4;*.jpg;*.jpeg;*.gif;docs[/\]*;atProto[/\]*'
