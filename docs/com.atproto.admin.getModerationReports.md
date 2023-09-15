@@ -37,9 +37,9 @@ com.atproto.admin.getModerationReports
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |1       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |1       |true (ByPropertyName)|
 
 
 
@@ -48,9 +48,9 @@ com.atproto.admin.getModerationReports
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[PSObject]`|false   |2       |false        |
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[PSObject]`|false   |2       |true (ByPropertyName)|
 
 
 
@@ -63,9 +63,9 @@ Get all reports that were actioned by a specific moderator
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |3       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |3       |true (ByPropertyName)|
 
 
 
@@ -78,9 +78,9 @@ Filter reports made by one or more DIDs
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[PSObject]`|false   |4       |false        |
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[PSObject]`|false   |4       |true (ByPropertyName)|
 
 
 
@@ -89,9 +89,9 @@ Filter reports made by one or more DIDs
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Switch]`|false   |named   |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[Switch]`|false   |named   |true (ByPropertyName)|
 
 
 
@@ -100,37 +100,64 @@ Filter reports made by one or more DIDs
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |5       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |5       |true (ByPropertyName)|
 
 
 
 #### **Limit**
 
+A limit to the number of results returned.
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[PSObject]`|false   |6       |false        |
+
+
+
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[PSObject]`|false   |6       |true (ByPropertyName)|
 
 
 
 #### **Cursor**
 
+A cursor that can be used to get more results.
+
+Any command that accepts a -Cursor parameter returns a .Cursor property.
+
+You can provide this -Cursor to the same command with the same input to get more results.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |7       |false        |
+
+
+
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |7       |true (ByPropertyName)|
 
 
 
 #### **Reverse**
 
 Reverse the order of the returned records? when true, returns reports in chronological order
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[Switch]`|false   |named   |true (ByPropertyName)|
+
+
+
+#### **Cache**
+
+If set, will cache results for performance.
 
 
 
@@ -162,5 +189,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtProtoAdminModerationReports [[-Subject] <String>] [[-IgnoreSubjects] <PSObject>] [[-ActionedBy] <String>] [[-Reporters] <PSObject>] [-Resolved] [[-ActionType] <String>] [[-Limit] <PSObject>] [[-Cursor] <String>] [-Reverse] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtProtoAdminModerationReports [[-Subject] <String>] [[-IgnoreSubjects] <PSObject>] [[-ActionedBy] <String>] [[-Reporters] <PSObject>] [-Resolved] [[-ActionType] <String>] [[-Limit] <PSObject>] [[-Cursor] <String>] [-Reverse] [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
