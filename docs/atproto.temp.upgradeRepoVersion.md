@@ -1,4 +1,4 @@
-Update-AtprotoTempRepoVersion
+Update-AtProtoTempRepoVersion
 -----------------------------
 
 
@@ -77,5 +77,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Update-AtprotoTempRepoVersion [[-Did] <String>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AtProtoTempRepoVersion [[-Did] <String>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
