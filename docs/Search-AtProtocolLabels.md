@@ -41,9 +41,9 @@ List of AT URI patterns to match (boolean 'OR'). Each may be a prefix (ending wi
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[PSObject]`|true    |1       |false        |
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[PSObject]`|true    |1       |true (ByPropertyName)|
 
 
 
@@ -56,31 +56,58 @@ Optional list of label sources (DIDs) to filter on
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[PSObject]`|false   |2       |false        |
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[PSObject]`|false   |2       |true (ByPropertyName)|
 
 
 
 #### **Limit**
 
+A limit to the number of results returned.
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[PSObject]`|false   |3       |false        |
+
+
+
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[PSObject]`|false   |3       |true (ByPropertyName)|
 
 
 
 #### **Cursor**
+
+A cursor that can be used to get more results.
+
+Any command that accepts a -Cursor parameter returns a .Cursor property.
+
+You can provide this -Cursor to the same command with the same input to get more results.
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |4       |true (ByPropertyName)|
+
+
+
+#### **Cache**
+
+If set, will cache results for performance.
+
+
 
 
 
 
 |Type      |Required|Position|PipelineInput|
 |----------|--------|--------|-------------|
-|`[String]`|false   |4       |false        |
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -103,5 +130,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Search-AtProtoLabels [-UriPatterns] <PSObject> [[-Sources] <PSObject>] [[-Limit] <PSObject>] [[-Cursor] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Search-AtProtoLabels [-UriPatterns] <PSObject> [[-Sources] <PSObject>] [[-Limit] <PSObject>] [[-Cursor] <String>] [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
