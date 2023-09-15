@@ -1,4 +1,4 @@
-Request-AtprotoSyncCrawl
+Request-AtProtoSyncCrawl
 ------------------------
 
 
@@ -66,5 +66,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Request-AtprotoSyncCrawl [[-Hostname] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Request-AtProtoSyncCrawl [[-Hostname] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
