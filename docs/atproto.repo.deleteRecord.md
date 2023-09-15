@@ -1,4 +1,4 @@
-Remove-AtprotoRepoRecord
+Remove-AtProtoRepoRecord
 ------------------------
 
 
@@ -126,5 +126,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Remove-AtprotoRepoRecord [[-Repo] <String>] [[-Collection] <String>] [[-Rkey] <String>] [[-SwapRecord] <String>] [[-SwapCommit] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AtProtoRepoRecord [[-Repo] <String>] [[-Collection] <String>] [[-Rkey] <String>] [[-SwapRecord] <String>] [[-SwapCommit] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
