@@ -60,15 +60,17 @@ if ($foundModule -and (([Version]$foundModule.Version) -ge ([Version]$imported.V
     Write-Host "Staging Directory: $ModuleTempPath"
 
     $subModulePaths = if (Test-Path ".\.gitmodules") {
-        foreach ($match in [Regex]::Matches((Get-Contet ".\.gitmodules" -Raw), "path = (?p>.+)$", "Multiline,IgnoreCase")) {
-            (Get-Item -Path $match.Groups["p"].Value).FullName
-        }
-    }
+        "(?>$(@(foreach ($match in [Regex]::Matches((Get-Content ".\.gitmodules" -Raw), "path = (?<p>.+)$", "Multiline,IgnoreCase")) {
+            [Regex]::Escape(((Get-Item -Path ".\$($match.Groups["p"].Value.Trim())").FullName))
+        }) -join '|'))"
+    } else { '' }
                             
     $imported | Split-Path | 
         Get-ChildItem -Force | 
         Where-Object Name -NE $rn |
-        Where-Object FullName -NotLike "$($subModulePaths)*" |
+        Where-Object { 
+            (-not $subModulePaths) -or ($_.FullName -notmatch "$($subModulePaths)") 
+        }|
         Copy-Item -Destination $moduleTempPath -Recurse
     
     $moduleGitPath = Join-Path $moduleTempPath '.git'
