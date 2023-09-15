@@ -41,9 +41,9 @@ Hostname of the service that is notifying of update.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |1       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |1       |true (ByPropertyName)|
 
 
 
