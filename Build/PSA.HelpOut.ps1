@@ -11,6 +11,8 @@ if ($PipeScriptLoaded) {
     "::error:: PSA not loaded" |Out-Host
 }
 
-Save-MarkdownHelp -Module PSA -PassThru -ExcludeFile '/[\\/]atProto/'
+$savedFiles = Save-MarkdownHelp -Module PSA -PassThru 
+$savedFiles | Where-Object  {$_.FullName -notmatch '[\\/]atProto[\\/]'}
+$savedFiles | Where-Object  {$_.FullName -match '[\\/]atProto[\\/]'} | Remove-Item
 
 Pop-Location
