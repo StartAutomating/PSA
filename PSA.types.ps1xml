@@ -26,13 +26,7 @@ $this.email -replace '(?&lt;u&gt;.{3}).+?@(?&lt;d&gt;.{3}).+?(?&lt;s&gt;\..+)$',
     Gets the profile of the logged-in user.
 #&gt;
 
-if (-not $this.'.Profile') {
-    $this |
-        Add-Member NoteProperty '.Profile' (Get-BlueSkyActorProfile -Actor $this.handle) -Force
-} 
-
-$this.'.Profile'
-
+Get-BlueSkyActorProfile -Actor $this.handle -Cache
                     </GetScriptBlock>
       </ScriptProperty>
       <NoteProperty>
