@@ -5,9 +5,4 @@
     Gets the profile of the logged-in user.
 #>
 
-if (-not $this.'.Profile') {
-    $this |
-        Add-Member NoteProperty '.Profile' (Get-BlueSkyActorProfile -Actor $this.handle) -Force
-} 
-
-$this.'.Profile'
+Get-BlueSkyActorProfile -Actor $this.handle -Cache
