@@ -41,9 +41,9 @@ The handle or DID of the repo.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|true    |1       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|true    |1       |true (ByPropertyName)|
 
 
 
@@ -56,9 +56,9 @@ The NSID of the record type.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|true    |2       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|true    |2       |true (ByPropertyName)|
 
 
 
@@ -71,20 +71,28 @@ The number of records to return.
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[PSObject]`|false   |3       |false        |
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[PSObject]`|false   |3       |true (ByPropertyName)|
 
 
 
 #### **Cursor**
 
+A cursor that can be used to get more results.
+
+Any command that accepts a -Cursor parameter returns a .Cursor property.
+
+You can provide this -Cursor to the same command with the same input to get more results.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |4       |false        |
+
+
+
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |4       |true (ByPropertyName)|
 
 
 
@@ -97,9 +105,9 @@ DEPRECATED: The lowest sort-ordered rkey to start from (exclusive)
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |5       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |5       |true (ByPropertyName)|
 
 
 
@@ -112,15 +120,30 @@ DEPRECATED: The highest sort-ordered rkey to stop at (exclusive)
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |6       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |6       |true (ByPropertyName)|
 
 
 
 #### **Reverse**
 
 Reverse the order of the returned records?
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[Switch]`|false   |named   |true (ByPropertyName)|
+
+
+
+#### **Cache**
+
+If set, will cache results for performance.
 
 
 
@@ -152,5 +175,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtProtoRepoRecords [-Repo] <String> [-Collection] <String> [[-Limit] <PSObject>] [[-Cursor] <String>] [[-RkeyStart] <String>] [[-RkeyEnd] <String>] [-Reverse] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtProtoRepoRecords [-Repo] <String> [-Collection] <String> [[-Limit] <PSObject>] [[-Cursor] <String>] [[-RkeyStart] <String>] [[-RkeyEnd] <String>] [-Reverse] [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
