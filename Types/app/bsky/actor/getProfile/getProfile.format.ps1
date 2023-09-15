@@ -1,14 +1,5 @@
 Write-FormatView -TypeName app.bsky.actor.getProfile -Action {
-    Write-FormatViewExpression -Style 'Foreground.Blue' -ScriptBlock {
-        "$($_.DisplayName)"
-    }
-    Write-FormatViewExpression -Style 'Foreground.Cyan', 'Bold' -ScriptBlock {
-        if ($psStyle.FormatHyperlink -and -not $env:GITHUB_WORKFLOW) {
-            $psStyle.FormatHyperlink(" @$($_.Handle) ","https://bsky.app/profile/$($_.handle)")
-        } else {
-            " @$($_.Handle) "
-        }        
-    }
+    Write-FormatViewExpression -ControlName app.bsky.actor.link -ScriptBlock { $_ }
     
     Write-FormatViewExpression -Newline
 
@@ -51,5 +42,3 @@ Write-FormatView -TypeName app.bsky.actor.getProfile -Action {
 Write-FormatView -TypeName app.bsky.actor.getProfile -Property Handle, DisplayName, Description -Wrap
 
 Write-FormatView -TypeName app.bsky.actor.getProfile -Property Handle, Did, DisplayName, Description, Avatar, FollowsCount, FollowersCount, PostsCount -AsList
-
-
