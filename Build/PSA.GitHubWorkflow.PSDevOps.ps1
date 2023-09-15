@@ -23,7 +23,7 @@ New-GitHubWorkflow -Name "Build PSA" -On Push,
     BuildPSA -OutputPath $workflowPath -Env @{
         "Exclude" = "*.png;*.mp4;*.jpg;*.jpeg;*.gif;docs[/\]*;atProto[/\]*"
         "AT_PROTOCOL_HANDLE" = "mrpowershell.bsky.social"
-        "AT_PROTOCOL_AT_PASSWORD" = '${{ secrets.AT_PROTOCOL_APP_PASSWORD }}'
+        "AT_PROTOCOL_APP_PASSWORD" = '${{ secrets.AT_PROTOCOL_APP_PASSWORD }}'
     }
 
 Pop-Location
