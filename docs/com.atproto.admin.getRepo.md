@@ -1,4 +1,4 @@
-Get-AtprotoAdminRepo
+Get-AtProtoAdminRepo
 --------------------
 
 
@@ -81,5 +81,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtprotoAdminRepo [-Did] <String> [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtProtoAdminRepo [-Did] <String> [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
