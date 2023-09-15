@@ -21,7 +21,7 @@ New-GitHubWorkflow -Name "Build PSA" -On Push,
     TestPowerShellOnLinux, 
     TagReleaseAndPublish, 
     BuildPSA -OutputPath $workflowPath -Env @{
-        "Exclude" = "*.png;*.mp4;*.jpg;*.jpeg;*.gif;*docs[/\]*;*atProto[/\]*"
+        "Exclude" = "*.png;*.mp4;*.jpg;*.jpeg;*.gif;*docs[/\]*;"
         "AT_PROTOCOL_HANDLE" = "mrpowershell.bsky.social"
         "AT_PROTOCOL_APP_PASSWORD" = '${{ secrets.AT_PROTOCOL_APP_PASSWORD }}'
     }

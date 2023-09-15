@@ -477,7 +477,7 @@ jobs:
           $ModulePath,
           
           [string[]]
-          $Exclude = @('*.png', '*.mp4', '*.jpg','*.jpeg', '*.gif', 'docs[/\]*')
+          $Exclude = @('*.png', '*.mp4', '*.jpg','*.jpeg', '*.gif', '*[\/]docs[/\]*')
           )
           
           $gitHubEvent = if ($env:GITHUB_EVENT_PATH) {
@@ -485,7 +485,7 @@ jobs:
           } else { $null }
           
           if (-not $Exclude) {
-              $Exclude = @('*.png', '*.mp4', '*.jpg','*.jpeg', '*.gif','docs[/\]*')
+              $Exclude = @('*.png', '*.mp4', '*.jpg','*.jpeg', '*.gif','*[\/]docs[/\]*')
           }
           
           
@@ -532,10 +532,17 @@ jobs:
               New-Item -ItemType Directory -Path $moduleTempPath -Force | Out-Host
                               
               Write-Host "Staging Directory: $ModuleTempPath"
+          
+              $subModulePaths = if (Test-Path ".\.gitmodules") {
+                  foreach ($match in [Regex]::Matches((Get-Contet ".\.gitmodules" -Raw), "path = (?p>.+)$", "Multiline,IgnoreCase")) {
+                      (Get-Item -Path $match.Groups["p"].Value).FullName
+                  }
+              }
                                       
               $imported | Split-Path | 
                   Get-ChildItem -Force | 
                   Where-Object Name -NE $rn |
+                  Where-Object FullName -NotLike "$($subModulePaths)*" |
                   Copy-Item -Destination $moduleTempPath -Recurse
               
               $moduleGitPath = Join-Path $moduleTempPath '.git'
@@ -597,4 +604,4 @@ jobs:
 env: 
   AT_PROTOCOL_APP_PASSWORD: ${{ secrets.AT_PROTOCOL_APP_PASSWORD }}
   AT_PROTOCOL_HANDLE: mrpowershell.bsky.social
-  Exclude: '*.png;*.mp4;*.jpg;*.jpeg;*.gif;*docs[/\]*;*atProto[/\]*'
+  Exclude: '*.png;*.mp4;*.jpg;*.jpeg;*.gif;*docs[/\]*;'
