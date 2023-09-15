@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="utf-16"?>
+<!-- Generated with EZOut 2.0.1: Install-Module EZOut or https://github.com/StartAutomating/EZOut -->
+<Configuration>
+  <Controls>
+    <Control>
+      <Name>app.bsky.actor.link</Name>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>if ($psStyle) {
+   @(foreach ($styleProp in 'Foreground.Magenta','Bold') {
+
+        if ($styleProp -match '^\$') {
+            $ExecutionContext.SessionState.InvokeCommand.InvokeScript($styleProp)
+        }
+        elseif ($styleProp -match '\.') {
+            $targetObject = $psStyle
+            foreach ($dotProperty in $styleProp -split '(?&lt;!\.)\.') {
+                if ($targetObject.Item -is [Management.Automation.PSMethodInfo] -or 
+                    $targetObject -is [Collections.IDictionary]) {
+                    $targetObject = $targetObject[$dotProperty]
+                } else {
+                    $targetObject = $targetObject.$dotProperty
+                }
+            }
+            if ($targetObject) {
+                $targetObject
+            }
+        }
+        else {
+            $psStyle.$styleProp
+        }    
+
+   }) -ne '' -join ''
+}</ScriptBlock>
+              </ExpressionBinding>
+              <ExpressionBinding>
+                <ScriptBlock>
+        if ($psStyle.FormatHyperlink -and -not $env:GITHUB_WORKFLOW) {
+            $psStyle.FormatHyperlink("$($_.DisplayName)","https://bsky.app/profile/$($_.handle)")
+        } else {
+            "$($_.DisplayName)"
+        }
+    </ScriptBlock>
+              </ExpressionBinding>
+              <ExpressionBinding>
+                <ScriptBlock>
+                    if ($PSStyle) {
+                        $PSStyle.Reset
+                    }
+                </ScriptBlock>
+              </ExpressionBinding>
+              <ExpressionBinding>
+                <ScriptBlock>if ($psStyle) {
+   @(foreach ($styleProp in 'Foreground.Cyan','Bold') {
+
+        if ($styleProp -match '^\$') {
+            $ExecutionContext.SessionState.InvokeCommand.InvokeScript($styleProp)
+        }
+        elseif ($styleProp -match '\.') {
+            $targetObject = $psStyle
+            foreach ($dotProperty in $styleProp -split '(?&lt;!\.)\.') {
+                if ($targetObject.Item -is [Management.Automation.PSMethodInfo] -or 
+                    $targetObject -is [Collections.IDictionary]) {
+                    $targetObject = $targetObject[$dotProperty]
+                } else {
+                    $targetObject = $targetObject.$dotProperty
+                }
+            }
+            if ($targetObject) {
+                $targetObject
+            }
+        }
+        else {
+            $psStyle.$styleProp
+        }    
+
+   }) -ne '' -join ''
+}</ScriptBlock>
+              </ExpressionBinding>
+              <ExpressionBinding>
+                <ScriptBlock>
+        if ($psStyle.FormatHyperlink -and -not $env:GITHUB_WORKFLOW) {
+            $psStyle.FormatHyperlink(" @$($_.Handle) ","https://bsky.app/profile/$($_.handle)")
+        } else {
+            " @$($_.Handle) "
+        }        
+    </ScriptBlock>
+              </ExpressionBinding>
+              <ExpressionBinding>
+                <ScriptBlock>
+                    if ($PSStyle) {
+                        $PSStyle.Reset
+                    }
+                </ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </Control>
+    <Control>
+      <Name>app.bsky.actor.defs#profileView</Name>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock> $_ </ScriptBlock>
+                <CustomControlName>app.bsky.actor.link</CustomControlName>
+              </ExpressionBinding>
+              <NewLine />
+              <ExpressionBinding>
+                <PropertyName>Description</PropertyName>
+              </ExpressionBinding>
+              <NewLine />
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </Control>
+    <Control>
+      <Name>app.bsky.feed.postView</Name>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <NewLine />
+              <ExpressionBinding>
+                <ItemSelectionCondition>
+                  <ScriptBlock> $_.Viewer.Repost </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+        $did, $collection, $key = $_.Viewer.Repost -replace "^at://" -split '/'
+        Get-BlueSkyActorProfile -Actor $did -Cache
+    </ScriptBlock>
+                <CustomControlName>app.bsky.actor.link</CustomControlName>
+              </ExpressionBinding>
+              <ExpressionBinding>
+                <ItemSelectionCondition>
+                  <ScriptBlock> $_.Viewer.Repost </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>        
+        "🗘"
+    </ScriptBlock>
+              </ExpressionBinding>
+              <ExpressionBinding>
+                <ItemSelectionCondition>
+                  <ScriptBlock> $_.Record.Reply.Parent.Uri </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+        $did, $collection, $key = $_.Record.Reply.Parent.Uri -replace "^at://" -split '/'
+                
+        Get-BskyActorProfile -Actor $did -Cache
+            
+    </ScriptBlock>
+                <CustomControlName>app.bsky.actor.link</CustomControlName>
+              </ExpressionBinding>
+              <ExpressionBinding>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.Record.Reply.Parent.Uri </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+        " 🗪 "
+    </ScriptBlock>
+              </ExpressionBinding>
+              <ExpressionBinding>
+                <ScriptBlock> $_.Author </ScriptBlock>
+                <CustomControlName>app.bsky.actor.link</CustomControlName>
+              </ExpressionBinding>
+              <NewLine />
+              <NewLine />
+              <ExpressionBinding>
+                <ItemSelectionCondition>
+                  <ScriptBlock> $_.embed.images </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+        @(foreach ($image in $_.embed.images) {
+            if ($psStyle.FormatHyperlink -and -not $env:GITHUB_WORKFLOW) {
+                $psStyle.FormatHyperlink("▭ $($image.alt)", $image.fullsize)
+            } else {
+                "$($image.alt)"
+            }
+        }) -join [Environment]::NewLine
+    </ScriptBlock>
+              </ExpressionBinding>
+              <ExpressionBinding>
+                <ScriptBlock>
+        $did, $feed, $rkey  =$_.uri -replace 'at://' -split '/'        
+        if ($PSStyle.FormatHyperlink -and -not $env:GITHUB_WORKFLOW) {
+            if ($_.Facets) {
+                $_.Record.Text
+            } else {                                
+                $postedBy = Get-BskyActorProfile -Actor $did -Cache
+                $PSStyle.FormatHyperlink($_.Record.Text,"https://bsky.app/profile/$($postedBy.handle)/$(@($feed -split '\.')[-1])/$rkey")
+            }
+        } else {
+            $_.Record.Text
+        }        
+    </ScriptBlock>
+              </ExpressionBinding>
+              <NewLine />
+              <ExpressionBinding>
+                <ItemSelectionCondition>
+                  <ScriptBlock> $_.embed.external.title -and $_.embed.external.uri </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+        @(
+            ''
+            if ((-not $env:GITHUB_WORKFLOW) -and $PSStyle.FormatHyperlink) {
+                $PSStyle.FormatHyperlink($_.embed.external.title, $_.embed.external.uri)
+            } else {
+                $_.embed.external.title
+            }
+            ''
+        ) -join [Environment]::NewLine
+    </ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </Control>
+  </Controls>
+  <ViewDefinitions>
+    <View>
+      <Name>app.bsky.actor.getProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>app.bsky.actor.getProfile</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock> $_ </ScriptBlock>
+                <CustomControlName>app.bsky.actor.link</CustomControlName>
+              </ExpressionBinding>
+              <NewLine />
+              <ExpressionBinding>
+                <ScriptBlock>
+        @(
+            if ($psStyle.FormatHyperlink -and -not $env:GITHUB_WORKFLOW) {
+                $psStyle.FormatHyperlink("$($_.FollowersCount) followers","https://bsky.app/profile/$($_.handle)/followers")
+            } else {
+                "$($_.FollowersCount) followers"
+            }
+            if ($psStyle.FormatHyperlink -and -not $env:GITHUB_WORKFLOW) {
+                $psStyle.FormatHyperlink("$($_.FollowsCount) follows","https://bsky.app/profile/$($_.handle)/follows")
+            } else {
+                "$($_.FollowersCount) follows"
+            }
+            if ($psStyle.FormatHyperlink -and -not $env:GITHUB_WORKFLOW) {
+                $psStyle.FormatHyperlink("$($_.PostsCount) posts","https://bsky.app/profile/$($_.handle)")
+            } else {
+                "$($_.PostsCount) posts"
+            }
+            
+        ) -join ' ⋇ '
+    </ScriptBlock>
+              </ExpressionBinding>
+              <NewLine />
+              <NewLine />
+              <ExpressionBinding>
+                <ScriptBlock>
+        if ($ExecutionContext.SessionState.InvokeCommand.GetCommand('Show-Markdown', 'Cmdlet')) {
+            # This lets links from your profile work in the terminal!
+            Show-Markdown -InputObject $_.MarkdownDescription 
+        } else {
+            $_.Description
+        }        
+    </ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>app.bsky.actor.getProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>app.bsky.actor.getProfile</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+          </TableColumnHeader>
+          <TableColumnHeader>
+          </TableColumnHeader>
+          <TableColumnHeader>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <Wrap />
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Handle</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>app.bsky.actor.getProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>app.bsky.actor.getProfile</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>Handle</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Did</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>DisplayName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Description</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Avatar</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>FollowsCount</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>FollowersCount</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>PostsCount</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>app.bsky.actor.searchActors</Name>
+      <ViewSelectedBy>
+        <TypeName>app.bsky.actor.searchActors</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>
+        $_.Actors
+    </ScriptBlock>
+                <EnumerateCollection />
+                <CustomControlName>app.bsky.actor.defs#profileView</CustomControlName>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>app.bsky.actor.defs#profileView</Name>
+      <ViewSelectedBy>
+        <TypeName>app.bsky.actor.defs#profileView</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock> $_ </ScriptBlock>
+                <CustomControlName>app.bsky.actor.defs#profileView</CustomControlName>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>app.bsky.actor.searchActors</Name>
+      <ViewSelectedBy>
+        <TypeName>app.bsky.actor.searchActors</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>
+        $_.Actors
+    </ScriptBlock>
+                <EnumerateCollection />
+                <CustomControlName>app.bsky.actor.defs#profileView</CustomControlName>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>app.bsky.feed.getAuthorFeed</Name>
+      <ViewSelectedBy>
+        <TypeName>app.bsky.feed.getAuthorFeed</TypeName>
+        <TypeName>app.bsky.feed.getActorLikes</TypeName>
+        <TypeName>app.bsky.feed.getTimeline</TypeName>
+        <TypeName>app.bsky.unspecced.getPopular</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.Actor </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+        $_ | Get-BlueSkyActorProfile -Cache
+    </ScriptBlock>
+                <CustomControlName>app.bsky.actor.link</CustomControlName>
+              </ExpressionBinding>
+              <NewLine />
+              <NewLine />
+              <ExpressionBinding>
+                <ScriptBlock>
+        $_.Feed.Post
+    </ScriptBlock>
+                <EnumerateCollection />
+                <CustomControlName>app.bsky.feed.postView</CustomControlName>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>app.bsky.actor.getFollowers</Name>
+      <ViewSelectedBy>
+        <TypeName>app.bsky.actor.getFollowers</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.Actor </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+        $_ | Get-BlueSkyActorProfile -Cache
+    </ScriptBlock>
+                <CustomControlName>app.bsky.actor.link</CustomControlName>
+              </ExpressionBinding>
+              <NewLine />
+              <NewLine />
+              <ExpressionBinding>
+                <ScriptBlock>
+        $_.Actors
+    </ScriptBlock>
+                <EnumerateCollection />
+                <CustomControlName>app.bsky.actor.defs#profileView</CustomControlName>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>app.bsky.graph.getFollows</Name>
+      <ViewSelectedBy>
+        <TypeName>app.bsky.graph.getFollows</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.Actor </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+        $_ | Get-BlueSkyActorProfile -Cache
+    </ScriptBlock>
+                <CustomControlName>app.bsky.actor.link</CustomControlName>
+              </ExpressionBinding>
+              <NewLine />
+              <NewLine />
+              <ExpressionBinding>
+                <ScriptBlock>
+        $_.Follows
+    </ScriptBlock>
+                <EnumerateCollection />
+                <CustomControlName>app.bsky.actor.defs#profileView</CustomControlName>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>app.bsky.graph.defs#postView</Name>
+      <ViewSelectedBy>
+        <TypeName>app.bsky.graph.defs#postView</TypeName>
+        <TypeName>app.bsky.feed.defs#postView</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock> $_ </ScriptBlock>
+                <CustomControlName>app.bsky.feed.postView</CustomControlName>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>com.atproto.server.createSession</Name>
+      <ViewSelectedBy>
+        <TypeName>com.atproto.server.createSession</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>email</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>handle</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+        $_.MaskedEmail
+    </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>did</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>com.atproto.server.createSession</Name>
+      <ViewSelectedBy>
+        <TypeName>com.atproto.server.createSession</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>handle</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>email</Label>
+                <ScriptBlock>
+        $_.MaskedEmail
+    </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <PropertyName>did</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>JWT</Name>
+      <ViewSelectedBy>
+        <TypeName>com.atproto.server.createSession</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+          </TableColumnHeader>
+          <TableColumnHeader>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>accessJWT</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>refreshJWT</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>JWT</Name>
+      <ViewSelectedBy>
+        <TypeName>com.atproto.server.createSession</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>accessJWT</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>refreshJWT</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

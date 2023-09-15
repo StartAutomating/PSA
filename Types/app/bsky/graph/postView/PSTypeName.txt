@@ -1,0 +1,2 @@
+app.bsky.graph.defs#postView
+app.bsky.feed.defs#postView

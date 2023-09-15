@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="utf-16"?>
+<!-- Generated with EZOut 2.0.1: Install-Module EZOut or https://github.com/StartAutomating/EZOut -->
+<Types>
+  <Type>
+    <Name>com.atproto.server.createSession</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>MaskedEmail</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Masks an email
+.DESCRIPTION
+    Masks an email, displaying only the first 3 letters of the address and domain.
+#&gt;
+$this.email -replace '(?&lt;u&gt;.{3}).+?@(?&lt;d&gt;.{3}).+?(?&lt;s&gt;\..+)$','${u}***@${d}***${s}'
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Profile</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets the profile attached to a session
+.DESCRIPTION
+    Gets the profile of the logged-in user.
+#&gt;
+
+Get-BlueSkyActorProfile -Actor $this.handle -Cache
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <NoteProperty>
+        <Name>README</Name>
+        <Value>
+The `com.atproto.server.createSession` object is a connection to the At Protocol.
+
+It contains:
+
+* The .Handle of the actor
+* The .Email of the actor
+* The .DID of the actor
+* An .AccessJWT (JavaScript Web Token)
+* A .RefreshJWT (JavaScript Web Token)</Value>
+      </NoteProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>feed</Name>
+    <Members>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.feed.getActorFeeds</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.feed.getActorFeeds -Cache.
+#&gt;
+$this | app.bsky.feed.getActorFeeds -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.feed.getActorLikes</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.feed.getActorLikes -Cache.
+#&gt;
+$this | app.bsky.feed.getActorLikes -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.feed.getAuthorFeed</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.feed.getAuthorFeed -Cache.
+#&gt;
+$this | app.bsky.feed.getAuthorFeed -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.graph.getBlocks</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.graph.getBlocks -Cache.
+#&gt;
+$this | app.bsky.graph.getBlocks -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.feed.getFeed</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.feed.getFeed -Cache.
+#&gt;
+$this | app.bsky.feed.getFeed -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.feed.getFeedSkeleton</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.feed.getFeedSkeleton -Cache.
+#&gt;
+$this | app.bsky.feed.getFeedSkeleton -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.graph.getFollowers</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.graph.getFollowers -Cache.
+#&gt;
+$this | app.bsky.graph.getFollowers -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.graph.getFollows</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.graph.getFollows -Cache.
+#&gt;
+$this | app.bsky.graph.getFollows -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>com.atproto.admin.getInviteCodes</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of com.atproto.admin.getInviteCodes -Cache.
+#&gt;
+$this | com.atproto.admin.getInviteCodes -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.feed.getLikes</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.feed.getLikes -Cache.
+#&gt;
+$this | app.bsky.feed.getLikes -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.graph.getList</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.graph.getList -Cache.
+#&gt;
+$this | app.bsky.graph.getList -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.graph.getListMutes</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.graph.getListMutes -Cache.
+#&gt;
+$this | app.bsky.graph.getListMutes -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.graph.getLists</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.graph.getLists -Cache.
+#&gt;
+$this | app.bsky.graph.getLists -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>com.atproto.admin.getModerationActions</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of com.atproto.admin.getModerationActions -Cache.
+#&gt;
+$this | com.atproto.admin.getModerationActions -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>com.atproto.admin.getModerationReports</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of com.atproto.admin.getModerationReports -Cache.
+#&gt;
+$this | com.atproto.admin.getModerationReports -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.graph.getMutes</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.graph.getMutes -Cache.
+#&gt;
+$this | app.bsky.graph.getMutes -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.unspecced.getPopular</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.unspecced.getPopular -Cache.
+#&gt;
+$this | app.bsky.unspecced.getPopular -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.unspecced.getPopularFeedGenerators</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.unspecced.getPopularFeedGenerators -Cache.
+#&gt;
+$this | app.bsky.unspecced.getPopularFeedGenerators -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.actor.getProfile</Name>
+    <Members>
+      <AliasProperty>
+        <Name>Actor</Name>
+        <ReferencedMemberName>Handle</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>Followers</Name>
+        <ReferencedMemberName>Follower</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>Likes</Name>
+        <ReferencedMemberName>Like</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>Posts</Name>
+        <ReferencedMemberName>Post</ReferencedMemberName>
+      </AliasProperty>
+      <ScriptMethod>
+        <Name>Follow</Name>
+        <Script>
+                        &lt;#
+.SYNOPSIS
+    Follow
+.DESCRIPTION
+    Follows this profile.
+#&gt;
+param()
+
+
+$myBlueSkySession = Get-AtprotoServerSession
+
+if (-not $myBlueSkySession) { return }
+if (-not $this.did) { return }
+
+Add-AtprotoRepoRecord -Repo $myBlueSkySession.did -Collection 'app.bsky.graph.follow' -Record ([PSCustomObject][Ordered]@{
+    '$type' = 'app.bsky.graph.follow'
+    createdAt = [DateTime]::Now.ToString('o')
+    subject=$this.did
+})
+
+                    </Script>
+      </ScriptMethod>
+      <ScriptProperty>
+        <Name>Follower</Name>
+        <GetScriptBlock>
+                        $this | app.bsky.graph.getFollowers
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Follows</Name>
+        <GetScriptBlock>
+                        $this | app.bsky.graph.getFollows
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Like</Name>
+        <GetScriptBlock>
+                        $this | app.bsky.feed.getActorLikes -Cache 
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>MarkdownDescription</Name>
+        <GetScriptBlock>
+                        $this.Description -replace "(?&lt;Link&gt;https?://.+?(?=\z|\s))",'[${Link}](${Link})'
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Post</Name>
+        <GetScriptBlock>
+                        $this | Get-BskyFeedAuthorFeed -Cache 
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.feed.getRepostedBy</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.feed.getRepostedBy -Cache.
+#&gt;
+$this | app.bsky.feed.getRepostedBy -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.feed.getSuggestedFeeds</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.feed.getSuggestedFeeds -Cache.
+#&gt;
+$this | app.bsky.feed.getSuggestedFeeds -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.actor.getSuggestions</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.actor.getSuggestions -Cache.
+#&gt;
+$this | app.bsky.actor.getSuggestions -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.feed.getTimeline</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.feed.getTimeline -Cache.
+#&gt;
+$this | app.bsky.feed.getTimeline -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.unspecced.getTimelineSkeleton</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.unspecced.getTimelineSkeleton -Cache.
+#&gt;
+$this | app.bsky.unspecced.getTimelineSkeleton -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>com.atproto.sync.listBlobs</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of com.atproto.sync.listBlobs -Cache.
+#&gt;
+$this | com.atproto.sync.listBlobs -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.notification.listNotifications</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.notification.listNotifications -Cache.
+#&gt;
+$this | app.bsky.notification.listNotifications -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>com.atproto.repo.listRecords</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of com.atproto.repo.listRecords -Cache.
+#&gt;
+$this | com.atproto.repo.listRecords -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>com.atproto.sync.listRepos</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of com.atproto.sync.listRepos -Cache.
+#&gt;
+$this | com.atproto.sync.listRepos -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.graph.defs#postView</Name>
+    <Members>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.feed.defs#postView</Name>
+    <Members>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.actor.defs#profileView</Name>
+    <Members>
+      <ScriptMethod>
+        <Name>Follow</Name>
+        <Script>
+                        param()
+
+(Get-BskyActorProfile -Cache -Actor $this.did).Follow()
+
+
+                    </Script>
+      </ScriptMethod>
+    </Members>
+  </Type>
+  <Type>
+    <Name>com.atproto.label.queryLabels</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of com.atproto.label.queryLabels -Cache.
+#&gt;
+$this | com.atproto.label.queryLabels -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.actor.searchActors</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.actor.searchActors -Cache.
+#&gt;
+$this | app.bsky.actor.searchActors -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>com.atproto.admin.searchRepos</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of com.atproto.admin.searchRepos -Cache.
+#&gt;
+$this | com.atproto.admin.searchRepos -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>com.atproto.label.subscribeLabels</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of com.atproto.label.subscribeLabels.
+#&gt;
+$this | com.atproto.label.subscribeLabels
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>com.atproto.sync.subscribeRepos</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of com.atproto.sync.subscribeRepos.
+#&gt;
+$this | com.atproto.sync.subscribeRepos
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>
