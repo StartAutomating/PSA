@@ -616,6 +616,11 @@ $this | com.atproto.sync.listRepos -Cache
     </Members>
   </Type>
   <Type>
+    <Name>profileView</Name>
+    <Members>
+    </Members>
+  </Type>
+  <Type>
     <Name>com.atproto.label.queryLabels</Name>
     <Members>
       <ScriptProperty>
