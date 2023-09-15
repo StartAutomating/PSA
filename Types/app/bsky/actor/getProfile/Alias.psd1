@@ -1,4 +1,5 @@
 @{
     Actor = "Handle"
-    Likes = "Like"  
+    Likes = "Like"
+    Followers = "Follower" 
 }
