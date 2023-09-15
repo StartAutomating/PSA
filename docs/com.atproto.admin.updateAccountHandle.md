@@ -34,12 +34,16 @@ com.atproto.admin.updateAccountHandle
 ### Parameters
 #### **Did**
 
+The Decentralized Identifier.  This is a uniqueID used throughout the At Protocol.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |1       |false        |
+
+
+
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |1       |true (ByPropertyName)|
 
 
 
@@ -48,9 +52,9 @@ com.atproto.admin.updateAccountHandle
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |2       |false        |
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |2       |true (ByPropertyName)|
 
 
 
