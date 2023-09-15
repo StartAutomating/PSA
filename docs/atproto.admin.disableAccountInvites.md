@@ -1,4 +1,4 @@
-Disable-AtprotoAdminAccountInvites
+Disable-AtProtoAdminAccountInvites
 ----------------------------------
 
 
@@ -77,5 +77,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Disable-AtprotoAdminAccountInvites [[-Account] <String>] [[-Note] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Disable-AtProtoAdminAccountInvites [[-Account] <String>] [[-Note] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
