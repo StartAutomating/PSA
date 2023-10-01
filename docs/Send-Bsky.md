@@ -22,18 +22,16 @@ Sends a BlueSky post using the At Protocol
 
 
 ### Examples
-#### EXAMPLE 1
+Send a Hello World
+
 ```PowerShell
-# Send a Hello World
 Send-AtProto "Hello World (from https://github.com/StartAutomating/PSA )"
 ```
+Don't send Hello World, ask -WhatIf I did, and get back the object you would post.
 
-#### EXAMPLE 2
 ```PowerShell
-# Don't send Hello World, ask -WhatIf I did, and get back the object you would post.
 Send-AtProto "Hello World (from https://github.com/StartAutomating/PSA )" -WhatIf
 ```
-
 
 
 ---
