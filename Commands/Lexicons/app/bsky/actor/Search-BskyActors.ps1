@@ -10,10 +10,16 @@ function Search-BskyActors  {
 [Alias('Search-BlueSkyActors','bsky.actor.searchActors','app.bsky.actor.searchActors')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+# DEPRECATED: use 'q' instead
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('term')]
 [String]
 $Term,
+# search query string; syntax, phrase, boolean, and faceting is unspecified, but Lucene query syntax is recommended
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('q')]
+[String]
+$Q,
 # A limit to the number of results returned.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
