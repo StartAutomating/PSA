@@ -65,6 +65,21 @@ com.atproto.server.createInviteCodes
 
 
 
+#### **Raw**
+
+If set, will return raw results. This will ignore -Property, -DecorateProperty, -ExpandProperty, and -PSTypeName.
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
+
+
+
 #### **WhatIf**
 -WhatIf is an automatic variable that is created when a command has ```[CmdletBinding(SupportsShouldProcess)]```.
 -WhatIf is used to see what would happen, or return operations without executing them
@@ -84,5 +99,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Add-AtProtoServerInviteCodes [[-CodeCount] <PSObject>] [[-UseCount] <PSObject>] [[-ForAccounts] <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AtProtoServerInviteCodes [[-CodeCount] <PSObject>] [[-UseCount] <PSObject>] [[-ForAccounts] <PSObject>] [-Raw] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
