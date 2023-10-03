@@ -156,6 +156,21 @@ If set, will cache results for performance.
 
 
 
+#### **Raw**
+
+If set, will return raw results. This will ignore -Property, -DecorateProperty, -ExpandProperty, and -PSTypeName.
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
+
+
+
 #### **WhatIf**
 -WhatIf is an automatic variable that is created when a command has ```[CmdletBinding(SupportsShouldProcess)]```.
 -WhatIf is used to see what would happen, or return operations without executing them
@@ -175,5 +190,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Get-AtProtoRepoRecords [-Repo] <String> [-Collection] <String> [[-Limit] <PSObject>] [[-Cursor] <String>] [[-RkeyStart] <String>] [[-RkeyEnd] <String>] [-Reverse] [-Cache] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AtProtoRepoRecords [-Repo] <String> [-Collection] <String> [[-Limit] <PSObject>] [[-Cursor] <String>] [[-RkeyStart] <String>] [[-RkeyEnd] <String>] [-Reverse] [-Cache] [-Raw] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
