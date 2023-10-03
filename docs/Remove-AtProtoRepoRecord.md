@@ -107,6 +107,21 @@ Compare and swap with the previous commit by cid.
 
 
 
+#### **Raw**
+
+If set, will return raw results. This will ignore -Property, -DecorateProperty, -ExpandProperty, and -PSTypeName.
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
+
+
+
 #### **WhatIf**
 -WhatIf is an automatic variable that is created when a command has ```[CmdletBinding(SupportsShouldProcess)]```.
 -WhatIf is used to see what would happen, or return operations without executing them
@@ -126,5 +141,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Remove-AtProtoRepoRecord [[-Repo] <String>] [[-Collection] <String>] [[-Rkey] <String>] [[-SwapRecord] <String>] [[-SwapCommit] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AtProtoRepoRecord [[-Repo] <String>] [[-Collection] <String>] [[-Rkey] <String>] [[-SwapRecord] <String>] [[-SwapCommit] <String>] [-Raw] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
