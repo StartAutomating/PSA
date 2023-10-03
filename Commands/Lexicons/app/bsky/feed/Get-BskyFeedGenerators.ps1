@@ -16,7 +16,10 @@ param(
 $Feeds,
 # If set, will cache results for performance.
 [Management.Automation.SwitchParameter]
-$Cache
+$Cache,
+# If set, will return raw results. This will ignore -Property, -DecorateProperty, -ExpandProperty, and -PSTypeName.
+[Management.Automation.SwitchParameter]
+$Raw
 )
 
 begin {
@@ -30,6 +33,7 @@ $InvokeAtSplat.DecorateProperty = [Ordered]@{
 }
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
+$DataboundParameters = @()
 $AsByte = $false
 
 
@@ -40,6 +44,7 @@ $AsByte = $false
     foreach ($attr in $paramMetadata.Attributes) {
         if ($attr -is [ComponentModel.DefaultBindingPropertyAttribute]) {
             $parameterAliases[$paramMetadata.Name] = $attr.Name
+            $DataboundParameters += $paramMetadata.Name
             continue nextParameter
         }
     }
@@ -59,7 +64,13 @@ end {
 
             $parameterQueue.ToArray() |
                 Invoke-AtProtocol -Method $httpMethod -NamespaceID $NamespaceID -Parameter {
-                    $_
+                    $RestParameters =[Ordered]@{}
+                    foreach ($parameterName in $DataboundParameters) {
+                        if ($null -ne $_.($ParameterName)) {
+                            $RestParameters[$parameterName] = $_.($ParameterName)
+                        }
+                    }
+                    $RestParameters
                 } -ParameterAlias $parameterAliases @InvokeAtSplat -ContentType $(
                     if ($ContentType) {
                         $ContentType
@@ -70,7 +81,7 @@ end {
                     $_
                 } -Cache:$(
                     if ($cache) {$cache} else { $false }
-                )
+                ) -Raw:$Raw
         
 }
 } 
