@@ -308,11 +308,13 @@ $(@(foreach ($kv in $decorateProperty.GetEnumerator()) {
             }
             {$InvokeAtSplat["PSTypeName"] = $NamespaceID}
             {$parameterAliases = [Ordered]@{}}
+            {$DataboundParameters = @()}
             if ($lexicon.defs.main.output.encoding -and ($lexicon.defs.main.output.encoding -ne 'application/json')) {
                 {$AsByte = $true}
             } else {
                 {$AsByte = $false}
             }
+            
             ""
 if ($AtParams.Count) {
 {
@@ -323,6 +325,7 @@ if ($AtParams.Count) {
     foreach ($attr in $paramMetadata.Attributes) {
         if ($attr -is [ComponentModel.DefaultBindingPropertyAttribute]) {
             $parameterAliases[$paramMetadata.Name] = $attr.Name
+            $DataboundParameters += $paramMetadata.Name
             continue nextParameter
         }
     }
@@ -343,7 +346,13 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
         $atEndBlock  = {
             $parameterQueue.ToArray() |
                 Invoke-AtProtocol -Method $httpMethod -NamespaceID $NamespaceID -Parameter {
-                    $_
+                    $RestParameters =[Ordered]@{}
+                    foreach ($parameterName in $DataboundParameters) {
+                        if ($null -ne $_.($ParameterName)) {
+                            $RestParameters[$parameterName] = $_.($ParameterName)
+                        }
+                    }
+                    $RestParameters
                 } -ParameterAlias $parameterAliases @InvokeAtSplat -ContentType $(
                     if ($ContentType) {
                         $ContentType
@@ -354,7 +363,7 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
                     $_
                 } -Cache:$(
                     if ($cache) {$cache} else { $false }
-                )
+                ) -Raw:$Raw
         }
 
 
@@ -389,11 +398,19 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
             # as well as the whole identifier
             "$($lexiconIDParts[0..$($lexiconIDParts.Count - 1)] -join '.')"
         )
-
+        
         if (-not $AtParams["Cache"] -and $httpMethod -eq 'GET') {
             $AtParams["Cache"] = [Ordered]@{
                 Name = "Cache"
                 Help = "If set, will cache results for performance."
+                ParameterType = [switch]
+            }
+        }
+
+        if (-not $AtParams["Raw"]) {
+            $AtParams["Raw"] = [Ordered]@{
+                Name = "Raw"
+                Help = "If set, will return raw results. This will ignore -Property, -DecorateProperty, -ExpandProperty, and -PSTypeName."
                 ParameterType = [switch]
             }
         }
