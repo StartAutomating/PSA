@@ -10,10 +10,15 @@ function Search-AtProtoAdminRepos  {
 [Alias('Search-AtProtocolAdminRepos','atproto.admin.searchRepos','com.atproto.admin.searchRepos')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+# DEPRECATED: use 'q' instead
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('term')]
 [String]
 $Term,
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('q')]
+[String]
+$Q,
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('invitedBy')]
 [String]
