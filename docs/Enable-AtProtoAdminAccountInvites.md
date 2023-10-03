@@ -58,6 +58,21 @@ Additionally add a note describing why the invites were enabled
 
 
 
+#### **Raw**
+
+If set, will return raw results. This will ignore -Property, -DecorateProperty, -ExpandProperty, and -PSTypeName.
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
+
+
+
 #### **WhatIf**
 -WhatIf is an automatic variable that is created when a command has ```[CmdletBinding(SupportsShouldProcess)]```.
 -WhatIf is used to see what would happen, or return operations without executing them
@@ -77,5 +92,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Enable-AtProtoAdminAccountInvites [[-Account] <String>] [[-Note] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Enable-AtProtoAdminAccountInvites [[-Account] <String>] [[-Note] <String>] [-Raw] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
