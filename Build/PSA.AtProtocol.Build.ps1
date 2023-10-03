@@ -1,6 +1,10 @@
+# Push to the parent directory of this script
 Push-Location ($PSScriptRoot | Split-Path)
+# The AtProtocol is a submodule of this repo, located within 'atproto'
 $atRoot = Join-Path $pwd atproto
+# Within that are lexicons (these describe the types in At Protocol in JSON)
 $atLexicon = Join-Path $atRoot lexicons
+# Get all of the json files beneath this directory.
 $lexiconJson = Get-ChildItem -Path $atLexicon -Recurse -file -Filter *.json
 
 $atFunctionNames = @()
@@ -363,7 +367,13 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
                     $_
                 } -Cache:$(
                     if ($cache) {$cache} else { $false }
-                ) -Raw:$Raw
+                ) -Raw:$Raw -Authorization {
+                    if ($_.Authorization) { 
+                        $_.Authorization
+                    } else { 
+                        $null
+                    }
+                }
         }
 
 
@@ -405,6 +415,15 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
                 Help = "If set, will cache results for performance."
                 ParameterType = [switch]
             }
+        }
+
+        if (-not $AtParams["Authorization"]) {
+            $AtParams["Authorization"] = [Ordered]@{
+                Name = "Authorization"
+                Alias = 'Authentication','AppPassword','Credential','PSCredential'
+                Help = "The authorization.", "This can be a JWT that accesses the at protocol or a credential.","If this is provided as a credential the username is a handle or email and the password is the app password."
+                ParameterType = [switch]
+            }    
         }
 
         if (-not $AtParams["Raw"]) {
