@@ -32,6 +32,22 @@ Don't send Hello World, ask -WhatIf I did, and get back the object you would pos
 ```PowerShell
 Send-AtProto "Hello World (from https://github.com/StartAutomating/PSA )" -WhatIf
 ```
+> EXAMPLE 3
+
+```PowerShell
+Send-AtProto "Want to hype a GitHub project on BlueSky?  PSA is your friend https://github.com/StartAutomating/PSA . (testing web cards)" -WebCard @{
+    Url  = 'https://github.com/StartAutomating/PSA'
+} -WhatIf
+```
+> EXAMPLE 4
+
+```PowerShell
+Send-AtProto "#AtProtocol is great.  One of the cool things about learning how it works is seeing what works.  For instance, PSA, you can have links without typing the URL, and a webcard without a URL." -WebCard @{
+    Url  = 'https://github.com/StartAutomating/PSA'
+} -LinkPattern @{
+    "PSA" = "https://github.com/StartAutomating/PSA"
+} -WhatIf
+```
 
 
 ---
