@@ -17,6 +17,10 @@ $Data,
 [Parameter(ValueFromPipelineByPropertyName)]
 [String]
 $ContentType,
+# The authorization. This can be a JWT that accesses the at protocol or a credential. If this is provided as a credential the username is a handle or email and the password is the app password.
+[Alias('Authentication','AppPassword','Credential','PSCredential')]
+[Management.Automation.SwitchParameter]
+$Authorization,
 # If set, will return raw results. This will ignore -Property, -DecorateProperty, -ExpandProperty, and -PSTypeName.
 [Management.Automation.SwitchParameter]
 $Raw
@@ -76,7 +80,13 @@ end {
                     $_
                 } -Cache:$(
                     if ($cache) {$cache} else { $false }
-                ) -Raw:$Raw
+                ) -Raw:$Raw -Authorization {
+                    if ($_.Authorization) { 
+                        $_.Authorization
+                    } else { 
+                        $null
+                    }
+                }
         
 }
 } 
