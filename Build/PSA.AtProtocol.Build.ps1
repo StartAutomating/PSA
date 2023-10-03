@@ -1,5 +1,9 @@
 # Push to the parent directory of this script
 Push-Location ($PSScriptRoot | Split-Path)
+
+# Update remote submodules
+git submodule update --remote | Out-Host
+
 # The AtProtocol is a submodule of this repo, located within 'atproto'
 $atRoot = Join-Path $pwd atproto
 # Within that are lexicons (these describe the types in At Protocol in JSON)
