@@ -23,7 +23,7 @@
 * All AtProtocol Commands:
   * Now supports -Raw (#74)
   * Supports -Authorization (#71)
-* Simplfiying PSA Module Profiles (#78)
+* Simplifying  PSA Module Profiles (#78)
 
 ---
 
