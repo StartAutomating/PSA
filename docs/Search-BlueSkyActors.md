@@ -34,12 +34,31 @@ app.bsky.actor.searchActors
 ### Parameters
 #### **Term**
 
+DEPRECATED: use 'q' instead
+
+
+
 
 
 
 |Type      |Required|Position|PipelineInput        |
 |----------|--------|--------|---------------------|
 |`[String]`|false   |1       |true (ByPropertyName)|
+
+
+
+#### **Q**
+
+search query string; syntax, phrase, boolean, and faceting is unspecified, but Lucene query syntax is recommended
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |2       |true (ByPropertyName)|
 
 
 
@@ -54,7 +73,7 @@ A limit to the number of results returned.
 
 |Type        |Required|Position|PipelineInput        |
 |------------|--------|--------|---------------------|
-|`[PSObject]`|false   |2       |true (ByPropertyName)|
+|`[PSObject]`|false   |3       |true (ByPropertyName)|
 
 
 
@@ -73,7 +92,7 @@ You can provide this -Cursor to the same command with the same input to get more
 
 |Type      |Required|Position|PipelineInput        |
 |----------|--------|--------|---------------------|
-|`[String]`|false   |3       |true (ByPropertyName)|
+|`[String]`|false   |4       |true (ByPropertyName)|
 
 
 
@@ -141,5 +160,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Search-BskyActors [[-Term] <String>] [[-Limit] <PSObject>] [[-Cursor] <String>] [-Cache] [-Authorization] [-Raw] [-WhatIf] [-Confirm] [<CommonParameters>]
+Search-BskyActors [[-Term] <String>] [[-Q] <String>] [[-Limit] <PSObject>] [[-Cursor] <String>] [-Cache] [-Authorization] [-Raw] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
