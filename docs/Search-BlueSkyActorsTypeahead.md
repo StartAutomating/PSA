@@ -34,12 +34,31 @@ app.bsky.actor.searchActorsTypeahead
 ### Parameters
 #### **Term**
 
+DEPRECATED: use 'q' instead
+
+
+
 
 
 
 |Type      |Required|Position|PipelineInput        |
 |----------|--------|--------|---------------------|
 |`[String]`|false   |1       |true (ByPropertyName)|
+
+
+
+#### **Q**
+
+search query prefix; not a full query string
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |2       |true (ByPropertyName)|
 
 
 
@@ -54,7 +73,7 @@ A limit to the number of results returned.
 
 |Type        |Required|Position|PipelineInput        |
 |------------|--------|--------|---------------------|
-|`[PSObject]`|false   |2       |true (ByPropertyName)|
+|`[PSObject]`|false   |3       |true (ByPropertyName)|
 
 
 
@@ -122,5 +141,5 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ### Syntax
 ```PowerShell
-Search-BskyActorsTypeahead [[-Term] <String>] [[-Limit] <PSObject>] [-Cache] [-Authorization] [-Raw] [-WhatIf] [-Confirm] [<CommonParameters>]
+Search-BskyActorsTypeahead [[-Term] <String>] [[-Q] <String>] [[-Limit] <PSObject>] [-Cache] [-Authorization] [-Raw] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
