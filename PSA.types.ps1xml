@@ -270,6 +270,46 @@ $this | app.bsky.graph.getList -Cache
     </Members>
   </Type>
   <Type>
+    <Name>app.bsky.graph.getListBlocks</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.graph.getListBlocks -Cache.
+#&gt;
+$this | app.bsky.graph.getListBlocks -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.feed.getListFeed</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.feed.getListFeed -Cache.
+#&gt;
+$this | app.bsky.feed.getListFeed -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
     <Name>app.bsky.graph.getListMutes</Name>
     <Members>
       <ScriptProperty>
@@ -725,6 +765,66 @@ $this | com.atproto.label.queryLabels -Cache
     Gets the next page of results of app.bsky.actor.searchActors -Cache.
 #&gt;
 $this | app.bsky.actor.searchActors -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.unspecced.searchActorsSkeleton</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.unspecced.searchActorsSkeleton -Cache.
+#&gt;
+$this | app.bsky.unspecced.searchActorsSkeleton -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.feed.searchPosts</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.feed.searchPosts -Cache.
+#&gt;
+$this | app.bsky.feed.searchPosts -Cache
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>app.bsky.unspecced.searchPostsSkeleton</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>More</Name>
+        <GetScriptBlock>
+                        
+&lt;#
+.SYNOPSIS
+    Gets additional results.
+.DESCRIPTION
+    Gets the next page of results of app.bsky.unspecced.searchPostsSkeleton -Cache.
+#&gt;
+$this | app.bsky.unspecced.searchPostsSkeleton -Cache
 
 
                     </GetScriptBlock>

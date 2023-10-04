@@ -1,5 +1,5 @@
 @{
-    ModuleVersion = '0.1.4'
+    ModuleVersion = '0.1.5'
     RootModule = 'PSA.psm1'
     Guid = '09a0f1e1-23e2-4ccb-9d8d-bde5e1d6a2b2'
     FormatsToProcess = 'PSA.format.ps1xml'    
@@ -14,15 +14,22 @@
             LicenseURI = 'https://github.com/StartAutomating/PSA/blob/main/LICENSE'
             IconURI    = 'https://raw.githubusercontent.com/StartAutomating/PSA/main/Assets/PSA@1080p.png'
             ReleaseNotes = @'
-# PowerShell Announcements (with AtProtocol) [0.1.4]
+## PSA 0.1.5:
 
-PSA is:
+* Fixing Send-AtProto for Webcards/Images (#77)
+* Invoke-AtProto
+  * Now supports -Raw (#75)
+  * Not passing down binary data (#72)
+* All AtProtocol Commands:
+  * Now supports -Raw (#74)
+  * Supports -Authorization (#71)
+* Simplifying  PSA Module Profiles (#78)
 
-* A Cross-Platform PowerShell Module For Making Announcements
-* A Beautiful BlueSky Client for the CLI
-* An (Almost) Perfect PowerShell Wrapper for the At Protocol
-* A GitHub Action to Automate Announcements
+---
 
+Previous release notes in [CHANGELOG](https://github.com/StartAutomating/PSA/blob/main/CHANGELOG.md)
+
+Like It?  Star It!  Love It?  Support It!
 '@
         }
 

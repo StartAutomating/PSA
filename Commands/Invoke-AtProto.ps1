@@ -110,7 +110,13 @@ function Invoke-AtProto
     # If set, will cache results from a request.  Only HTTP GET results will be cached.
     [Parameter(ValueFromPipelineByPropertyName)]
     [switch]
-    $Cache
+    $Cache,
+
+    # If set, will return raw results.
+    # This will ignore -Property, -DecorateProperty, -ExpandProperty, and -PSTypeName.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [switch]
+    $Raw
     )
 
     begin {
@@ -248,9 +254,10 @@ function Invoke-AtProto
                     foreach ($propKeyValue in $Property.GetEnumerator()) {
                         if ($propKeyValue.Value -as [ScriptBlock[]]) {
                             [PSScriptProperty]::new.Invoke(@($propKeyValue.Key) + $propKeyValue.Value)
-                        } else {
+                        } 
+                        elseif ($propKeyValue.Value -isnot [byte[]]) {
                             [PSNoteProperty]::new($propKeyValue.Key, $propKeyValue.Value)
-                        }
+                        }                        
                     }
                 } else {
                     $property.psobject.properties
@@ -318,7 +325,7 @@ function Invoke-AtProto
                 if ($AsByte -and $in.Content) {
                     $in.Content
                 }
-                elseif ($ExpandProperty) {
+                elseif ($ExpandProperty -and -not $Raw) {
                     if ($in.$ExpandProperty) {
                         return $in.$ExpandProperty
                     }
@@ -343,6 +350,7 @@ function Invoke-AtProto
                 )
                 process { 
                     # One more step of the pipeline will unroll each of the values.
+                    if ($Raw) { return $_ }
 
                 if ($cache -and $script:InvokeAtProtoCache[$toSplat.uri]) {
                     return $script:InvokeAtProtoCache[$toSplat.uri]

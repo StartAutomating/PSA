@@ -16,7 +16,14 @@ param(
 $Uris,
 # If set, will cache results for performance.
 [Management.Automation.SwitchParameter]
-$Cache
+$Cache,
+# The authorization. This can be a JWT that accesses the at protocol or a credential. If this is provided as a credential the username is a handle or email and the password is the app password.
+[Alias('Authentication','AppPassword','Credential','PSCredential')]
+[Management.Automation.SwitchParameter]
+$Authorization,
+# If set, will return raw results. This will ignore -Property, -DecorateProperty, -ExpandProperty, and -PSTypeName.
+[Management.Automation.SwitchParameter]
+$Raw
 )
 
 begin {
@@ -27,9 +34,11 @@ $InvokeAtSplat.DecorateProperty = [Ordered]@{
     'posts'='app.bsky.feed.defs#postView'
     'posts.author'='app.bsky.actor.defs#profileViewBasic'
     'posts.viewer'='app.bsky.feed.defs#viewerState'
+    'posts.threadgate'='app.bsky.feed.defs#threadgateView'
 }
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
+$DataboundParameters = @()
 $AsByte = $false
 
 
@@ -40,6 +49,7 @@ $AsByte = $false
     foreach ($attr in $paramMetadata.Attributes) {
         if ($attr -is [ComponentModel.DefaultBindingPropertyAttribute]) {
             $parameterAliases[$paramMetadata.Name] = $attr.Name
+            $DataboundParameters += $paramMetadata.Name
             continue nextParameter
         }
     }
@@ -59,7 +69,13 @@ end {
 
             $parameterQueue.ToArray() |
                 Invoke-AtProtocol -Method $httpMethod -NamespaceID $NamespaceID -Parameter {
-                    $_
+                    $RestParameters =[Ordered]@{}
+                    foreach ($parameterName in $DataboundParameters) {
+                        if ($null -ne $_.($ParameterName)) {
+                            $RestParameters[$parameterName] = $_.($ParameterName)
+                        }
+                    }
+                    $RestParameters
                 } -ParameterAlias $parameterAliases @InvokeAtSplat -ContentType $(
                     if ($ContentType) {
                         $ContentType
@@ -70,7 +86,13 @@ end {
                     $_
                 } -Cache:$(
                     if ($cache) {$cache} else { $false }
-                )
+                ) -Raw:$Raw -Authorization {
+                    if ($_.Authorization) { 
+                        $_.Authorization
+                    } else { 
+                        $null
+                    }
+                }
         
 }
 } 

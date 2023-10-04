@@ -1,5 +1,5 @@
 function Get-BskyFeedDefinition {
-[Alias('bsky.feed.defs','app.bsky.feed.defs','app.bsky.feed.defs#postView','app.bsky.feed.defs#viewerState','app.bsky.feed.defs#feedViewPost','app.bsky.feed.defs#replyRef','app.bsky.feed.defs#reasonRepost','app.bsky.feed.defs#threadViewPost','app.bsky.feed.defs#notFoundPost','app.bsky.feed.defs#blockedPost','app.bsky.feed.defs#blockedAuthor','app.bsky.feed.defs#generatorView','app.bsky.feed.defs#generatorViewerState','app.bsky.feed.defs#skeletonFeedPost','app.bsky.feed.defs#skeletonReasonRepost')]
+[Alias('bsky.feed.defs','app.bsky.feed.defs','app.bsky.feed.defs#postView','app.bsky.feed.defs#viewerState','app.bsky.feed.defs#feedViewPost','app.bsky.feed.defs#replyRef','app.bsky.feed.defs#reasonRepost','app.bsky.feed.defs#threadViewPost','app.bsky.feed.defs#notFoundPost','app.bsky.feed.defs#blockedPost','app.bsky.feed.defs#blockedAuthor','app.bsky.feed.defs#viewerThreadState','app.bsky.feed.defs#generatorView','app.bsky.feed.defs#generatorViewerState','app.bsky.feed.defs#skeletonFeedPost','app.bsky.feed.defs#skeletonReasonRepost','app.bsky.feed.defs#threadgateView')]
 param(
 )
 $lexiconText = @'
@@ -35,7 +35,8 @@ $lexiconText = @'
         "labels": {
           "type": "array",
           "items": { "type": "ref", "ref": "com.atproto.label.defs#label" }
-        }
+        },
+        "threadgate": { "type": "ref", "ref": "#threadgateView" }
       }
     },
     "viewerState": {
@@ -91,7 +92,8 @@ $lexiconText = @'
             "type": "union",
             "refs": ["#threadViewPost", "#notFoundPost", "#blockedPost"]
           }
-        }
+        },
+        "viewer": { "type": "ref", "ref": "#viewerThreadState" }
       }
     },
     "notFoundPost": {
@@ -117,6 +119,12 @@ $lexiconText = @'
       "properties": {
         "did": { "type": "string", "format": "did" },
         "viewer": { "type": "ref", "ref": "app.bsky.actor.defs#viewerState" }
+      }
+    },
+    "viewerThreadState": {
+      "type": "object",
+      "properties": {
+        "canReply": { "type": "boolean" }
       }
     },
     "generatorView": {
@@ -162,6 +170,18 @@ $lexiconText = @'
       "required": ["repost"],
       "properties": {
         "repost": { "type": "string", "format": "at-uri" }
+      }
+    },
+    "threadgateView": {
+      "type": "object",
+      "properties": {
+        "uri": { "type": "string", "format": "at-uri" },
+        "cid": { "type": "string", "format": "cid" },
+        "record": { "type": "unknown" },
+        "lists": {
+          "type": "array",
+          "items": { "type": "ref", "ref": "app.bsky.graph.defs#listViewBasic" }
+        }
       }
     }
   }

@@ -108,8 +108,8 @@ Check out PSA's [PSA Script](https://github.com/StartAutomating/PSA/blob/main/PS
 
 ## PSA Commands
 
-PSA exports 489 commands
-(108 functions and 381 aliases)
+PSA exports 535 commands
+(118 functions and 417 aliases)
 
 Functions
 =========
@@ -170,6 +170,7 @@ Functions
 |[Get-BskyFeedGenerator](Get-BskyFeedGenerator.md)                                  |app.bsky.feed.getFeedGenerator             |
 |[Get-BskyFeedGenerators](Get-BskyFeedGenerators.md)                                |app.bsky.feed.getFeedGenerators            |
 |[Get-BskyFeedLikes](Get-BskyFeedLikes.md)                                          |app.bsky.feed.getLikes                     |
+|[Get-BskyFeedListFeed](Get-BskyFeedListFeed.md)                                    |app.bsky.feed.getListFeed                  |
 |[Get-BskyFeedPosts](Get-BskyFeedPosts.md)                                          |app.bsky.feed.getPosts                     |
 |[Get-BskyFeedPostThread](Get-BskyFeedPostThread.md)                                |app.bsky.feed.getPostThread                |
 |[Get-BskyFeedRepostedBy](Get-BskyFeedRepostedBy.md)                                |app.bsky.feed.getRepostedBy                |
@@ -181,11 +182,14 @@ Functions
 |[Get-BskyGraphFollowers](Get-BskyGraphFollowers.md)                                |app.bsky.graph.getFollowers                |
 |[Get-BskyGraphFollows](Get-BskyGraphFollows.md)                                    |app.bsky.graph.getFollows                  |
 |[Get-BskyGraphList](Get-BskyGraphList.md)                                          |app.bsky.graph.getList                     |
+|[Get-BskyGraphListBlocks](Get-BskyGraphListBlocks.md)                              |app.bsky.graph.getListBlocks               |
 |[Get-BskyGraphListMutes](Get-BskyGraphListMutes.md)                                |app.bsky.graph.getListMutes                |
 |[Get-BskyGraphLists](Get-BskyGraphLists.md)                                        |app.bsky.graph.getLists                    |
 |[Get-BskyGraphMutes](Get-BskyGraphMutes.md)                                        |app.bsky.graph.getMutes                    |
+|[Get-BskyGraphSuggestedFollowsByActor](Get-BskyGraphSuggestedFollowsByActor.md)    |app.bsky.graph.getSuggestedFollowsByActor  |
 |[Get-BskyNotifications](Get-BskyNotifications.md)                                  |app.bsky.notification.listNotifications    |
 |[Get-BskyNotificationUnreadCount](Get-BskyNotificationUnreadCount.md)              |app.bsky.notification.getUnreadCount       |
+|[Get-BskyUnspeccedDefinition](Get-BskyUnspeccedDefinition.md)                      |
 |[Get-BskyUnspeccedPopular](Get-BskyUnspeccedPopular.md)                            |app.bsky.unspecced.getPopular              |
 |[Get-BskyUnspeccedPopularFeedGenerators](Get-BskyUnspeccedPopularFeedGenerators.md)|app.bsky.unspecced.getPopularFeedGenerators|
 |[Get-BskyUnspeccedTimelineSkeleton](Get-BskyUnspeccedTimelineSkeleton.md)          |app.bsky.unspecced.getTimelineSkeleton     |
@@ -196,6 +200,8 @@ Functions
 |[Remove-AtProtoServerAccount](Remove-AtProtoServerAccount.md)                      |com.atproto.server.deleteAccount           |
 |[Remove-AtProtoServerSession](Remove-AtProtoServerSession.md)                      |com.atproto.server.deleteSession           |
 |[Request-AtProtoServerAccountDelete](Request-AtProtoServerAccountDelete.md)        |com.atproto.server.requestAccountDelete    |
+|[Request-AtProtoServerEmailConfirmation](Request-AtProtoServerEmailConfirmation.md)|com.atproto.server.requestEmailConfirmation|
+|[Request-AtProtoServerEmailUpdate](Request-AtProtoServerEmailUpdate.md)            |com.atproto.server.requestEmailUpdate      |
 |[Request-AtProtoServerPasswordReset](Request-AtProtoServerPasswordReset.md)        |com.atproto.server.requestPasswordReset    |
 |[Request-AtProtoSyncCrawl](Request-AtProtoSyncCrawl.md)                            |com.atproto.sync.requestCrawl              |
 |[Reset-AtProtoServerPassword](Reset-AtProtoServerPassword.md)                      |com.atproto.server.resetPassword           |
@@ -206,6 +212,9 @@ Functions
 |[Search-AtProtoLabels](Search-AtProtoLabels.md)                                    |com.atproto.label.queryLabels              |
 |[Search-BskyActors](Search-BskyActors.md)                                          |app.bsky.actor.searchActors                |
 |[Search-BskyActorsTypeahead](Search-BskyActorsTypeahead.md)                        |app.bsky.actor.searchActorsTypeahead       |
+|[Search-BskyFeedPosts](Search-BskyFeedPosts.md)                                    |app.bsky.feed.searchPosts                  |
+|[Search-BskyUnspeccedActorsSkeleton](Search-BskyUnspeccedActorsSkeleton.md)        |app.bsky.unspecced.searchActorsSkeleton    |
+|[Search-BskyUnspeccedPostsSkeleton](Search-BskyUnspeccedPostsSkeleton.md)          |app.bsky.unspecced.searchPostsSkeleton     |
 |[Send-AtProto](Send-AtProto.md)                                                    |Sends to the At Protocol                   |
 |[Send-AtProtoAdminEmail](Send-AtProtoAdminEmail.md)                                |com.atproto.admin.sendEmail                |
 |[Set-AtProtoRepoBlob](Set-AtProtoRepoBlob.md)                                      |com.atproto.repo.uploadBlob                |
@@ -220,6 +229,7 @@ Functions
 |[Update-AtProtoAdminAccountEmail](Update-AtProtoAdminAccountEmail.md)              |com.atproto.admin.updateAccountEmail       |
 |[Update-AtProtoAdminAccountHandle](Update-AtProtoAdminAccountHandle.md)            |com.atproto.admin.updateAccountHandle      |
 |[Update-AtProtoIdentityHandle](Update-AtProtoIdentityHandle.md)                    |com.atproto.identity.updateHandle          |
+|[Update-AtProtoServerEmail](Update-AtProtoServerEmail.md)                          |com.atproto.server.updateEmail             |
 |[Update-AtProtoTempRepoVersion](Update-AtProtoTempRepoVersion.md)                  |com.atproto.temp.upgradeRepoVersion        |
 |[Update-BskyNotificationSeen](Update-BskyNotificationSeen.md)                      |app.bsky.notification.updateSeen           |
 |[Watch-AtProtoLabels](Watch-AtProtoLabels.md)                                      |com.atproto.label.subscribeLabels          |
@@ -287,6 +297,7 @@ Aliases
 |[Get-BskyFeedGenerator](Get-BskyFeedGenerator.md)                                  |
 |[Get-BskyFeedGenerators](Get-BskyFeedGenerators.md)                                |
 |[Get-BskyFeedLikes](Get-BskyFeedLikes.md)                                          |
+|[Get-BskyFeedListFeed](Get-BskyFeedListFeed.md)                                    |
 |[Get-BskyFeedPosts](Get-BskyFeedPosts.md)                                          |
 |[Get-BskyFeedPostThread](Get-BskyFeedPostThread.md)                                |
 |[Get-BskyFeedRepostedBy](Get-BskyFeedRepostedBy.md)                                |
@@ -298,11 +309,14 @@ Aliases
 |[Get-BskyGraphFollowers](Get-BskyGraphFollowers.md)                                |
 |[Get-BskyGraphFollows](Get-BskyGraphFollows.md)                                    |
 |[Get-BskyGraphList](Get-BskyGraphList.md)                                          |
+|[Get-BskyGraphListBlocks](Get-BskyGraphListBlocks.md)                              |
 |[Get-BskyGraphListMutes](Get-BskyGraphListMutes.md)                                |
 |[Get-BskyGraphLists](Get-BskyGraphLists.md)                                        |
 |[Get-BskyGraphMutes](Get-BskyGraphMutes.md)                                        |
+|[Get-BskyGraphSuggestedFollowsByActor](Get-BskyGraphSuggestedFollowsByActor.md)    |
 |[Get-BskyNotifications](Get-BskyNotifications.md)                                  |
 |[Get-BskyNotificationUnreadCount](Get-BskyNotificationUnreadCount.md)              |
+|[Get-BskyUnspeccedDefinition](Get-BskyUnspeccedDefinition.md)                      |
 |[Get-BskyUnspeccedPopular](Get-BskyUnspeccedPopular.md)                            |
 |[Get-BskyUnspeccedPopularFeedGenerators](Get-BskyUnspeccedPopularFeedGenerators.md)|
 |[Get-BskyUnspeccedTimelineSkeleton](Get-BskyUnspeccedTimelineSkeleton.md)          |
@@ -313,6 +327,8 @@ Aliases
 |[Remove-AtProtoServerAccount](Remove-AtProtoServerAccount.md)                      |
 |[Remove-AtProtoServerSession](Remove-AtProtoServerSession.md)                      |
 |[Request-AtProtoServerAccountDelete](Request-AtProtoServerAccountDelete.md)        |
+|[Request-AtProtoServerEmailConfirmation](Request-AtProtoServerEmailConfirmation.md)|
+|[Request-AtProtoServerEmailUpdate](Request-AtProtoServerEmailUpdate.md)            |
 |[Request-AtProtoServerPasswordReset](Request-AtProtoServerPasswordReset.md)        |
 |[Request-AtProtoSyncCrawl](Request-AtProtoSyncCrawl.md)                            |
 |[Reset-AtProtoServerPassword](Reset-AtProtoServerPassword.md)                      |
@@ -323,6 +339,9 @@ Aliases
 |[Search-AtProtoLabels](Search-AtProtoLabels.md)                                    |
 |[Search-BskyActors](Search-BskyActors.md)                                          |
 |[Search-BskyActorsTypeahead](Search-BskyActorsTypeahead.md)                        |
+|[Search-BskyFeedPosts](Search-BskyFeedPosts.md)                                    |
+|[Search-BskyUnspeccedActorsSkeleton](Search-BskyUnspeccedActorsSkeleton.md)        |
+|[Search-BskyUnspeccedPostsSkeleton](Search-BskyUnspeccedPostsSkeleton.md)          |
 |[Send-AtProto](Send-AtProto.md)                                                    |
 |[Send-AtProtoAdminEmail](Send-AtProtoAdminEmail.md)                                |
 |[Set-AtProtoRepoBlob](Set-AtProtoRepoBlob.md)                                      |
@@ -337,6 +356,7 @@ Aliases
 |[Update-AtProtoAdminAccountEmail](Update-AtProtoAdminAccountEmail.md)              |
 |[Update-AtProtoAdminAccountHandle](Update-AtProtoAdminAccountHandle.md)            |
 |[Update-AtProtoIdentityHandle](Update-AtProtoIdentityHandle.md)                    |
+|[Update-AtProtoServerEmail](Update-AtProtoServerEmail.md)                          |
 |[Update-AtProtoTempRepoVersion](Update-AtProtoTempRepoVersion.md)                  |
 |[Update-BskyNotificationSeen](Update-BskyNotificationSeen.md)                      |
 |[Watch-AtProtoLabels](Watch-AtProtoLabels.md)                                      |

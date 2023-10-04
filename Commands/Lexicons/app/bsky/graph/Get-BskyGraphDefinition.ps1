@@ -1,5 +1,5 @@
 function Get-BskyGraphDefinition {
-[Alias('bsky.graph.defs','app.bsky.graph.defs','app.bsky.graph.defs#listViewBasic','app.bsky.graph.defs#listView','app.bsky.graph.defs#listItemView','app.bsky.graph.defs#listPurpose','app.bsky.graph.defs#modlist','app.bsky.graph.defs#listViewerState')]
+[Alias('bsky.graph.defs','app.bsky.graph.defs','app.bsky.graph.defs#listViewBasic','app.bsky.graph.defs#listView','app.bsky.graph.defs#listItemView','app.bsky.graph.defs#listPurpose','app.bsky.graph.defs#modlist','app.bsky.graph.defs#curatelist','app.bsky.graph.defs#listViewerState')]
 param(
 )
 $lexiconText = @'
@@ -52,16 +52,24 @@ $lexiconText = @'
     },
     "listPurpose": {
       "type": "string",
-      "knownValues": ["app.bsky.graph.defs#modlist"]
+      "knownValues": [
+        "app.bsky.graph.defs#modlist",
+        "app.bsky.graph.defs#curatelist"
+      ]
     },
     "modlist": {
       "type": "token",
       "description": "A list of actors to apply an aggregate moderation action (mute/block) on"
     },
+    "curatelist": {
+      "type": "token",
+      "description": "A list of actors used for curation purposes such as list feeds or interaction gating"
+    },
     "listViewerState": {
       "type": "object",
       "properties": {
-        "muted": { "type": "boolean" }
+        "muted": { "type": "boolean" },
+        "blocked": { "type": "string", "format": "at-uri" }
       }
     }
   }

@@ -1,5 +1,5 @@
 function Get-BskyActorDefinition {
-[Alias('bsky.actor.defs','app.bsky.actor.defs','app.bsky.actor.defs#profileViewBasic','app.bsky.actor.defs#profileView','app.bsky.actor.defs#profileViewDetailed','app.bsky.actor.defs#viewerState','app.bsky.actor.defs#preferences','app.bsky.actor.defs#adultContentPref','app.bsky.actor.defs#contentLabelPref','app.bsky.actor.defs#savedFeedsPref','app.bsky.actor.defs#personalDetailsPref')]
+[Alias('bsky.actor.defs','app.bsky.actor.defs','app.bsky.actor.defs#profileViewBasic','app.bsky.actor.defs#profileView','app.bsky.actor.defs#profileViewDetailed','app.bsky.actor.defs#viewerState','app.bsky.actor.defs#preferences','app.bsky.actor.defs#adultContentPref','app.bsky.actor.defs#contentLabelPref','app.bsky.actor.defs#savedFeedsPref','app.bsky.actor.defs#personalDetailsPref','app.bsky.actor.defs#feedViewPref','app.bsky.actor.defs#threadViewPref')]
 param(
 )
 $lexiconText = @'
@@ -103,7 +103,9 @@ $lexiconText = @'
           "#adultContentPref",
           "#contentLabelPref",
           "#savedFeedsPref",
-          "#personalDetailsPref"
+          "#personalDetailsPref",
+          "#feedViewPref",
+          "#threadViewPref"
         ]
       }
     },
@@ -152,6 +154,50 @@ $lexiconText = @'
           "type": "string",
           "format": "datetime",
           "description": "The birth date of the owner of the account."
+        }
+      }
+    },
+    "feedViewPref": {
+      "type": "object",
+      "required": ["feed"],
+      "properties": {
+        "feed": {
+          "type": "string",
+          "description": "The URI of the feed, or an identifier which describes the feed."
+        },
+        "hideReplies": {
+          "type": "boolean",
+          "description": "Hide replies in the feed."
+        },
+        "hideRepliesByUnfollowed": {
+          "type": "boolean",
+          "description": "Hide replies in the feed if they are not by followed users."
+        },
+        "hideRepliesByLikeCount": {
+          "type": "integer",
+          "description": "Hide replies in the feed if they do not have this number of likes."
+        },
+        "hideReposts": {
+          "type": "boolean",
+          "description": "Hide reposts in the feed."
+        },
+        "hideQuotePosts": {
+          "type": "boolean",
+          "description": "Hide quote posts in the feed."
+        }
+      }
+    },
+    "threadViewPref": {
+      "type": "object",
+      "properties": {
+        "sort": {
+          "type": "string",
+          "description": "Sorting mode.",
+          "knownValues": ["oldest", "newest", "most-likes", "random"]
+        },
+        "prioritizeFollowedUsers": {
+          "type": "boolean",
+          "description": "Show followed users at the top of all replies."
         }
       }
     }
