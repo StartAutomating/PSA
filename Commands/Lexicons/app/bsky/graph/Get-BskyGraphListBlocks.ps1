@@ -45,6 +45,16 @@ $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
 $InvokeAtSplat.DecorateProperty = [Ordered]@{
     'lists'='app.bsky.graph.defs#listView'
     'lists.creator'='app.bsky.actor.defs#profileView'
+    'lists.creator.associated'='app.bsky.actor.defs#profileAssociated'
+    'lists.creator.associated.chat'='app.bsky.actor.defs#profileAssociatedChat'
+    'lists.creator.viewer'='app.bsky.graph.defs#viewerState'
+    'lists.creator.viewer.mutedByList'='app.bsky.graph.defs#listViewBasic'
+    'lists.creator.viewer.mutedByList.purpose'='app.bsky.graph.defs#listPurpose'
+    'lists.creator.viewer.mutedByList.viewer'='app.bsky.graph.defs#listViewerState'
+    'lists.creator.viewer.blockingByList'='app.bsky.graph.defs#listViewBasic'
+    'lists.creator.viewer.blockingByList.purpose'='app.bsky.graph.defs#listPurpose'
+    'lists.creator.viewer.blockingByList.viewer'='app.bsky.graph.defs#listViewerState'
+    'lists.creator.viewer.knownFollowers'='app.bsky.graph.defs#knownFollowers'
     'lists.purpose'='app.bsky.graph.defs#listPurpose'
     'lists.viewer'='app.bsky.graph.defs#listViewerState'
 }
