@@ -53,7 +53,27 @@ $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
 $InvokeAtSplat.DecorateProperty = [Ordered]@{
     'subject'='app.bsky.actor.defs#profileView'
+    'subject.associated'='app.bsky.actor.defs#profileAssociated'
+    'subject.associated.chat'='app.bsky.actor.defs#profileAssociatedChat'
+    'subject.viewer'='app.bsky.graph.defs#viewerState'
+    'subject.viewer.mutedByList'='app.bsky.graph.defs#listViewBasic'
+    'subject.viewer.mutedByList.purpose'='app.bsky.graph.defs#listPurpose'
+    'subject.viewer.mutedByList.viewer'='app.bsky.graph.defs#listViewerState'
+    'subject.viewer.blockingByList'='app.bsky.graph.defs#listViewBasic'
+    'subject.viewer.blockingByList.purpose'='app.bsky.graph.defs#listPurpose'
+    'subject.viewer.blockingByList.viewer'='app.bsky.graph.defs#listViewerState'
+    'subject.viewer.knownFollowers'='app.bsky.graph.defs#knownFollowers'
     'followers'='app.bsky.actor.defs#profileView'
+    'followers.associated'='app.bsky.actor.defs#profileAssociated'
+    'followers.associated.chat'='app.bsky.actor.defs#profileAssociatedChat'
+    'followers.viewer'='app.bsky.graph.defs#viewerState'
+    'followers.viewer.mutedByList'='app.bsky.graph.defs#listViewBasic'
+    'followers.viewer.mutedByList.purpose'='app.bsky.graph.defs#listPurpose'
+    'followers.viewer.mutedByList.viewer'='app.bsky.graph.defs#listViewerState'
+    'followers.viewer.blockingByList'='app.bsky.graph.defs#listViewBasic'
+    'followers.viewer.blockingByList.purpose'='app.bsky.graph.defs#listPurpose'
+    'followers.viewer.blockingByList.viewer'='app.bsky.graph.defs#listViewerState'
+    'followers.viewer.knownFollowers'='app.bsky.graph.defs#knownFollowers'
 }
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
