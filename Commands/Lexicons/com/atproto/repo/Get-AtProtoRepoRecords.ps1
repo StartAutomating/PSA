@@ -46,7 +46,7 @@ $RkeyStart,
 [ComponentModel.DefaultBindingProperty('rkeyEnd')]
 [String]
 $RkeyEnd,
-# Reverse the order of the returned records?
+# Flag to reverse the order of the returned records.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('reverse')]
 [Management.Automation.SwitchParameter]
