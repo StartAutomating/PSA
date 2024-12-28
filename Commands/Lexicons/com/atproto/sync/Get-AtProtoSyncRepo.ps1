@@ -15,7 +15,7 @@ param(
 [ComponentModel.DefaultBindingProperty('did')]
 [String]
 $Did,
-# The revision of the repo to catch up from.
+# The revision ('rev') of the repo to create a diff from.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('since')]
 [String]
