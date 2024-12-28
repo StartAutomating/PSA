@@ -11,6 +11,10 @@ function Get-BskyNotificationUnreadCount  {
 [CmdletBinding(SupportsShouldProcess)]
 param(
 [Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('priority')]
+[Management.Automation.SwitchParameter]
+$Priority,
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('seenAt')]
 [String]
 $SeenAt,
