@@ -10,7 +10,7 @@ function Watch-AtProtoSyncUpdate  {
 [Alias('Watch-AtProtocolSyncUpdate','atproto.sync.notifyOfUpdate','com.atproto.sync.notifyOfUpdate')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-# Hostname of the service that is notifying of update.
+# Hostname of the current service (usually a PDS) that is notifying of update.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('hostname')]
 [String]
