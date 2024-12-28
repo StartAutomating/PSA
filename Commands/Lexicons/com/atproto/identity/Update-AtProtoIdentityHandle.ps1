@@ -10,6 +10,7 @@ function Update-AtProtoIdentityHandle  {
 [Alias('Update-AtProtocolIdentityHandle','atproto.identity.updateHandle','com.atproto.identity.updateHandle')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+# The new handle.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('handle')]
 [String]
