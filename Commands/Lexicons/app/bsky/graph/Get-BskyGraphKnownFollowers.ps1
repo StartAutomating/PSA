@@ -1,0 +1,138 @@
+function Get-BskyGraphKnownFollowers  {
+<#
+.Synopsis
+    app.bsky.graph.getKnownFollowers
+.Description
+    app.bsky.graph.getKnownFollowers
+.Link
+    https://github.com/bluesky-social/atproto/tree/main/lexicons/app/bsky/graph/getKnownFollowers.json
+#>
+[Alias('Get-BlueSkyGraphKnownFollowers','bsky.graph.getKnownFollowers','app.bsky.graph.getKnownFollowers')]
+[CmdletBinding(SupportsShouldProcess)]
+param(
+<#
+The Actor.
+
+This can be either a handle (e.g. @AtProto.com) or a Decentralized Identifier (.did)
+#>
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('actor')]
+[String]
+$Actor,
+# A limit to the number of results returned.
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('limit')]
+[Management.Automation.PSObject]
+$Limit,
+<#
+A cursor that can be used to get more results.
+
+Any command that accepts a -Cursor parameter returns a .Cursor property.
+
+You can provide this -Cursor to the same command with the same input to get more results.
+#>
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('cursor')]
+[String]
+$Cursor,
+# If set, will cache results for performance.
+[Management.Automation.SwitchParameter]
+$Cache,
+# The authorization. This can be a JWT that accesses the at protocol or a credential. If this is provided as a credential the username is a handle or email and the password is the app password.
+[Alias('Authentication','AppPassword','Credential','PSCredential')]
+[Management.Automation.SwitchParameter]
+$Authorization,
+# If set, will return raw results. This will ignore -Property, -DecorateProperty, -ExpandProperty, and -PSTypeName.
+[Management.Automation.SwitchParameter]
+$Raw
+)
+
+begin {
+$NamespaceID = 'app.bsky.graph.getKnownFollowers'
+$httpMethod  = 'GET'
+$InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat.DecorateProperty = [Ordered]@{
+    'subject'='app.bsky.actor.defs#profileView'
+    'subject.associated'='app.bsky.actor.defs#profileAssociated'
+    'subject.associated.chat'='app.bsky.actor.defs#profileAssociatedChat'
+    'subject.viewer'='app.bsky.graph.defs#viewerState'
+    'subject.viewer.mutedByList'='app.bsky.graph.defs#listViewBasic'
+    'subject.viewer.mutedByList.purpose'='app.bsky.graph.defs#listPurpose'
+    'subject.viewer.mutedByList.viewer'='app.bsky.graph.defs#listViewerState'
+    'subject.viewer.blockingByList'='app.bsky.graph.defs#listViewBasic'
+    'subject.viewer.blockingByList.purpose'='app.bsky.graph.defs#listPurpose'
+    'subject.viewer.blockingByList.viewer'='app.bsky.graph.defs#listViewerState'
+    'subject.viewer.knownFollowers'='app.bsky.graph.defs#knownFollowers'
+    'followers'='app.bsky.actor.defs#profileView'
+    'followers.associated'='app.bsky.actor.defs#profileAssociated'
+    'followers.associated.chat'='app.bsky.actor.defs#profileAssociatedChat'
+    'followers.viewer'='app.bsky.graph.defs#viewerState'
+    'followers.viewer.mutedByList'='app.bsky.graph.defs#listViewBasic'
+    'followers.viewer.mutedByList.purpose'='app.bsky.graph.defs#listPurpose'
+    'followers.viewer.mutedByList.viewer'='app.bsky.graph.defs#listViewerState'
+    'followers.viewer.blockingByList'='app.bsky.graph.defs#listViewBasic'
+    'followers.viewer.blockingByList.purpose'='app.bsky.graph.defs#listPurpose'
+    'followers.viewer.blockingByList.viewer'='app.bsky.graph.defs#listViewerState'
+    'followers.viewer.knownFollowers'='app.bsky.graph.defs#knownFollowers'
+}
+$InvokeAtSplat["PSTypeName"] = $NamespaceID
+$parameterAliases = [Ordered]@{}
+$DataboundParameters = @()
+$AsByte = $false
+
+
+    
+:nextParameter foreach ($paramMetadata in 
+    ([Management.Automation.CommandMetadata]$MyInvocation.MyCommand).Parameters.Values) {
+    
+    foreach ($attr in $paramMetadata.Attributes) {
+        if ($attr -is [ComponentModel.DefaultBindingPropertyAttribute]) {
+            $parameterAliases[$paramMetadata.Name] = $attr.Name
+            $DataboundParameters += $paramMetadata.Name
+            continue nextParameter
+        }
+    }
+}
+
+
+
+    $parameterQueue = [Collections.Queue]::new()
+
+}
+process {
+
+$parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)            
+        
+}
+end {
+
+            $parameterQueue.ToArray() |
+                Invoke-AtProtocol -Method $httpMethod -NamespaceID $NamespaceID -Parameter {
+                    $RestParameters =[Ordered]@{}
+                    foreach ($parameterName in $DataboundParameters) {
+                        if ($null -ne $_.($ParameterName)) {
+                            $RestParameters[$parameterName] = $_.($ParameterName)
+                        }
+                    }
+                    $RestParameters
+                } -ParameterAlias $parameterAliases @InvokeAtSplat -ContentType $(
+                    if ($ContentType) {
+                        $ContentType
+                    } else {
+                        "application/json"   
+                    }
+                ) -AsByte:$AsByte -Property {
+                    $_
+                } -Cache:$(
+                    if ($cache) {$cache} else { $false }
+                ) -Raw:$Raw -Authorization {
+                    if ($_.Authorization) { 
+                        $_.Authorization
+                    } else { 
+                        $null
+                    }
+                }
+        
+}
+} 
+
