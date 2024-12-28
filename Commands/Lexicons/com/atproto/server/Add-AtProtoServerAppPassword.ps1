@@ -10,10 +10,16 @@ function Add-AtProtoServerAppPassword  {
 [Alias('Add-AtProtocolServerAppPassword','atproto.server.createAppPassword','com.atproto.server.createAppPassword')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+# A short name for the App Password, to help distinguish them.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('name')]
 [String]
 $Name,
+# If an app password has 'privileged' access to possibly sensitive account state. Meant for use with trusted clients.
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('privileged')]
+[Management.Automation.SwitchParameter]
+$Privileged,
 # The authorization. This can be a JWT that accesses the at protocol or a credential. If this is provided as a credential the username is a handle or email and the password is the app password.
 [Alias('Authentication','AppPassword','Credential','PSCredential')]
 [Management.Automation.SwitchParameter]
