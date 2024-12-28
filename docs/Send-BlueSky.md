@@ -1,25 +1,16 @@
 Send-AtProto
 ------------
 
-
-
-
 ### Synopsis
 Sends to the At Protocol
 
-
-
 ---
-
 
 ### Description
 
 Sends a BlueSky post using the At Protocol
 
-
-
 ---
-
 
 ### Examples
 Send a Hello World
@@ -49,115 +40,57 @@ Send-AtProto "#AtProtocol is great.  One of the cool things about learning how i
 } -WhatIf
 ```
 
-
 ---
-
 
 ### Parameters
 #### **Text**
-
 The text of a post
-
-
-
-
-
 
 |Type      |Required|Position|PipelineInput        |Aliases                 |
 |----------|--------|--------|---------------------|------------------------|
 |`[String]`|false   |1       |true (ByPropertyName)|Post<br/>Skeet<br/>Title|
 
-
-
 #### **Image**
-
 One or more images to attach to a post.
-
-
-
-
-
 
 |Type        |Required|Position|PipelineInput        |
 |------------|--------|--------|---------------------|
 |`[String[]]`|false   |2       |true (ByPropertyName)|
 
-
-
 #### **AlternateImageText**
-
 One or more alternate image texts, for accessibility.
-
-
-
-
-
 
 |Type        |Required|Position|PipelineInput        |
 |------------|--------|--------|---------------------|
 |`[String[]]`|false   |3       |true (ByPropertyName)|
 
-
-
 #### **QuotePost**
-
 A post that will be quoted by this post.
-
-
-
-
-
 
 |Type        |Required|Position|PipelineInput        |
 |------------|--------|--------|---------------------|
 |`[PSObject]`|false   |4       |true (ByPropertyName)|
 
-
-
 #### **Reply**
-
 A post that this post will reply to.
-
-
-
-
-
 
 |Type        |Required|Position|PipelineInput        |
 |------------|--------|--------|---------------------|
 |`[PSObject]`|false   |5       |true (ByPropertyName)|
 
-
-
 #### **WebCard**
-
 A web card, containing rich links
-
-
-
-
-
 
 |Type        |Required|Position|PipelineInput        |
 |------------|--------|--------|---------------------|
 |`[PSObject]`|false   |6       |true (ByPropertyName)|
 
-
-
 #### **LinkPattern**
-
 Patterns within a message to replace with links.
-
-
-
-
-
 
 |Type        |Required|Position|PipelineInput        |
 |------------|--------|--------|---------------------|
 |`[PSObject]`|false   |7       |true (ByPropertyName)|
-
-
 
 #### **WhatIf**
 -WhatIf is an automatic variable that is created when a command has ```[CmdletBinding(SupportsShouldProcess)]```.
@@ -168,13 +101,9 @@ Patterns within a message to replace with links.
 
 If you pass ```-Confirm:$false``` you will not be prompted.
 
-
 If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$confirmImpactPreference```, you will not be prompted unless -Confirm is passed.
 
-
-
 ---
-
 
 ### Syntax
 ```PowerShell
