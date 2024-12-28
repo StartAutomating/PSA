@@ -10,6 +10,7 @@ function Get-BskyFeedPosts  {
 [Alias('Get-BlueSkyFeedPosts','bsky.feed.getPosts','app.bsky.feed.getPosts')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+# List of post AT-URIs to return hydrated views for.
 [Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('uris')]
 [Management.Automation.PSObject]
