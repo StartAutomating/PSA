@@ -1,7 +1,7 @@
 ## app.bsky.graph.getMutes
 
 
-### Script Methods
+### Script Properties
 
 
 * [get_More](get_More.md)
