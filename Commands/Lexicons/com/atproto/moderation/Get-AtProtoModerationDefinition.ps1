@@ -1,7 +1,13 @@
 function Get-AtProtoModerationDefinition {
-[Alias('atproto.moderation.defs','com.atproto.moderation.defs','com.atproto.moderation.defs#reasonType','com.atproto.moderation.defs#reasonSpam','com.atproto.moderation.defs#reasonViolation','com.atproto.moderation.defs#reasonMisleading','com.atproto.moderation.defs#reasonSexual','com.atproto.moderation.defs#reasonRude','com.atproto.moderation.defs#reasonOther')]
+
+[Alias('atproto.moderation.defs','com.atproto.moderation.defs','com.atproto.moderation.defs#reasonType','com.atproto.moderation.defs#reasonSpam','com.atproto.moderation.defs#reasonViolation','com.atproto.moderation.defs#reasonMisleading','com.atproto.moderation.defs#reasonSexual','com.atproto.moderation.defs#reasonRude','com.atproto.moderation.defs#reasonOther','com.atproto.moderation.defs#reasonAppeal')]
 param(
+
 )
+
+
+
+
 $lexiconText = @'
 {
   "lexicon": 1,
@@ -15,7 +21,8 @@ $lexiconText = @'
         "com.atproto.moderation.defs#reasonMisleading",
         "com.atproto.moderation.defs#reasonSexual",
         "com.atproto.moderation.defs#reasonRude",
-        "com.atproto.moderation.defs#reasonOther"
+        "com.atproto.moderation.defs#reasonOther",
+        "com.atproto.moderation.defs#reasonAppeal"
       ]
     },
     "reasonSpam": {
@@ -41,9 +48,14 @@ $lexiconText = @'
     "reasonOther": {
       "type": "token",
       "description": "Other: reports not falling under another report category"
+    },
+    "reasonAppeal": {
+      "type": "token",
+      "description": "Appeal: appeal a previously taken moderation action"
     }
   }
 }
+
 '@
 $lexicon = $lexiconText | ConvertFrom-JSON
 if ($myInvocation.InvocationName -eq $myInvocation.MyCommand.Name) {
@@ -53,5 +65,7 @@ if ($myInvocation.InvocationName -eq $myInvocation.MyCommand.Name) {
 } else {
     $lexicon
 }
+
+
 } 
 
