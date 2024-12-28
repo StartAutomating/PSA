@@ -14,11 +14,12 @@ param(
 [ComponentModel.DefaultBindingProperty('email')]
 [String]
 $Email,
+# Requested handle for the account.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('handle')]
 [String]
 $Handle,
-# The Decentralized Identifier.  This is a uniqueID used throughout the At Protocol.
+# Pre-existing atproto DID, being imported to a new account.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('did')]
 [String]
@@ -28,13 +29,28 @@ $Did,
 [String]
 $InviteCode,
 [Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('verificationCode')]
+[String]
+$VerificationCode,
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('verificationPhone')]
+[String]
+$VerificationPhone,
+# Initial account password. May need to meet instance-specific password strength requirements.
+[Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('password')]
 [String]
 $Password,
+# DID PLC rotation key (aka, recovery key) to be included in PLC creation operation.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('recoveryKey')]
 [String]
 $RecoveryKey,
+# A signed DID PLC operation to be submitted as part of importing an existing account to this instance. NOTE: this optional field may be updated when full account migration is implemented.
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('plcOp')]
+[Management.Automation.PSObject]
+$PlcOp,
 # The authorization. This can be a JWT that accesses the at protocol or a credential. If this is provided as a credential the username is a handle or email and the password is the app password.
 [Alias('Authentication','AppPassword','Credential','PSCredential')]
 [Management.Automation.SwitchParameter]
