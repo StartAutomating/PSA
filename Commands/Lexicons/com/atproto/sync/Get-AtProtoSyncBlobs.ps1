@@ -15,7 +15,7 @@ param(
 [ComponentModel.DefaultBindingProperty('did')]
 [String]
 $Did,
-# Optional revision of the repo to list blobs since
+# Optional revision of the repo to list blobs since.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('since')]
 [String]
