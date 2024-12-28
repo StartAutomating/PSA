@@ -10,10 +10,12 @@ function Get-BskyFeedLikes  {
 [Alias('Get-BlueSkyFeedLikes','bsky.feed.getLikes','app.bsky.feed.getLikes')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+# AT-URI of the subject (eg, a post record).
 [Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('uri')]
 [String]
 $Uri,
+# CID of the subject record (aka, specific version of record), to filter likes.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cid')]
 [String]
