@@ -4,4 +4,4 @@
 ### Script Methods
 
 
-* [Follow](Follow.md)
+* [Follow()](Follow.md)
