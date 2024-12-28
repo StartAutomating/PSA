@@ -37,6 +37,16 @@ $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
 $InvokeAtSplat.DecorateProperty = [Ordered]@{
     'suggestions'='app.bsky.actor.defs#profileView'
+    'suggestions.associated'='app.bsky.actor.defs#profileAssociated'
+    'suggestions.associated.chat'='app.bsky.actor.defs#profileAssociatedChat'
+    'suggestions.viewer'='app.bsky.graph.defs#viewerState'
+    'suggestions.viewer.mutedByList'='app.bsky.graph.defs#listViewBasic'
+    'suggestions.viewer.mutedByList.purpose'='app.bsky.graph.defs#listPurpose'
+    'suggestions.viewer.mutedByList.viewer'='app.bsky.graph.defs#listViewerState'
+    'suggestions.viewer.blockingByList'='app.bsky.graph.defs#listViewBasic'
+    'suggestions.viewer.blockingByList.purpose'='app.bsky.graph.defs#listPurpose'
+    'suggestions.viewer.blockingByList.viewer'='app.bsky.graph.defs#listViewerState'
+    'suggestions.viewer.knownFollowers'='app.bsky.graph.defs#knownFollowers'
 }
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
