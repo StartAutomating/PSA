@@ -1,99 +1,67 @@
 Send-AtProtoAdminEmail
 ----------------------
 
-
-
-
 ### Synopsis
 com.atproto.admin.sendEmail
 
-
-
 ---
-
 
 ### Description
 
 com.atproto.admin.sendEmail
 
-
-
 ---
-
 
 ### Related Links
 * [https://github.com/bluesky-social/atproto/tree/main/lexicons/com/atproto/admin/sendEmail.json](https://github.com/bluesky-social/atproto/tree/main/lexicons/com/atproto/admin/sendEmail.json)
 
-
-
-
-
 ---
-
 
 ### Parameters
 #### **RecipientDid**
-
-
-
 
 |Type      |Required|Position|PipelineInput        |
 |----------|--------|--------|---------------------|
 |`[String]`|false   |1       |true (ByPropertyName)|
 
-
-
 #### **Content**
-
-
-
 
 |Type      |Required|Position|PipelineInput        |
 |----------|--------|--------|---------------------|
 |`[String]`|false   |2       |true (ByPropertyName)|
 
-
-
 #### **Subject**
-
-
-
 
 |Type      |Required|Position|PipelineInput        |
 |----------|--------|--------|---------------------|
 |`[String]`|false   |3       |true (ByPropertyName)|
 
+#### **SenderDid**
 
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |4       |true (ByPropertyName)|
+
+#### **Comment**
+Additional comment by the sender that won't be used in the email itself but helpful to provide more context for moderators/reviewers
+
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |5       |true (ByPropertyName)|
 
 #### **Authorization**
-
 The authorization. This can be a JWT that accesses the at protocol or a credential. If this is provided as a credential the username is a handle or email and the password is the app password.
-
-
-
-
-
 
 |Type      |Required|Position|PipelineInput|Aliases                                                       |
 |----------|--------|--------|-------------|--------------------------------------------------------------|
 |`[Switch]`|false   |named   |false        |Authentication<br/>AppPassword<br/>Credential<br/>PSCredential|
 
-
-
 #### **Raw**
-
 If set, will return raw results. This will ignore -Property, -DecorateProperty, -ExpandProperty, and -PSTypeName.
-
-
-
-
-
 
 |Type      |Required|Position|PipelineInput|
 |----------|--------|--------|-------------|
 |`[Switch]`|false   |named   |false        |
-
-
 
 #### **WhatIf**
 -WhatIf is an automatic variable that is created when a command has ```[CmdletBinding(SupportsShouldProcess)]```.
@@ -104,15 +72,11 @@ If set, will return raw results. This will ignore -Property, -DecorateProperty, 
 
 If you pass ```-Confirm:$false``` you will not be prompted.
 
-
 If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$confirmImpactPreference```, you will not be prompted unless -Confirm is passed.
-
-
 
 ---
 
-
 ### Syntax
 ```PowerShell
-Send-AtProtoAdminEmail [[-RecipientDid] <String>] [[-Content] <String>] [[-Subject] <String>] [-Authorization] [-Raw] [-WhatIf] [-Confirm] [<CommonParameters>]
+Send-AtProtoAdminEmail [[-RecipientDid] <String>] [[-Content] <String>] [[-Subject] <String>] [[-SenderDid] <String>] [[-Comment] <String>] [-Authorization] [-Raw] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
