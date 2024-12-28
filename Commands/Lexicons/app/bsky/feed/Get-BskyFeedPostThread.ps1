@@ -10,14 +10,17 @@ function Get-BskyFeedPostThread  {
 [Alias('Get-BlueSkyFeedPostThread','bsky.feed.getPostThread','app.bsky.feed.getPostThread')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+# Reference (AT-URI) to post record.
 [Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('uri')]
 [String]
 $Uri,
+# How many levels of reply depth should be included in response.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('depth')]
 [Management.Automation.PSObject]
 $Depth,
+# How many levels of parent (and grandparent, etc) post to include.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('parentHeight')]
 [Management.Automation.PSObject]
@@ -38,6 +41,9 @@ begin {
 $NamespaceID = 'app.bsky.feed.getPostThread'
 $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat.DecorateProperty = [Ordered]@{
+    'threadgate'='app.bsky.feed.defs#threadgateView'
+}
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 $DataboundParameters = @()
