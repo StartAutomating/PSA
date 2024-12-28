@@ -53,6 +53,7 @@ $InvokeAtSplat.DecorateProperty = [Ordered]@{
     'feed.post.viewer'='app.bsky.feed.defs#viewerState'
     'feed.post.threadgate'='app.bsky.feed.defs#threadgateView'
     'feed.reply'='app.bsky.feed.defs#replyRef'
+    'feed.reply.grandparentAuthor'='app.bsky.actor.defs#profileViewBasic'
 }
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
