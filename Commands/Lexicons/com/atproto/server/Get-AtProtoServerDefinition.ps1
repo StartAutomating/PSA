@@ -1,7 +1,13 @@
 function Get-AtProtoServerDefinition {
+
 [Alias('atproto.server.defs','com.atproto.server.defs','com.atproto.server.defs#inviteCode','com.atproto.server.defs#inviteCodeUse')]
 param(
+
 )
+
+
+
+
 $lexiconText = @'
 {
   "lexicon": 1,
@@ -41,6 +47,7 @@ $lexiconText = @'
     }
   }
 }
+
 '@
 $lexicon = $lexiconText | ConvertFrom-JSON
 if ($myInvocation.InvocationName -eq $myInvocation.MyCommand.Name) {
@@ -50,5 +57,7 @@ if ($myInvocation.InvocationName -eq $myInvocation.MyCommand.Name) {
 } else {
     $lexicon
 }
+
+
 } 
 
