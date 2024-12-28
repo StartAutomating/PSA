@@ -10,12 +10,17 @@ function Search-BskyUnspeccedActorsSkeleton  {
 [Alias('Search-BlueSkyUnspeccedActorsSkeleton','bsky.unspecced.searchActorsSkeleton','app.bsky.unspecced.searchActorsSkeleton')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-# search query string; syntax, phrase, boolean, and faceting is unspecified, but Lucene query syntax is recommended. For typeahead search, only simple term match is supported, not full syntax
+# Search query string; syntax, phrase, boolean, and faceting is unspecified, but Lucene query syntax is recommended. For typeahead search, only simple term match is supported, not full syntax.
 [Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('q')]
 [String]
 $Q,
-# if true, acts as fast/simple 'typeahead' query
+# DID of the account making the request (not included for public/unauthenticated queries). Used to boost followed accounts in ranking.
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('viewer')]
+[String]
+$Viewer,
+# If true, acts as fast/simple 'typeahead' query.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('typeahead')]
 [Management.Automation.SwitchParameter]
@@ -25,7 +30,7 @@ $Typeahead,
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
-# optional pagination mechanism; may not necessarily allow scrolling through entire result set
+# Optional pagination mechanism; may not necessarily allow scrolling through entire result set.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
