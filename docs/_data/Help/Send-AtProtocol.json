@@ -1,0 +1,54 @@
+{
+  "Synopsis": "Sends to the At Protocol",
+  "Description": "Sends a BlueSky post using the At Protocol",
+  "Parameters": [
+    {
+      "Name": null,
+      "Type": null,
+      "Description": "",
+      "Required": false,
+      "Position": 0,
+      "Aliases": null,
+      "DefaultValue": null,
+      "Globbing": false,
+      "PipelineInput": null,
+      "variableLength": false
+    }
+  ],
+  "Notes": [
+    null
+  ],
+  "CommandType": "Function",
+  "Component": [
+    null
+  ],
+  "Inputs": [
+    null
+  ],
+  "Outputs": [
+    null
+  ],
+  "Links": [],
+  "Examples": [
+    {
+      "Title": "EXAMPLE 1",
+      "Markdown": "Send a Hello World",
+      "Code": "Send-AtProto \"Hello World (from https://github.com/StartAutomating/PSA )\""
+    },
+    {
+      "Title": "EXAMPLE 2",
+      "Markdown": "Don't send Hello World, ask -WhatIf I did, and get back the object you would post.",
+      "Code": "Send-AtProto \"Hello World (from https://github.com/StartAutomating/PSA )\" -WhatIf"
+    },
+    {
+      "Title": "EXAMPLE 3",
+      "Markdown": "",
+      "Code": "Send-AtProto \"Want to hype a GitHub project on BlueSky?  PSA is your friend https://github.com/StartAutomating/PSA . (testing web cards)\" -WebCard @{\n    Url  = 'https://github.com/StartAutomating/PSA'\n} -WhatIf"
+    },
+    {
+      "Title": "EXAMPLE 4",
+      "Markdown": "",
+      "Code": "Send-AtProto \"#AtProtocol is great.  One of the cool things about learning how it works is seeing what works.  For instance, PSA, you can have links without typing the URL, and a webcard without a URL.\" -WebCard @{\n    Url  = 'https://github.com/StartAutomating/PSA'\n} -LinkPattern @{\n    \"PSA\" = \"https://github.com/StartAutomating/PSA\"\n} -WhatIf"
+    }
+  ]
+}
