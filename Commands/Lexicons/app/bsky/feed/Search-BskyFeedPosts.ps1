@@ -10,17 +10,62 @@ function Search-BskyFeedPosts  {
 [Alias('Search-BlueSkyFeedPosts','bsky.feed.searchPosts','app.bsky.feed.searchPosts')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-# search query string; syntax, phrase, boolean, and faceting is unspecified, but Lucene query syntax is recommended
+# Search query string; syntax, phrase, boolean, and faceting is unspecified, but Lucene query syntax is recommended.
 [Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('q')]
 [String]
 $Q,
+# Specifies the ranking order of results.
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('sort')]
+[String]
+$Sort,
+# Filter results for posts after the indicated datetime (inclusive). Expected to use 'sortAt' timestamp, which may not match 'createdAt'. Can be a datetime, or just an ISO date (YYYY-MM-DD).
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('since')]
+[String]
+$Since,
+# Filter results for posts before the indicated datetime (not inclusive). Expected to use 'sortAt' timestamp, which may not match 'createdAt'. Can be a datetime, or just an ISO date (YYY-MM-DD).
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('until')]
+[String]
+$Until,
+# Filter to posts which mention the given account. Handles are resolved to DID before query-time. Only matches rich-text facet mentions.
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('mentions')]
+[String]
+$Mentions,
+# Filter to posts by the given account. Handles are resolved to DID before query-time.
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('author')]
+[String]
+$Author,
+# Filter to posts in the given language. Expected to be based on post language field, though server may override language detection.
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('lang')]
+[String]
+$Lang,
+# Filter to posts with URLs (facet links or embeds) linking to the given domain (hostname). Server may apply hostname normalization.
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('domain')]
+[String]
+$Domain,
+# Filter to posts with links (facet links or embeds) pointing to this URL. Server may apply URL normalization or fuzzy matching.
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('url')]
+[String]
+$Url,
+# Filter to posts with the given tag (hashtag), based on rich-text facet or tag field. Do not include the hash (#) prefix. Multiple tags can be specified, with 'AND' matching.
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('tag')]
+[Management.Automation.PSObject]
+$Tag,
 # A limit to the number of results returned.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
-# optional pagination mechanism; may not necessarily allow scrolling through entire result set
+# Optional pagination mechanism; may not necessarily allow scrolling through entire result set.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
