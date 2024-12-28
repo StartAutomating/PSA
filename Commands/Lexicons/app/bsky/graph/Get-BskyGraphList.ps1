@@ -10,6 +10,7 @@ function Get-BskyGraphList  {
 [Alias('Get-BlueSkyGraphList','bsky.graph.getList','app.bsky.graph.getList')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+# Reference (AT-URI) of the list record to hydrate.
 [Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('list')]
 [String]
@@ -49,10 +50,30 @@ $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
 $InvokeAtSplat.DecorateProperty = [Ordered]@{
     'list'='app.bsky.graph.defs#listView'
     'list.creator'='app.bsky.actor.defs#profileView'
+    'list.creator.associated'='app.bsky.actor.defs#profileAssociated'
+    'list.creator.associated.chat'='app.bsky.actor.defs#profileAssociatedChat'
+    'list.creator.viewer'='app.bsky.graph.defs#viewerState'
+    'list.creator.viewer.mutedByList'='app.bsky.graph.defs#listViewBasic'
+    'list.creator.viewer.mutedByList.purpose'='app.bsky.graph.defs#listPurpose'
+    'list.creator.viewer.mutedByList.viewer'='app.bsky.graph.defs#listViewerState'
+    'list.creator.viewer.blockingByList'='app.bsky.graph.defs#listViewBasic'
+    'list.creator.viewer.blockingByList.purpose'='app.bsky.graph.defs#listPurpose'
+    'list.creator.viewer.blockingByList.viewer'='app.bsky.graph.defs#listViewerState'
+    'list.creator.viewer.knownFollowers'='app.bsky.graph.defs#knownFollowers'
     'list.purpose'='app.bsky.graph.defs#listPurpose'
     'list.viewer'='app.bsky.graph.defs#listViewerState'
     'items'='app.bsky.graph.defs#listItemView'
     'items.subject'='app.bsky.actor.defs#profileView'
+    'items.subject.associated'='app.bsky.actor.defs#profileAssociated'
+    'items.subject.associated.chat'='app.bsky.actor.defs#profileAssociatedChat'
+    'items.subject.viewer'='app.bsky.graph.defs#viewerState'
+    'items.subject.viewer.mutedByList'='app.bsky.graph.defs#listViewBasic'
+    'items.subject.viewer.mutedByList.purpose'='app.bsky.graph.defs#listPurpose'
+    'items.subject.viewer.mutedByList.viewer'='app.bsky.graph.defs#listViewerState'
+    'items.subject.viewer.blockingByList'='app.bsky.graph.defs#listViewBasic'
+    'items.subject.viewer.blockingByList.purpose'='app.bsky.graph.defs#listPurpose'
+    'items.subject.viewer.blockingByList.viewer'='app.bsky.graph.defs#listViewerState'
+    'items.subject.viewer.knownFollowers'='app.bsky.graph.defs#knownFollowers'
 }
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
