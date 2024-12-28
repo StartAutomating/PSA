@@ -19,6 +19,15 @@ $Identifier,
 [ComponentModel.DefaultBindingProperty('password')]
 [String]
 $Password,
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('authFactorToken')]
+[String]
+$AuthFactorToken,
+# When true, instead of throwing error for takendown accounts, a valid response with a narrow scoped token will be returned
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('allowTakendown')]
+[Management.Automation.SwitchParameter]
+$AllowTakendown,
 # The authorization. This can be a JWT that accesses the at protocol or a credential. If this is provided as a credential the username is a handle or email and the password is the app password.
 [Alias('Authentication','AppPassword','Credential','PSCredential')]
 [Management.Automation.SwitchParameter]
