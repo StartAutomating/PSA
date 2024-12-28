@@ -1,0 +1,35 @@
+{
+  "Synopsis": "com.atproto.repo.getRecord",
+  "Description": "com.atproto.repo.getRecord",
+  "Parameters": [
+    {
+      "Name": null,
+      "Type": null,
+      "Description": "",
+      "Required": false,
+      "Position": 0,
+      "Aliases": null,
+      "DefaultValue": null,
+      "Globbing": false,
+      "PipelineInput": null,
+      "variableLength": false
+    }
+  ],
+  "Notes": [
+    null
+  ],
+  "CommandType": "Function",
+  "Component": [
+    null
+  ],
+  "Inputs": [
+    null
+  ],
+  "Outputs": [
+    null
+  ],
+  "Links": [
+    "https://github.com/bluesky-social/atproto/tree/main/lexicons/com/atproto/repo/getRecord.json"
+  ],
+  "Examples": []
+}
