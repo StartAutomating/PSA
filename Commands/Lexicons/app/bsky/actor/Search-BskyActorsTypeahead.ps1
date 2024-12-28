@@ -10,12 +10,12 @@ function Search-BskyActorsTypeahead  {
 [Alias('Search-BlueSkyActorsTypeahead','bsky.actor.searchActorsTypeahead','app.bsky.actor.searchActorsTypeahead')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-# DEPRECATED: use 'q' instead
+# DEPRECATED: use 'q' instead.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('term')]
 [String]
 $Term,
-# search query prefix; not a full query string
+# Search query prefix; not a full query string.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('q')]
 [String]
@@ -43,10 +43,12 @@ $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
 $InvokeAtSplat.DecorateProperty = [Ordered]@{
     'actors'='app.bsky.actor.defs#profileViewBasic'
-    'actors.viewer'='app.bsky.graph.defs#viewerState'
+    'actors.associated'='app.bsky.actor.defs#profileAssociated'
+    'actors.associated.chat'='app.bsky.actor.defs#profileAssociatedChat'
+    'actors.viewer'='app.bsky.actor.defs#viewerState'
     'actors.viewer.mutedByList'='app.bsky.graph.defs#listViewBasic'
-    'actors.viewer.mutedByList.purpose'='app.bsky.graph.defs#listPurpose'
-    'actors.viewer.mutedByList.viewer'='app.bsky.graph.defs#listViewerState'
+    'actors.viewer.blockingByList'='app.bsky.graph.defs#listViewBasic'
+    'actors.viewer.knownFollowers'='app.bsky.actor.defs#knownFollowers'
 }
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
