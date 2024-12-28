@@ -10,10 +10,12 @@ function Get-BskyFeedRepostedBy  {
 [Alias('Get-BlueSkyFeedRepostedBy','bsky.feed.getRepostedBy','app.bsky.feed.getRepostedBy')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+# Reference (AT-URI) of post record
 [Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('uri')]
 [String]
 $Uri,
+# If supplied, filters to reposts of specific version (by CID) of the post record.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cid')]
 [String]
