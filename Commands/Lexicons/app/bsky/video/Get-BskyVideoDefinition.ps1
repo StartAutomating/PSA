@@ -1,0 +1,53 @@
+function Get-BskyVideoDefinition {
+
+[Alias('bsky.video.defs','app.bsky.video.defs','app.bsky.video.defs#jobStatus')]
+param(
+
+)
+
+
+
+
+$lexiconText = @'
+{
+  "lexicon": 1,
+  "id": "app.bsky.video.defs",
+  "defs": {
+    "jobStatus": {
+      "type": "object",
+      "required": ["jobId", "did", "state"],
+      "properties": {
+        "jobId": { "type": "string" },
+        "did": { "type": "string", "format": "did" },
+        "state": {
+          "type": "string",
+          "description": "The state of the video processing job. All values not listed as a known value indicate that the job is in process.",
+          "knownValues": ["JOB_STATE_COMPLETED", "JOB_STATE_FAILED"]
+        },
+        "progress": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Progress within the current processing state."
+        },
+        "blob": { "type": "blob" },
+        "error": { "type": "string" },
+        "message": { "type": "string" }
+      }
+    }
+  }
+}
+
+'@
+$lexicon = $lexiconText | ConvertFrom-JSON
+if ($myInvocation.InvocationName -eq $myInvocation.MyCommand.Name) {
+    $lexicon
+} elseif ($myInvocation.InvocationName -like '*#*') {
+    $lexicon.defs.$(@($myInvocation.InvocationName -split '\#',2)[1])
+} else {
+    $lexicon
+}
+
+
+} 
+
