@@ -14,7 +14,7 @@ param(
 [ComponentModel.DefaultBindingProperty('account')]
 [String]
 $Account,
-# Additionally add a note describing why the invites were enabled
+# Optional reason for enabled invites.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('note')]
 [String]
