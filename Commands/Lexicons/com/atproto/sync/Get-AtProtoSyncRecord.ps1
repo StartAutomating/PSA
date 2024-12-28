@@ -19,11 +19,12 @@ $Did,
 [ComponentModel.DefaultBindingProperty('collection')]
 [String]
 $Collection,
+# Record Key
 [Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('rkey')]
 [String]
 $Rkey,
-# An optional past commit CID.
+# DEPRECATED: referenced a repo commit by CID, and retrieved record as of that commit
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('commit')]
 [String]
