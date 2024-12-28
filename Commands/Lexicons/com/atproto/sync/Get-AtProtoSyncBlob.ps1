@@ -10,7 +10,7 @@ function Get-AtProtoSyncBlob  {
 [Alias('Get-AtProtocolSyncBlob','atproto.sync.getBlob','com.atproto.sync.getBlob')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-# The DID of the repo.
+# The DID of the account.
 [Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('did')]
 [String]
