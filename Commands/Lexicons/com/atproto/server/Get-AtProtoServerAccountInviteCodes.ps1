@@ -14,6 +14,7 @@ param(
 [ComponentModel.DefaultBindingProperty('includeUsed')]
 [Management.Automation.SwitchParameter]
 $IncludeUsed,
+# Controls whether any new 'earned' but not 'created' invites should be created.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('createAvailable')]
 [Management.Automation.SwitchParameter]
