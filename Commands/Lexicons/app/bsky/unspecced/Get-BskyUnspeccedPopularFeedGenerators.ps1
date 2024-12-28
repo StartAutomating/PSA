@@ -48,6 +48,14 @@ $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
 $InvokeAtSplat.DecorateProperty = [Ordered]@{
     'feeds'='app.bsky.feed.defs#generatorView'
+    'feeds.creator'='app.bsky.actor.defs#profileView'
+    'feeds.creator.associated'='app.bsky.actor.defs#profileAssociated'
+    'feeds.creator.associated.chat'='app.bsky.actor.defs#profileAssociatedChat'
+    'feeds.creator.viewer'='app.bsky.actor.defs#viewerState'
+    'feeds.creator.viewer.mutedByList'='app.bsky.graph.defs#listViewBasic'
+    'feeds.creator.viewer.blockingByList'='app.bsky.graph.defs#listViewBasic'
+    'feeds.creator.viewer.knownFollowers'='app.bsky.actor.defs#knownFollowers'
+    'feeds.viewer'='app.bsky.actor.defs#generatorViewerState'
 }
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
