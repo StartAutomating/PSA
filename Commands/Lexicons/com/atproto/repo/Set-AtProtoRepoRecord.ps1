@@ -10,7 +10,7 @@ function Set-AtProtoRepoRecord  {
 [Alias('Set-AtProtocolRepoRecord','atproto.repo.putRecord','com.atproto.repo.putRecord')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-# The handle or DID of the repo.
+# The handle or DID of the repo (aka, current account).
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('repo')]
 [String]
@@ -20,12 +20,12 @@ $Repo,
 [ComponentModel.DefaultBindingProperty('collection')]
 [String]
 $Collection,
-# The key of the record.
+# The Record Key.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('rkey')]
 [String]
 $Rkey,
-# Validate the record?
+# Can be set to 'false' to skip Lexicon schema validation of record data, 'true' to require it, or leave unset to validate only for known Lexicons.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('validate')]
 [Management.Automation.SwitchParameter]
@@ -35,12 +35,12 @@ $Validate,
 [ComponentModel.DefaultBindingProperty('record')]
 [Management.Automation.PSObject]
 $Record,
-# Compare and swap with the previous record by cid.
+# Compare and swap with the previous record by CID. WARNING: nullable and optional field; may cause problems with golang implementation
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('swapRecord')]
 [String]
 $SwapRecord,
-# Compare and swap with the previous commit by cid.
+# Compare and swap with the previous commit by CID.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('swapCommit')]
 [String]
@@ -58,6 +58,9 @@ begin {
 $NamespaceID = 'com.atproto.repo.putRecord'
 $httpMethod  = 'POST'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat.DecorateProperty = [Ordered]@{
+    'commit'='com.atproto.repo.defs#commitMeta'
+}
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 $DataboundParameters = @()
