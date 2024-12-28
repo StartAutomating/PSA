@@ -10,11 +10,20 @@ function Get-BskyNotifications  {
 [Alias('Get-BlueSkyNotifications','bsky.notification.listNotifications','app.bsky.notification.listNotifications')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+# Notification reasons to include in response.
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('reasons')]
+[Management.Automation.PSObject]
+$Reasons,
 # A limit to the number of results returned.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('limit')]
 [Management.Automation.PSObject]
 $Limit,
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('priority')]
+[Management.Automation.SwitchParameter]
+$Priority,
 <#
 A cursor that can be used to get more results.
 
