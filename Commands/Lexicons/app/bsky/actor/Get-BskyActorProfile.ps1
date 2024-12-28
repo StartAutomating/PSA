@@ -10,11 +10,7 @@ function Get-BskyActorProfile  {
 [Alias('Get-BlueSkyActorProfile','bsky.actor.getProfile','app.bsky.actor.getProfile')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-<#
-The Actor.
-
-This can be either a handle (e.g. @AtProto.com) or a Decentralized Identifier (.did)
-#>
+# Handle or DID of account to fetch profile of.
 [Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('actor')]
 [String]
