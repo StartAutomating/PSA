@@ -10,7 +10,7 @@ function Request-AtProtoSyncCrawl  {
 [Alias('Request-AtProtocolSyncCrawl','atproto.sync.requestCrawl','com.atproto.sync.requestCrawl')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-# Hostname of the service that is requesting to be crawled.
+# Hostname of the current service (eg, PDS) that is requesting to be crawled.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('hostname')]
 [String]
