@@ -22,6 +22,15 @@ $Content,
 [ComponentModel.DefaultBindingProperty('subject')]
 [String]
 $Subject,
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('senderDid')]
+[String]
+$SenderDid,
+# Additional comment by the sender that won't be used in the email itself but helpful to provide more context for moderators/reviewers
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('comment')]
+[String]
+$Comment,
 # The authorization. This can be a JWT that accesses the at protocol or a credential. If this is provided as a credential the username is a handle or email and the password is the app password.
 [Alias('Authentication','AppPassword','Credential','PSCredential')]
 [Management.Automation.SwitchParameter]
