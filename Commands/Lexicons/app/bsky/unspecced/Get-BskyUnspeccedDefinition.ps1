@@ -1,7 +1,13 @@
 function Get-BskyUnspeccedDefinition {
-[Alias('bsky.unspecced.defs','app.bsky.unspecced.defs','app.bsky.unspecced.defs#skeletonSearchPost','app.bsky.unspecced.defs#skeletonSearchActor')]
+
+[Alias('bsky.unspecced.defs','app.bsky.unspecced.defs','app.bsky.unspecced.defs#skeletonSearchPost','app.bsky.unspecced.defs#skeletonSearchActor','app.bsky.unspecced.defs#skeletonSearchStarterPack','app.bsky.unspecced.defs#trendingTopic')]
 param(
+
 )
+
+
+
+
 $lexiconText = @'
 {
   "lexicon": 1,
@@ -20,9 +26,27 @@ $lexiconText = @'
       "properties": {
         "did": { "type": "string", "format": "did" }
       }
+    },
+    "skeletonSearchStarterPack": {
+      "type": "object",
+      "required": ["uri"],
+      "properties": {
+        "uri": { "type": "string", "format": "at-uri" }
+      }
+    },
+    "trendingTopic": {
+      "type": "object",
+      "required": ["topic", "link"],
+      "properties": {
+        "topic": { "type": "string" },
+        "displayName": { "type": "string" },
+        "description": { "type": "string" },
+        "link": { "type": "string" }
+      }
     }
   }
 }
+
 '@
 $lexicon = $lexiconText | ConvertFrom-JSON
 if ($myInvocation.InvocationName -eq $myInvocation.MyCommand.Name) {
@@ -32,5 +56,7 @@ if ($myInvocation.InvocationName -eq $myInvocation.MyCommand.Name) {
 } else {
     $lexicon
 }
+
+
 } 
 
