@@ -10,12 +10,12 @@ function Search-BskyActors  {
 [Alias('Search-BlueSkyActors','bsky.actor.searchActors','app.bsky.actor.searchActors')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-# DEPRECATED: use 'q' instead
+# DEPRECATED: use 'q' instead.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('term')]
 [String]
 $Term,
-# search query string; syntax, phrase, boolean, and faceting is unspecified, but Lucene query syntax is recommended
+# Search query string. Syntax, phrase, boolean, and faceting is unspecified, but Lucene query syntax is recommended.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('q')]
 [String]
@@ -54,10 +54,12 @@ $httpMethod  = 'GET'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
 $InvokeAtSplat.DecorateProperty = [Ordered]@{
     'actors'='app.bsky.actor.defs#profileView'
-    'actors.viewer'='app.bsky.graph.defs#viewerState'
+    'actors.associated'='app.bsky.actor.defs#profileAssociated'
+    'actors.associated.chat'='app.bsky.actor.defs#profileAssociatedChat'
+    'actors.viewer'='app.bsky.actor.defs#viewerState'
     'actors.viewer.mutedByList'='app.bsky.graph.defs#listViewBasic'
-    'actors.viewer.mutedByList.purpose'='app.bsky.graph.defs#listPurpose'
-    'actors.viewer.mutedByList.viewer'='app.bsky.graph.defs#listViewerState'
+    'actors.viewer.blockingByList'='app.bsky.graph.defs#listViewBasic'
+    'actors.viewer.knownFollowers'='app.bsky.actor.defs#knownFollowers'
 }
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
