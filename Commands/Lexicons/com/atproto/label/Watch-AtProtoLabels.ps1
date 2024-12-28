@@ -10,7 +10,7 @@ function Watch-AtProtoLabels  {
 [Alias('Watch-AtProtocolLabels','atproto.label.subscribeLabels','com.atproto.label.subscribeLabels')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-# The last known event to backfill from.
+# The last known event seq number to backfill from.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('cursor')]
 [Management.Automation.PSObject]
