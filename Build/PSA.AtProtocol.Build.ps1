@@ -477,8 +477,8 @@ $parameterQueue.Enqueue([Ordered]@{} + $PSBoundParameters)
             }
             
             $psTypeNamePath = (Join-Path $targetDirectory "PSTypeName.txt")
-            if (-not (Test-Path $psTypeNamePath)) {
-                $null = New-Item -ItemType File -Path $psTypeNamePath -Force
+            if (-not (Test-Path $psTypeNamePath) -or -not (Get-Content $psTypeNamePath))  {
+                $null = New-Item -ItemType File -Path $psTypeNamePath -Force -Value "$($lexicon.id)"
             }
 
             [IO.File]::WriteAllText($psTypeNamePath,"$($lexicon.id)") 
