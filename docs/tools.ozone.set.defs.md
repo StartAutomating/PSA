@@ -1,0 +1,37 @@
+Get-OzoneSetDefinition
+----------------------
+
+### Synopsis
+
+Get-OzoneSetDefinition 
+
+---
+
+### Description
+
+---
+
+### Parameters
+
+---
+
+### Inputs
+None
+
+---
+
+### Outputs
+* [Object](https://learn.microsoft.com/en-us/dotnet/api/System.Object)
+
+---
+
+### Syntax
+```PowerShell
+syntaxItem
+```
+```PowerShell
+----------
+```
+```PowerShell
+{@{name=Get-OzoneSetDefinition; CommonParameters=False; parameter=System.Object[]}}
+```
