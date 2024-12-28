@@ -35,10 +35,15 @@ You can provide this -Cursor to the same command with the same input to get more
 [ComponentModel.DefaultBindingProperty('cursor')]
 [String]
 $Cursor,
+# Combinations of post/repost types to include in response.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('filter')]
 [String]
 $Filter,
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('includePins')]
+[Management.Automation.SwitchParameter]
+$IncludePins,
 # If set, will cache results for performance.
 [Management.Automation.SwitchParameter]
 $Cache,
@@ -62,6 +67,7 @@ $InvokeAtSplat.DecorateProperty = [Ordered]@{
     'feed.post.viewer'='app.bsky.feed.defs#viewerState'
     'feed.post.threadgate'='app.bsky.feed.defs#threadgateView'
     'feed.reply'='app.bsky.feed.defs#replyRef'
+    'feed.reply.grandparentAuthor'='app.bsky.actor.defs#profileViewBasic'
 }
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
