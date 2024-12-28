@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-16"?>
-<!-- Generated with EZOut 2.0.1: Install-Module EZOut or https://github.com/StartAutomating/EZOut -->
+<!-- Generated with EZOut 2.0.6: Install-Module EZOut or https://github.com/StartAutomating/EZOut -->
 <Configuration>
   <Controls>
     <Control>
@@ -18,8 +18,12 @@
         elseif ($styleProp -match '\.') {
             $targetObject = $psStyle
             foreach ($dotProperty in $styleProp -split '(?&lt;!\.)\.') {
-                if ($targetObject.Item -is [Management.Automation.PSMethodInfo] -or 
-                    $targetObject -is [Collections.IDictionary]) {
+                if (
+                    ($targetObject.psobject.Members['Item'] -and 
+                        ($targetObject.Item -is [Management.Automation.PSMethodInfo])
+                    ) -or 
+                    $targetObject -is [Collections.IDictionary]
+                ) {
                     $targetObject = $targetObject[$dotProperty]
                 } else {
                     $targetObject = $targetObject.$dotProperty
@@ -62,8 +66,12 @@
         elseif ($styleProp -match '\.') {
             $targetObject = $psStyle
             foreach ($dotProperty in $styleProp -split '(?&lt;!\.)\.') {
-                if ($targetObject.Item -is [Management.Automation.PSMethodInfo] -or 
-                    $targetObject -is [Collections.IDictionary]) {
+                if (
+                    ($targetObject.psobject.Members['Item'] -and 
+                        ($targetObject.Item -is [Management.Automation.PSMethodInfo])
+                    ) -or 
+                    $targetObject -is [Collections.IDictionary]
+                ) {
                     $targetObject = $targetObject[$dotProperty]
                 } else {
                     $targetObject = $targetObject.$dotProperty
