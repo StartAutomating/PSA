@@ -1,3 +1,5 @@
+[ValidatePattern("(?>AtProtocol|at-proto)")]
+param()
 # Push to the parent directory of this script
 Push-Location ($PSScriptRoot | Split-Path)
 
@@ -61,7 +63,7 @@ function ResolveAtRefs {
                 $reference = $reference.defs.($refWithinDef)
             }
         }
-        $propertyCollection = $reference.properties.psobject.properties        
+        $propertyCollection = $reference.properties.psobject.properties
     }
     elseif ($lexicon.defs.($refToFind -replace '^#')){
         $Script:LastDefinitionLexiconId = $lexicon.id
