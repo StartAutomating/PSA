@@ -1,7 +1,7 @@
 ## app.bsky.graph.getBlocks
 
 
-### Script Methods
+### Script Properties
 
 
 * [get_More](get_More.md)
