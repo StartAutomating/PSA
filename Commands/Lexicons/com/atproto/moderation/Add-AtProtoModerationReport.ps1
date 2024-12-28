@@ -10,10 +10,12 @@ function Add-AtProtoModerationReport  {
 [Alias('Add-AtProtocolModerationReport','atproto.moderation.createReport','com.atproto.moderation.createReport')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+# Indicates the broad category of violation the report is for.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('reasonType')]
 [Management.Automation.PSObject]
 $ReasonType,
+# Additional context about the content and violation.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('reason')]
 [String]
