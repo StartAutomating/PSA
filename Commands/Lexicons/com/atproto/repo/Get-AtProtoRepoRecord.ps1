@@ -20,7 +20,7 @@ $Repo,
 [ComponentModel.DefaultBindingProperty('collection')]
 [String]
 $Collection,
-# The key of the record.
+# The Record Key.
 [Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('rkey')]
 [String]
