@@ -1,7 +1,13 @@
 function Get-BskyGraphDefinition {
-[Alias('bsky.graph.defs','app.bsky.graph.defs','app.bsky.graph.defs#listViewBasic','app.bsky.graph.defs#listView','app.bsky.graph.defs#listItemView','app.bsky.graph.defs#listPurpose','app.bsky.graph.defs#modlist','app.bsky.graph.defs#curatelist','app.bsky.graph.defs#listViewerState')]
+
+[Alias('bsky.graph.defs','app.bsky.graph.defs','app.bsky.graph.defs#listViewBasic','app.bsky.graph.defs#listView','app.bsky.graph.defs#listItemView','app.bsky.graph.defs#starterPackView','app.bsky.graph.defs#starterPackViewBasic','app.bsky.graph.defs#listPurpose','app.bsky.graph.defs#modlist','app.bsky.graph.defs#curatelist','app.bsky.graph.defs#referencelist','app.bsky.graph.defs#listViewerState','app.bsky.graph.defs#notFoundActor','app.bsky.graph.defs#relationship')]
 param(
+
 )
+
+
+
+
 $lexiconText = @'
 {
   "lexicon": 1,
@@ -15,7 +21,12 @@ $lexiconText = @'
         "cid": { "type": "string", "format": "cid" },
         "name": { "type": "string", "maxLength": 64, "minLength": 1 },
         "purpose": { "type": "ref", "ref": "#listPurpose" },
-        "avatar": { "type": "string" },
+        "avatar": { "type": "string", "format": "uri" },
+        "listItemCount": { "type": "integer", "minimum": 0 },
+        "labels": {
+          "type": "array",
+          "items": { "type": "ref", "ref": "com.atproto.label.defs#label" }
+        },
         "viewer": { "type": "ref", "ref": "#listViewerState" },
         "indexedAt": { "type": "string", "format": "datetime" }
       }
@@ -38,32 +49,95 @@ $lexiconText = @'
           "type": "array",
           "items": { "type": "ref", "ref": "app.bsky.richtext.facet" }
         },
-        "avatar": { "type": "string" },
+        "avatar": { "type": "string", "format": "uri" },
+        "listItemCount": { "type": "integer", "minimum": 0 },
+        "labels": {
+          "type": "array",
+          "items": { "type": "ref", "ref": "com.atproto.label.defs#label" }
+        },
         "viewer": { "type": "ref", "ref": "#listViewerState" },
         "indexedAt": { "type": "string", "format": "datetime" }
       }
     },
     "listItemView": {
       "type": "object",
-      "required": ["subject"],
+      "required": ["uri", "subject"],
       "properties": {
+        "uri": { "type": "string", "format": "at-uri" },
         "subject": { "type": "ref", "ref": "app.bsky.actor.defs#profileView" }
+      }
+    },
+    "starterPackView": {
+      "type": "object",
+      "required": ["uri", "cid", "record", "creator", "indexedAt"],
+      "properties": {
+        "uri": { "type": "string", "format": "at-uri" },
+        "cid": { "type": "string", "format": "cid" },
+        "record": { "type": "unknown" },
+        "creator": {
+          "type": "ref",
+          "ref": "app.bsky.actor.defs#profileViewBasic"
+        },
+        "list": { "type": "ref", "ref": "#listViewBasic" },
+        "listItemsSample": {
+          "type": "array",
+          "maxLength": 12,
+          "items": { "type": "ref", "ref": "#listItemView" }
+        },
+        "feeds": {
+          "type": "array",
+          "maxLength": 3,
+          "items": { "type": "ref", "ref": "app.bsky.feed.defs#generatorView" }
+        },
+        "joinedWeekCount": { "type": "integer", "minimum": 0 },
+        "joinedAllTimeCount": { "type": "integer", "minimum": 0 },
+        "labels": {
+          "type": "array",
+          "items": { "type": "ref", "ref": "com.atproto.label.defs#label" }
+        },
+        "indexedAt": { "type": "string", "format": "datetime" }
+      }
+    },
+    "starterPackViewBasic": {
+      "type": "object",
+      "required": ["uri", "cid", "record", "creator", "indexedAt"],
+      "properties": {
+        "uri": { "type": "string", "format": "at-uri" },
+        "cid": { "type": "string", "format": "cid" },
+        "record": { "type": "unknown" },
+        "creator": {
+          "type": "ref",
+          "ref": "app.bsky.actor.defs#profileViewBasic"
+        },
+        "listItemCount": { "type": "integer", "minimum": 0 },
+        "joinedWeekCount": { "type": "integer", "minimum": 0 },
+        "joinedAllTimeCount": { "type": "integer", "minimum": 0 },
+        "labels": {
+          "type": "array",
+          "items": { "type": "ref", "ref": "com.atproto.label.defs#label" }
+        },
+        "indexedAt": { "type": "string", "format": "datetime" }
       }
     },
     "listPurpose": {
       "type": "string",
       "knownValues": [
         "app.bsky.graph.defs#modlist",
-        "app.bsky.graph.defs#curatelist"
+        "app.bsky.graph.defs#curatelist",
+        "app.bsky.graph.defs#referencelist"
       ]
     },
     "modlist": {
       "type": "token",
-      "description": "A list of actors to apply an aggregate moderation action (mute/block) on"
+      "description": "A list of actors to apply an aggregate moderation action (mute/block) on."
     },
     "curatelist": {
       "type": "token",
-      "description": "A list of actors used for curation purposes such as list feeds or interaction gating"
+      "description": "A list of actors used for curation purposes such as list feeds or interaction gating."
+    },
+    "referencelist": {
+      "type": "token",
+      "description": "A list of actors used for only for reference purposes such as within a starter pack."
     },
     "listViewerState": {
       "type": "object",
@@ -71,9 +145,37 @@ $lexiconText = @'
         "muted": { "type": "boolean" },
         "blocked": { "type": "string", "format": "at-uri" }
       }
+    },
+    "notFoundActor": {
+      "type": "object",
+      "description": "indicates that a handle or DID could not be resolved",
+      "required": ["actor", "notFound"],
+      "properties": {
+        "actor": { "type": "string", "format": "at-identifier" },
+        "notFound": { "type": "boolean", "const": true }
+      }
+    },
+    "relationship": {
+      "type": "object",
+      "description": "lists the bi-directional graph relationships between one actor (not indicated in the object), and the target actors (the DID included in the object)",
+      "required": ["did"],
+      "properties": {
+        "did": { "type": "string", "format": "did" },
+        "following": {
+          "type": "string",
+          "format": "at-uri",
+          "description": "if the actor follows this DID, this is the AT-URI of the follow record"
+        },
+        "followedBy": {
+          "type": "string",
+          "format": "at-uri",
+          "description": "if the actor is followed by this DID, contains the AT-URI of the follow record"
+        }
+      }
     }
   }
 }
+
 '@
 $lexicon = $lexiconText | ConvertFrom-JSON
 if ($myInvocation.InvocationName -eq $myInvocation.MyCommand.Name) {
@@ -83,5 +185,7 @@ if ($myInvocation.InvocationName -eq $myInvocation.MyCommand.Name) {
 } else {
     $lexicon
 }
+
+
 } 
 
