@@ -10,12 +10,12 @@ function Search-AtProtoLabels  {
 [Alias('Search-AtProtocolLabels','atproto.label.queryLabels','com.atproto.label.queryLabels')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-# List of AT URI patterns to match (boolean 'OR'). Each may be a prefix (ending with '*'; will match inclusive of the string leading to '*'), or a full URI
+# List of AT URI patterns to match (boolean 'OR'). Each may be a prefix (ending with '*'; will match inclusive of the string leading to '*'), or a full URI.
 [Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('uriPatterns')]
 [Management.Automation.PSObject]
 $UriPatterns,
-# Optional list of label sources (DIDs) to filter on
+# Optional list of label sources (DIDs) to filter on.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('sources')]
 [Management.Automation.PSObject]
