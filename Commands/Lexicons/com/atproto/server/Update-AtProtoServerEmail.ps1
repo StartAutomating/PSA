@@ -14,6 +14,10 @@ param(
 [ComponentModel.DefaultBindingProperty('email')]
 [String]
 $Email,
+[Parameter(ValueFromPipelineByPropertyName)]
+[ComponentModel.DefaultBindingProperty('emailAuthFactor')]
+[Management.Automation.SwitchParameter]
+$EmailAuthFactor,
 # Requires a token from com.atproto.sever.requestEmailUpdate if the account's email has been confirmed.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('token')]
