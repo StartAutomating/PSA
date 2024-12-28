@@ -10,12 +10,12 @@ function Set-AtProtoRepoWrites  {
 [Alias('Set-AtProtocolRepoWrites','atproto.repo.applyWrites','com.atproto.repo.applyWrites')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
-# The handle or DID of the repo.
+# The handle or DID of the repo (aka, current account).
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('repo')]
 [String]
 $Repo,
-# Validate the records?
+# Can be set to 'false' to skip Lexicon schema validation of record data across all operations, 'true' to require it, or leave unset to validate only for known Lexicons.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('validate')]
 [Management.Automation.SwitchParameter]
@@ -24,6 +24,7 @@ $Validate,
 [ComponentModel.DefaultBindingProperty('writes')]
 [Management.Automation.PSObject]
 $Writes,
+# If provided, the entire operation will fail if the current repo commit CID does not match this value. Used to prevent conflicting repo mutations.
 [Parameter(ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('swapCommit')]
 [String]
@@ -41,6 +42,9 @@ begin {
 $NamespaceID = 'com.atproto.repo.applyWrites'
 $httpMethod  = 'POST'
 $InvokeAtSplat = [Ordered]@{Method=$httpMethod}
+$InvokeAtSplat.DecorateProperty = [Ordered]@{
+    'commit'='com.atproto.repo.defs#commitMeta'
+}
 $InvokeAtSplat["PSTypeName"] = $NamespaceID
 $parameterAliases = [Ordered]@{}
 $DataboundParameters = @()
