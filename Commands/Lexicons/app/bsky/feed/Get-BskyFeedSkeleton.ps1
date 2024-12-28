@@ -10,6 +10,7 @@ function Get-BskyFeedSkeleton  {
 [Alias('Get-BlueSkyFeedSkeleton','bsky.feed.getFeedSkeleton','app.bsky.feed.getFeedSkeleton')]
 [CmdletBinding(SupportsShouldProcess)]
 param(
+# Reference to feed generator record describing the specific feed being requested.
 [Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [ComponentModel.DefaultBindingProperty('feed')]
 [String]
