@@ -1,12 +1,17 @@
 function Get-BskyActorDefinition {
-[Alias('bsky.actor.defs','app.bsky.actor.defs','app.bsky.actor.defs#profileViewBasic','app.bsky.actor.defs#profileView','app.bsky.actor.defs#profileViewDetailed','app.bsky.actor.defs#viewerState','app.bsky.actor.defs#preferences','app.bsky.actor.defs#adultContentPref','app.bsky.actor.defs#contentLabelPref','app.bsky.actor.defs#savedFeedsPref','app.bsky.actor.defs#personalDetailsPref','app.bsky.actor.defs#feedViewPref','app.bsky.actor.defs#threadViewPref')]
+
+[Alias('bsky.actor.defs','app.bsky.actor.defs','app.bsky.actor.defs#profileViewBasic','app.bsky.actor.defs#profileView','app.bsky.actor.defs#profileViewDetailed','app.bsky.actor.defs#profileAssociated','app.bsky.actor.defs#profileAssociatedChat','app.bsky.actor.defs#viewerState','app.bsky.actor.defs#knownFollowers','app.bsky.actor.defs#preferences','app.bsky.actor.defs#adultContentPref','app.bsky.actor.defs#contentLabelPref','app.bsky.actor.defs#savedFeed','app.bsky.actor.defs#savedFeedsPrefV2','app.bsky.actor.defs#savedFeedsPref','app.bsky.actor.defs#personalDetailsPref','app.bsky.actor.defs#feedViewPref','app.bsky.actor.defs#threadViewPref','app.bsky.actor.defs#interestsPref','app.bsky.actor.defs#mutedWordTarget','app.bsky.actor.defs#mutedWord','app.bsky.actor.defs#mutedWordsPref','app.bsky.actor.defs#hiddenPostsPref','app.bsky.actor.defs#labelersPref','app.bsky.actor.defs#labelerPrefItem','app.bsky.actor.defs#bskyAppStatePref','app.bsky.actor.defs#bskyAppProgressGuide','app.bsky.actor.defs#nux')]
 param(
+
 )
+
+
+
+
 $lexiconText = @'
 {
   "lexicon": 1,
   "id": "app.bsky.actor.defs",
-  "description": "A reference to an actor in the network.",
   "defs": {
     "profileViewBasic": {
       "type": "object",
@@ -19,12 +24,17 @@ $lexiconText = @'
           "maxGraphemes": 64,
           "maxLength": 640
         },
-        "avatar": { "type": "string" },
+        "avatar": { "type": "string", "format": "uri" },
+        "associated": {
+          "type": "ref",
+          "ref": "#profileAssociated"
+        },
         "viewer": { "type": "ref", "ref": "#viewerState" },
         "labels": {
           "type": "array",
           "items": { "type": "ref", "ref": "com.atproto.label.defs#label" }
-        }
+        },
+        "createdAt": { "type": "string", "format": "datetime" }
       }
     },
     "profileView": {
@@ -43,8 +53,13 @@ $lexiconText = @'
           "maxGraphemes": 256,
           "maxLength": 2560
         },
-        "avatar": { "type": "string" },
+        "avatar": { "type": "string", "format": "uri" },
+        "associated": {
+          "type": "ref",
+          "ref": "#profileAssociated"
+        },
         "indexedAt": { "type": "string", "format": "datetime" },
+        "createdAt": { "type": "string", "format": "datetime" },
         "viewer": { "type": "ref", "ref": "#viewerState" },
         "labels": {
           "type": "array",
@@ -68,21 +83,55 @@ $lexiconText = @'
           "maxGraphemes": 256,
           "maxLength": 2560
         },
-        "avatar": { "type": "string" },
-        "banner": { "type": "string" },
+        "avatar": { "type": "string", "format": "uri" },
+        "banner": { "type": "string", "format": "uri" },
         "followersCount": { "type": "integer" },
         "followsCount": { "type": "integer" },
         "postsCount": { "type": "integer" },
+        "associated": {
+          "type": "ref",
+          "ref": "#profileAssociated"
+        },
+        "joinedViaStarterPack": {
+          "type": "ref",
+          "ref": "app.bsky.graph.defs#starterPackViewBasic"
+        },
         "indexedAt": { "type": "string", "format": "datetime" },
+        "createdAt": { "type": "string", "format": "datetime" },
         "viewer": { "type": "ref", "ref": "#viewerState" },
         "labels": {
           "type": "array",
           "items": { "type": "ref", "ref": "com.atproto.label.defs#label" }
+        },
+        "pinnedPost": {
+          "type": "ref",
+          "ref": "com.atproto.repo.strongRef"
+        }
+      }
+    },
+    "profileAssociated": {
+      "type": "object",
+      "properties": {
+        "lists": { "type": "integer" },
+        "feedgens": { "type": "integer" },
+        "starterPacks": { "type": "integer" },
+        "labeler": { "type": "boolean" },
+        "chat": { "type": "ref", "ref": "#profileAssociatedChat" }
+      }
+    },
+    "profileAssociatedChat": {
+      "type": "object",
+      "required": ["allowIncoming"],
+      "properties": {
+        "allowIncoming": {
+          "type": "string",
+          "knownValues": ["all", "none", "following"]
         }
       }
     },
     "viewerState": {
       "type": "object",
+      "description": "Metadata about the requesting account's relationship with the subject account. Only has meaningful content for authed requests.",
       "properties": {
         "muted": { "type": "boolean" },
         "mutedByList": {
@@ -91,8 +140,33 @@ $lexiconText = @'
         },
         "blockedBy": { "type": "boolean" },
         "blocking": { "type": "string", "format": "at-uri" },
+        "blockingByList": {
+          "type": "ref",
+          "ref": "app.bsky.graph.defs#listViewBasic"
+        },
         "following": { "type": "string", "format": "at-uri" },
-        "followedBy": { "type": "string", "format": "at-uri" }
+        "followedBy": { "type": "string", "format": "at-uri" },
+        "knownFollowers": {
+          "type": "ref",
+          "ref": "#knownFollowers"
+        }
+      }
+    },
+    "knownFollowers": {
+      "type": "object",
+      "description": "The subject's followers whom you also follow",
+      "required": ["count", "followers"],
+      "properties": {
+        "count": { "type": "integer" },
+        "followers": {
+          "type": "array",
+          "minLength": 0,
+          "maxLength": 5,
+          "items": {
+            "type": "ref",
+            "ref": "#profileViewBasic"
+          }
+        }
       }
     },
     "preferences": {
@@ -103,9 +177,15 @@ $lexiconText = @'
           "#adultContentPref",
           "#contentLabelPref",
           "#savedFeedsPref",
+          "#savedFeedsPrefV2",
           "#personalDetailsPref",
           "#feedViewPref",
-          "#threadViewPref"
+          "#threadViewPref",
+          "#interestsPref",
+          "#mutedWordsPref",
+          "#hiddenPostsPref",
+          "#bskyAppStatePref",
+          "#labelersPref"
         ]
       }
     },
@@ -120,10 +200,47 @@ $lexiconText = @'
       "type": "object",
       "required": ["label", "visibility"],
       "properties": {
+        "labelerDid": {
+          "type": "string",
+          "description": "Which labeler does this preference apply to? If undefined, applies globally.",
+          "format": "did"
+        },
         "label": { "type": "string" },
         "visibility": {
           "type": "string",
-          "knownValues": ["show", "warn", "hide"]
+          "knownValues": ["ignore", "show", "warn", "hide"]
+        }
+      }
+    },
+    "savedFeed": {
+      "type": "object",
+      "required": ["id", "type", "value", "pinned"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "knownValues": ["feed", "list", "timeline"]
+        },
+        "value": {
+          "type": "string"
+        },
+        "pinned": {
+          "type": "boolean"
+        }
+      }
+    },
+    "savedFeedsPrefV2": {
+      "type": "object",
+      "required": ["items"],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "ref",
+            "ref": "app.bsky.actor.defs#savedFeed"
+          }
         }
       }
     },
@@ -144,6 +261,9 @@ $lexiconText = @'
             "type": "string",
             "format": "at-uri"
           }
+        },
+        "timelineIndex": {
+          "type": "integer"
         }
       }
     },
@@ -153,7 +273,7 @@ $lexiconText = @'
         "birthDate": {
           "type": "string",
           "format": "datetime",
-          "description": "The birth date of the owner of the account."
+          "description": "The birth date of account owner."
         }
       }
     },
@@ -171,7 +291,8 @@ $lexiconText = @'
         },
         "hideRepliesByUnfollowed": {
           "type": "boolean",
-          "description": "Hide replies in the feed if they are not by followed users."
+          "description": "Hide replies in the feed if they are not by followed users.",
+          "default": true
         },
         "hideRepliesByLikeCount": {
           "type": "integer",
@@ -192,17 +313,176 @@ $lexiconText = @'
       "properties": {
         "sort": {
           "type": "string",
-          "description": "Sorting mode.",
-          "knownValues": ["oldest", "newest", "most-likes", "random"]
+          "description": "Sorting mode for threads.",
+          "knownValues": ["oldest", "newest", "most-likes", "random", "hotness"]
         },
         "prioritizeFollowedUsers": {
           "type": "boolean",
           "description": "Show followed users at the top of all replies."
         }
       }
+    },
+    "interestsPref": {
+      "type": "object",
+      "required": ["tags"],
+      "properties": {
+        "tags": {
+          "type": "array",
+          "maxLength": 100,
+          "items": { "type": "string", "maxLength": 640, "maxGraphemes": 64 },
+          "description": "A list of tags which describe the account owner's interests gathered during onboarding."
+        }
+      }
+    },
+    "mutedWordTarget": {
+      "type": "string",
+      "knownValues": ["content", "tag"],
+      "maxLength": 640,
+      "maxGraphemes": 64
+    },
+    "mutedWord": {
+      "type": "object",
+      "description": "A word that the account owner has muted.",
+      "required": ["value", "targets"],
+      "properties": {
+        "id": { "type": "string" },
+        "value": {
+          "type": "string",
+          "description": "The muted word itself.",
+          "maxLength": 10000,
+          "maxGraphemes": 1000
+        },
+        "targets": {
+          "type": "array",
+          "description": "The intended targets of the muted word.",
+          "items": {
+            "type": "ref",
+            "ref": "app.bsky.actor.defs#mutedWordTarget"
+          }
+        },
+        "actorTarget": {
+          "type": "string",
+          "description": "Groups of users to apply the muted word to. If undefined, applies to all users.",
+          "knownValues": ["all", "exclude-following"],
+          "default": "all"
+        },
+        "expiresAt": {
+          "type": "string",
+          "format": "datetime",
+          "description": "The date and time at which the muted word will expire and no longer be applied."
+        }
+      }
+    },
+    "mutedWordsPref": {
+      "type": "object",
+      "required": ["items"],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "ref",
+            "ref": "app.bsky.actor.defs#mutedWord"
+          },
+          "description": "A list of words the account owner has muted."
+        }
+      }
+    },
+    "hiddenPostsPref": {
+      "type": "object",
+      "required": ["items"],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": { "type": "string", "format": "at-uri" },
+          "description": "A list of URIs of posts the account owner has hidden."
+        }
+      }
+    },
+    "labelersPref": {
+      "type": "object",
+      "required": ["labelers"],
+      "properties": {
+        "labelers": {
+          "type": "array",
+          "items": {
+            "type": "ref",
+            "ref": "#labelerPrefItem"
+          }
+        }
+      }
+    },
+    "labelerPrefItem": {
+      "type": "object",
+      "required": ["did"],
+      "properties": {
+        "did": {
+          "type": "string",
+          "format": "did"
+        }
+      }
+    },
+    "bskyAppStatePref": {
+      "description": "A grab bag of state that's specific to the bsky.app program. Third-party apps shouldn't use this.",
+      "type": "object",
+      "properties": {
+        "activeProgressGuide": {
+          "type": "ref",
+          "ref": "#bskyAppProgressGuide"
+        },
+        "queuedNudges": {
+          "description": "An array of tokens which identify nudges (modals, popups, tours, highlight dots) that should be shown to the user.",
+          "type": "array",
+          "maxLength": 1000,
+          "items": { "type": "string", "maxLength": 100 }
+        },
+        "nuxs": {
+          "description": "Storage for NUXs the user has encountered.",
+          "type": "array",
+          "maxLength": 100,
+          "items": {
+            "type": "ref",
+            "ref": "app.bsky.actor.defs#nux"
+          }
+        }
+      }
+    },
+    "bskyAppProgressGuide": {
+      "description": "If set, an active progress guide. Once completed, can be set to undefined. Should have unspecced fields tracking progress.",
+      "type": "object",
+      "required": ["guide"],
+      "properties": {
+        "guide": { "type": "string", "maxLength": 100 }
+      }
+    },
+    "nux": {
+      "type": "object",
+      "description": "A new user experiences (NUX) storage object",
+      "required": ["id", "completed"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "completed": {
+          "type": "boolean",
+          "default": false
+        },
+        "data": {
+          "description": "Arbitrary data for the NUX. The structure is defined by the NUX itself. Limited to 300 characters.",
+          "type": "string",
+          "maxLength": 3000,
+          "maxGraphemes": 300
+        },
+        "expiresAt": {
+          "type": "string",
+          "format": "datetime",
+          "description": "The date and time at which the NUX will expire and should be considered completed."
+        }
+      }
     }
   }
 }
+
 '@
 $lexicon = $lexiconText | ConvertFrom-JSON
 if ($myInvocation.InvocationName -eq $myInvocation.MyCommand.Name) {
@@ -212,5 +492,7 @@ if ($myInvocation.InvocationName -eq $myInvocation.MyCommand.Name) {
 } else {
     $lexicon
 }
+
+
 } 
 
